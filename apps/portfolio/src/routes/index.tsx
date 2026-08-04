@@ -13,7 +13,7 @@ import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
 import { m } from "~/lib/paraglide/messages";
-import { seo } from "~/utils/seo";
+import { seo } from "@repo/ui";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,6 +25,7 @@ export const Route = createFileRoute("/")({
         image: "https://nicolas-thouvenin.dev/logos/vertical.png",
         url: "https://nicolas-thouvenin.dev",
         site_name: "Nicolas Thouvenin - Portfolio",
+        twitterHandle: "@Nico-Mugi",
       }),
     ],
   }),

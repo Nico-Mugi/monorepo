@@ -10,11 +10,11 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       ...seo({
-        title: "Playground — Nicolas Thouvenin",
+        title: "Registry — Nicolas Thouvenin",
         description:
-          "A showcase of experiments and side projects by Nicolas Thouvenin.",
-        url: "https://playground.nicolas-thouvenin.dev",
-        site_name: "NT Playground",
+          "A live showcase of the nt-registry components, browsable and interactive.",
+        url: "https://registry.playground.nicolas-thouvenin.dev",
+        site_name: "NT Registry",
       }),
     ],
     links: [

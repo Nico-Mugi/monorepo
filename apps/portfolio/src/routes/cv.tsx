@@ -11,7 +11,7 @@ import { ContactItem } from "~/components/cv/contact-item";
 import { LangItem } from "~/components/cv/lang-item";
 import { SkillItem } from "~/components/cv/skill-item";
 import { Nav } from "~/components/nav";
-import { seo } from "~/utils/seo";
+import { seo } from "@repo/ui";
 import { SimpleIcon } from "~/components/custom-icons/simple-icon";
 import { ciLinkedin } from "~/components/custom-icons/linkedin";
 import { BoldMessage } from "~/components/paraglide/bold-message";
@@ -27,6 +27,7 @@ export const Route = createFileRoute("/cv")({
         image: "https://nicolas-thouvenin.dev/logos/vertical.png",
         url: "https://nicolas-thouvenin.dev/cv",
         site_name: "Nicolas Thouvenin - CV",
+        twitterHandle: "@Nico-Mugi",
       }),
     ],
     links: [

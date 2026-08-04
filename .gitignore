@@ -9,6 +9,11 @@ dist
 .env.local
 .env.*.local
 
+# Generated shadcn registry output — rebuilt by `pnpm build --filter @repo/registry`
+packages/registry/public/
+# Generated registry component sources, synced from @repo/ui — see packages/registry/scripts/sync-from-ui.mjs
+packages/registry/registry/
+
 # OS
 .DS_Store
 Thumbs.db

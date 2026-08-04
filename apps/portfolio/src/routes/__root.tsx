@@ -6,7 +6,7 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import appCss from "../styles.css?url";
 import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
 import { NotFound } from "~/components/not-found.js";
-import { seo } from "~/utils/seo.js";
+import { seo } from "@repo/ui";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -25,6 +25,7 @@ export const Route = createRootRoute({
         image: "https://nicolas-thouvenin.dev/logos/vertical.png",
         url: "https://nicolas-thouvenin.dev",
         site_name: "Nicolas Thouvenin - Portfolio",
+        twitterHandle: "@Nico-Mugi",
       }),
     ],
     links: [

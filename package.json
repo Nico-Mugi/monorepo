@@ -8,7 +8,8 @@
     "test": "turbo test",
     "type-check": "turbo type-check",
     "deploy": "turbo deploy",
-    "clean": "turbo clean && rimraf node_modules"
+    "clean": "turbo clean && rimraf node_modules",
+    "kill-dev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/kill-dev-servers.ps1"
   },
   "devDependencies": {
     "rimraf": "^6.0.1",

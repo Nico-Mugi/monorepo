@@ -1,6 +1,21 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "nt-registry",
-  "homepage": "https://playground.nicolas-thouvenin.dev",
-  "items": []
+  "homepage": "https://registry.playground.nicolas-thouvenin.dev",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A button built on Base UI with CVA-driven variant and size styles.",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    }
+  ]
 }

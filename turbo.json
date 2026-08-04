@@ -5,7 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".output/**", "dist/**", ".wrangler/**"]
+      "outputs": [".output/**", "dist/**", ".wrangler/**", "public/r/**"]
     },
     "dev": {
       "cache": false,

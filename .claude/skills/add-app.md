@@ -14,11 +14,12 @@ Follow every step. Missing one causes cryptic errors at build time.
 
 Two ports needed per app — both must be unique across all apps:
 
-| App | Vite dev port | CF inspector port |
-|---|---|---|
-| portfolio | 3000 | 9229 |
-| playground | 3002 | 9231 |
-| next app | 3003 | 9233 |
+| App               | Vite dev port | CF inspector port |
+| ----------------- | ------------- | ----------------- |
+| portfolio         | 3000          | 9229              |
+| playground        | 3002          | 9231              |
+| registry-showcase | 3003          | 9233              |
+| next app          | 3004          | 9235              |
 
 The CF inspector port conflict causes an `ECONNRESET` crash when running multiple apps
 simultaneously with `pnpm dev`. Always set it explicitly in `vite.config.ts`.
@@ -33,8 +34,6 @@ apps/<name>/
 │   ├── routes/
 │   │   ├── __root.tsx
 │   │   └── index.tsx
-│   ├── utils/
-│   │   └── seo.ts
 │   ├── router.tsx          ← required by TanStack Start
 │   ├── routeTree.gen.ts    ← seed manually; TanStack Router overwrites on first run
 │   ├── server.ts           ← Cloudflare Worker entry
@@ -139,7 +138,7 @@ Plugin order matters: cloudflare → tailwind → tanstackStart → viteReact.
   "name": "<name>",
   "compatibility_date": "2025-09-02",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "./src/server.ts"
+  "main": "./src/server.ts",
 }
 ```
 
@@ -150,15 +149,21 @@ Use the same `compatibility_date` as other apps. Update all apps together when b
 ```css
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@repo/ui/styles/theme.css";
 
 @custom-variant dark (&:is(.dark *));
 ```
 
-## Step 8 — Copy src/utils/seo.ts
+`@repo/ui/styles/theme.css` is the shared design system (colors, radius, fonts) — every
+app imports it as-is to keep visual identity consistent. Don't duplicate or fork its
+tokens in an app's own stylesheet; add app-specific CSS below the imports instead.
 
-Copy from `apps/playground/src/utils/seo.ts` — it's identical across all apps.
+## Step 8 — SEO
 
-## Step 9 — src/routes/__root.tsx and index.tsx
+`seo()` lives in `@repo/ui` (`packages/ui/src/utils/seo.ts`) — no per-app copy needed.
+Import it as `import { seo } from "@repo/ui";` in `__root.tsx`.
+
+## Step 9 — src/routes/\_\_root.tsx and index.tsx
 
 Copy from `apps/playground/src/routes/` as a starting point. Update the SEO metadata
 (title, description, url, site_name) to match the new app.
@@ -191,11 +196,15 @@ The Cloudflare Worker entry point. Referenced by `wrangler.jsonc` as `"main"`.
 import handler from "@tanstack/react-start/server-entry";
 
 export default {
-  fetch(req: Request): Promise<Response> {
+  async fetch(req: Request): Promise<Response> {
     return handler.fetch(req);
   },
 };
 ```
+
+Must be `async fetch`, not a plain function returning `handler.fetch(req)` directly — `handler.fetch`
+is typed as `Response | Promise<Response>`, which fails `tsc --noEmit` against the declared
+`Promise<Response>` return type otherwise.
 
 If the app uses Paraglide i18n, wrap with `paraglideMiddleware` (see portfolio's `server.ts`).
 
@@ -208,29 +217,38 @@ regenerate it:
 ```ts
 /* eslint-disable */
 // @ts-nocheck
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as IndexRouteImport } from "./routes/index";
 
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 
-export interface FileRoutesByFullPath { '/': typeof IndexRoute }
-export interface FileRoutesByTo { '/': typeof IndexRoute }
-export interface FileRoutesById { __root__: typeof rootRouteImport; '/': typeof IndexRoute }
-export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fileRoutesByTo: FileRoutesByTo
-  fileRoutesById: FileRoutesById
+export interface FileRoutesByFullPath {
+  "/": typeof IndexRoute;
 }
-export interface RootRouteChildren { IndexRoute: typeof IndexRoute }
+export interface FileRoutesByTo {
+  "/": typeof IndexRoute;
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport;
+  "/": typeof IndexRoute;
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fileRoutesByTo: FileRoutesByTo;
+  fileRoutesById: FileRoutesById;
+}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute;
+}
 
-const rootRouteChildren: RootRouteChildren = { IndexRoute: IndexRoute }
+const rootRouteChildren: RootRouteChildren = { IndexRoute: IndexRoute };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addRouteTypes<FileRouteTypes>()
+  ._addRouteTypes<FileRouteTypes>();
 ```
 
 ## Step 13 — Wire up

@@ -13,9 +13,10 @@ At the start of every session:
 ```
 monorepo/
 ├── apps/
-│   ├── portfolio/        # nicolas-thouvenin.dev — TanStack Start + CF Workers
-│   ├── playground/       # playground.nicolas-thouvenin.dev — TanStack Start + CF Workers
-│   └── [private apps]    # gitignored, each has its own private GitHub repo
+│   ├── portfolio/          # nicolas-thouvenin.dev — TanStack Start + CF Workers
+│   ├── playground/         # playground.nicolas-thouvenin.dev — TanStack Start + CF Workers
+│   ├── registry-showcase/  # registry.playground.nicolas-thouvenin.dev — live showcase of @repo/registry components
+│   └── [private apps]      # gitignored, each has its own private GitHub repo
 ├── packages/
 │   ├── ui/               # @repo/ui — shared React component library (source exports)
 │   ├── registry/         # @repo/registry — shadcn registry data
@@ -91,3 +92,15 @@ Short version:
 | `pnpm deploy --filter portfolio` | Deploy portfolio to Cloudflare |
 | `pnpm type-check` | Type-check all packages |
 | `pnpm install` | Install all dependencies (run after adding a new package) |
+| `pnpm kill-dev` | Force-kill any leftover Vite/Wrangler dev-server processes for this repo |
+
+## Dev server cleanup (Claude Code)
+
+Backgrounded `vite dev` processes (e.g. `pnpm dev`, `pnpm dev --filter <app>`) can survive
+their parent shell being stopped — the tool that stops a background task does not reliably
+kill the underlying Vite child process. A leftover process keeps holding its dev port and
+Cloudflare inspector port, and the next `pnpm dev` fails with `EADDRINUSE`.
+
+Whenever you (Claude Code) start a dev server in the background to verify a change, run
+`pnpm kill-dev` once you're done with it — don't leave it running, and don't rely on the
+background-stop tool alone. See `scripts/kill-dev-servers.ps1` for what it does.
