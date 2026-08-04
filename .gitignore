@@ -1,0 +1,23 @@
+node_modules
+dist
+.output
+.wrangler
+.turbo
+*.log
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Private package — skills, memory, and sensitive config. Own private GitHub repo.
+# Clone instructions are in the install skill (packages/private/.claude/skills/install.md).
+packages/private/
+
+# Private apps — each lives in apps/<name> but has its own GitHub repo.
+# Clone them manually: git clone git@github.com:Nico-Mugi/<name>.git apps/<name>
+# Add entries here when you create a new private app:
+# apps/my-private-app/

@@ -1,0 +1,18 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "packageManager": "pnpm@11.20.0",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "test": "turbo test",
+    "type-check": "turbo type-check",
+    "deploy": "turbo deploy",
+    "clean": "turbo clean && rimraf node_modules"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "turbo": "^2.5.4",
+    "typescript": "^6.0.3"
+  }
+}

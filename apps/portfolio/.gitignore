@@ -1,0 +1,14 @@
+/.agents
+/.tanstack
+/node_modules
+/skills-lock.json
+/.wrangler
+/dist
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
