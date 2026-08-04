@@ -33,41 +33,41 @@ export function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="bg-neutral-900 py-24">
+    <section id="experience" className="bg-card py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center gap-3 mb-3">
-          <BriefcaseIcon size={14} className="text-[#8FAF83]" />
-          <span className="text-[#8FAF83] text-xs font-semibold uppercase tracking-widest">
+          <BriefcaseIcon size={14} className="text-primary" />
+          <span className="text-primary text-xs font-semibold uppercase tracking-widest">
             {m.sections_experience_subtitle()}
           </span>
         </div>
         <SectionHeading>{m.sections_experience_title()}</SectionHeading>
 
         <div className="relative mt-12">
-          <div className="absolute left-6 top-2 bottom-2 w-px bg-linear-to-b from-[#8FAF83]/50 via-neutral-700 to-transparent hidden md:block" />
+          <div className="absolute left-6 top-2 bottom-2 w-px bg-linear-to-b from-primary/50 via-input to-transparent hidden md:block" />
 
           <div className="flex flex-col gap-8">
             {locale_experience.map((exp, index) => (
               <div key={exp.company} className="md:pl-20 relative group">
-                <div className="hidden md:block absolute left-4.75 top-5 w-3.5 h-3.5 rounded-full bg-neutral-900 border-2 border-[#8FAF83] group-hover:bg-[#8FAF83] transition-colors duration-300" />
+                <div className="hidden md:block absolute left-4.75 top-5 w-3.5 h-3.5 rounded-full bg-card border-2 border-primary group-hover:bg-primary transition-colors duration-300" />
 
-                <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-6 group-hover:border-[#8FAF83]/30 transition-colors duration-300">
+                <div className="bg-background border border-border rounded-2xl p-6 group-hover:border-primary/30 transition-colors duration-300">
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                     <div>
-                      <h3 className="font-semibold text-white text-base leading-snug">
+                      <h3 className="font-semibold text-foreground text-base leading-snug">
                         {exp.title}
                       </h3>
-                      <p className="text-[#8FAF83] text-sm mt-1">
+                      <p className="text-primary text-sm mt-1">
                         {exp.company}
                       </p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
                       {index === 0 && (
-                        <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-[#8FAF83]/15 text-[#8FAF83] border border-[#8FAF83]/25">
+                        <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/25">
                           {m.experience_current_badge()}
                         </span>
                       )}
-                      <span className="text-xs text-neutral-500 italic">
+                      <span className="text-xs text-muted-foreground/70 italic">
                         {exp.periodShort}
                       </span>
                     </div>
@@ -76,9 +76,9 @@ export function ExperienceSection() {
                     {exp.highlights.map((h, j) => (
                       <li
                         key={j}
-                        className="flex items-start gap-3 text-sm text-neutral-400 leading-relaxed"
+                        className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed"
                       >
-                        <span className="mt-2 shrink-0 w-1 h-1 rounded-full bg-[#8FAF83]/60" />
+                        <span className="mt-2 shrink-0 w-1 h-1 rounded-full bg-primary/60" />
                         {h}
                       </li>
                     ))}

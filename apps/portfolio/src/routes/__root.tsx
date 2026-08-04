@@ -45,11 +45,11 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang={getLocale()} className="bg-[#0a0a0a] scroll-smooth">
+    <html lang={getLocale()} className="dark bg-background scroll-smooth">
       <head>
         <HeadContent />
       </head>
-      <body className="bg-[#0a0a0a] scroll-smooth">
+      <body className="bg-background scroll-smooth">
         {children}
         <div className="print:hidden">
           <TanStackRouterDevtools />

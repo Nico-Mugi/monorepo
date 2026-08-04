@@ -21,7 +21,7 @@ export function EducationSection() {
   ];
 
   return (
-    <section id="education" className="bg-neutral-950 py-24">
+    <section id="education" className="bg-background py-24">
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeading>{m.sections_education_title()}</SectionHeading>
 
@@ -29,19 +29,19 @@ export function EducationSection() {
           {locale_education.map((edu, i) => (
             <div
               key={edu.school}
-              className="relative bg-neutral-900 border border-neutral-800 rounded-2xl p-6 overflow-hidden hover:border-[#8FAF83]/30 transition-colors duration-300 group"
+              className="relative bg-card border border-border rounded-2xl p-6 overflow-hidden hover:border-primary/30 transition-colors duration-300 group"
             >
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#8FAF83] via-[#8FAF83]/60 to-transparent" />
-              <span className="absolute top-3 right-4 text-6xl font-black text-neutral-800 select-none leading-none">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-primary via-primary/60 to-transparent" />
+              <span className="absolute top-3 right-4 text-6xl font-black text-muted select-none leading-none">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <p className="text-xs text-neutral-500 mb-4 font-mono">
+              <p className="text-xs text-muted-foreground/70 mb-4 font-mono">
                 {edu.periodShort}
               </p>
-              <h3 className="font-semibold text-white text-sm leading-snug mb-3 relative">
+              <h3 className="font-semibold text-foreground text-sm leading-snug mb-3 relative">
                 {edu.degreeShort}
               </h3>
-              <p className="text-[#8FAF83] text-sm relative">{edu.school}</p>
+              <p className="text-primary text-sm relative">{edu.school}</p>
             </div>
           ))}
         </div>

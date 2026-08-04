@@ -150,6 +150,7 @@ Use the same `compatibility_date` as other apps. Update all apps together when b
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@repo/ui/styles/theme.css";
+@source "../../../packages/ui/src";
 
 @custom-variant dark (&:is(.dark *));
 ```
@@ -157,6 +158,19 @@ Use the same `compatibility_date` as other apps. Update all apps together when b
 `@repo/ui/styles/theme.css` is the shared design system (colors, radius, fonts) — every
 app imports it as-is to keep visual identity consistent. Don't duplicate or fork its
 tokens in an app's own stylesheet; add app-specific CSS below the imports instead.
+
+The `@source "../../../packages/ui/src";` line is required, not optional. Tailwind v4's
+automatic content detection scans an app's own directory tree — it does not follow the
+`@repo/ui` import to also scan `packages/ui/src` for class names, so any Tailwind utility
+class used only inside a shared `@repo/ui` component (and not already used somewhere in
+the app itself) silently renders unstyled. `@source` explicitly adds that directory to
+the scan. (`@import`ing `theme.css` only brings in design tokens/CSS variables — it's a
+separate mechanism from class-name scanning and doesn't substitute for `@source`.)
+
+The new app's `__root.tsx` and every component must consume this theme through semantic
+tokens (`bg-background`, `text-foreground`, `bg-primary`, etc.), never hardcoded
+`neutral-*`/hex colors. See `.claude/skills/design-system.md` for the full token
+vocabulary and the mandatory `dark bg-background` setup on `<html>`.
 
 ## Step 8 — SEO
 
@@ -208,7 +222,60 @@ is typed as `Response | Promise<Response>`, which fails `tsc --noEmit` against t
 
 If the app uses Paraglide i18n, wrap with `paraglideMiddleware` (see portfolio's `server.ts`).
 
-## Step 12 — src/routeTree.gen.ts (seed)
+## Step 12 — Not-found & error boundary
+
+`NotFound` and `DefaultCatchBoundary` live in `@repo/ui` (`packages/ui/src/components/`) —
+themed to match `theme.css` (glow blobs, badge pill, primary/destructive accents) so every
+app's 404 and error pages look consistent without each app re-implementing the visuals.
+
+Every app still needs its own `src/components/not-found.tsx` and
+`src/components/default-catch-boundary.tsx` — these are thin wrappers, not copies.
+
+`not-found.tsx` has no per-app logic to inject. For an app with no i18n it's a plain
+re-export:
+
+```tsx
+// src/components/not-found.tsx
+export { NotFound } from "@repo/ui";
+```
+
+`default-catch-boundary.tsx` always needs a wrapper (even without i18n) to pass
+`showErrorDetails={import.meta.env.DEV}` — that flag can only be read correctly from the
+consuming app's own Vite context, not from inside `@repo/ui` itself:
+
+```tsx
+// src/components/default-catch-boundary.tsx
+import { DefaultCatchBoundary as DefaultCatchBoundaryBase } from "@repo/ui";
+import type { ErrorComponentProps } from "@tanstack/react-router";
+
+export function DefaultCatchBoundary(props: ErrorComponentProps) {
+  return (
+    <DefaultCatchBoundaryBase {...props} showErrorDetails={import.meta.env.DEV} />
+  );
+}
+```
+
+If the app uses Paraglide i18n, both wrappers pass translated text as props instead of
+using the English defaults (see `apps/portfolio/src/components/not-found.tsx` and
+`default-catch-boundary.tsx` for the pattern — both pass `m.*()` message calls as props).
+
+Wire both into `__root.tsx`:
+
+```tsx
+import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
+import { NotFound } from "~/components/not-found.js";
+
+export const Route = createRootRoute({
+  // ...head, etc.
+  errorComponent: DefaultCatchBoundary,
+  notFoundComponent: () => <NotFound />,
+  shellComponent: RootDocument,
+});
+```
+
+Without this, TanStack Router falls back to its unstyled default 404/error screens.
+
+## Step 13 — src/routeTree.gen.ts (seed)
 
 TanStack Router generates this file on first `dev` run, but it must exist for Vite to
 start. Seed it manually with only the routes you've created, then let the dev server
@@ -251,14 +318,7 @@ export const routeTree = rootRouteImport
   ._addRouteTypes<FileRouteTypes>();
 ```
 
-## Step 13 — Wire up
-
-```bash
-pnpm install   # run at repo root to link @repo/ui workspace dependency
-pnpm dev --filter <name>   # verify it starts
-```
-
-## Checklist
+## Step 14 — Wire up
 
 ```bash
 pnpm install   # run at repo root to link @repo/ui workspace dependency
@@ -268,8 +328,9 @@ pnpm dev --filter <name>   # verify it starts
 ## Checklist
 
 - [ ] Unique port assigned and recorded in this file (Step 1)
-- [ ] All 11 files created (Steps 2–12)
+- [ ] All files created (Steps 2–13)
 - [ ] `@repo/ui` in dependencies as `workspace:*`
+- [ ] `not-found.tsx` / `default-catch-boundary.tsx` wrappers created and wired into `__root.tsx` (Step 12)
 - [ ] wrangler `name` matches the desired Cloudflare Worker name
 - [ ] `pnpm install` run at repo root
 - [ ] App starts with `pnpm dev --filter <name>`

@@ -80,6 +80,9 @@ Short version:
 - Tailwind CSS v4 (no tailwind.config — config is in CSS via @import)
 - `@repo/ui` as shared component library
 - TypeScript strict mode
+- One design system (colors, radius, fonts) from `@repo/ui/styles/theme.css` — see
+  `.claude/skills/design-system.md` for the token vocabulary and rules before styling
+  anything in `apps/*`
 
 ## Useful root-level commands
 

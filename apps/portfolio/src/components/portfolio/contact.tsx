@@ -4,16 +4,16 @@ import { m } from "~/lib/paraglide/messages";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-neutral-950 py-24">
+    <section id="contact" className="bg-background py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {m.contact_section_title()}{" "}
-            <span className="text-[#8FAF83]">
+            <span className="text-primary">
               {m.contact_section_title_accent()}
             </span>
           </h2>
-          <p className="text-neutral-400 leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed">
             {m.contact_section_description()}
           </p>
         </div>
@@ -23,19 +23,19 @@ export function ContactSection() {
             const card = (
               <div
                 key={label}
-                className="bg-neutral-900 border border-neutral-800 rounded-2xl p-4 text-center hover:border-[#8FAF83]/30 transition-colors duration-300 h-full"
+                className="bg-card border border-border rounded-2xl p-4 text-center hover:border-primary/30 transition-colors duration-300 h-full"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#8FAF83]/10 border border-[#8FAF83]/20 flex items-center justify-center mx-auto mb-3">
-                  <Icon size={16} className="text-[#8FAF83]" />
+                <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-3">
+                  <Icon size={16} className="text-primary" />
                 </div>
-                <p className="text-xs text-neutral-500 mb-1.5 uppercase tracking-wide">
+                <p className="text-xs text-muted-foreground/70 mb-1.5 uppercase tracking-wide">
                   {label}
                 </p>
                 <p
                   className={cn(
-                    "text-sm text-neutral-300",
+                    "text-sm text-foreground/90",
                     href
-                      ? "group-hover:text-[#8FAF83] transition-colors break-all"
+                      ? "group-hover:text-primary transition-colors break-all"
                       : "",
                   )}
                 >

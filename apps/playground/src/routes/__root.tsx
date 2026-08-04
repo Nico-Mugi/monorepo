@@ -3,6 +3,8 @@ import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import appCss from "../styles.css?url";
 import { seo } from "@repo/ui";
+import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
+import { NotFound } from "~/components/not-found.js";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -27,16 +29,18 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
     ],
   }),
+  errorComponent: DefaultCatchBoundary,
+  notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
 });
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className="bg-[#0a0a0a]">
+    <html lang="en" className="dark bg-background">
       <head>
         <HeadContent />
       </head>
-      <body className="bg-[#0a0a0a]">
+      <body className="bg-background text-foreground">
         {children}
         <div className="hidden">
           <TanStackRouterDevtools />

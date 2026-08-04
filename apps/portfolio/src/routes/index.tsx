@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
 
 function Portfolio() {
   return (
-    <div className="bg-neutral-950 text-white min-h-screen">
+    <div className="bg-background text-foreground min-h-screen">
       <Nav
         links={[
           {

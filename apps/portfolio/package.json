@@ -7,7 +7,7 @@
     "dev": "vite dev",
     "build": "npx paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide && vite build && tsc --noEmit",
     "preview": "vite preview --port 3001",
-    "deploy": "wrangler deploy",
+    "deploy": "pnpm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
     "test": "playwright test",
     "test:watch": "playwright test --watch",

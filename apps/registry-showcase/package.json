@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && tsc --noEmit",
+    "build": "pnpm --filter @repo/registry run build && vite build && tsc --noEmit",
     "preview": "vite preview --port 3003",
-    "deploy": "wrangler deploy",
+    "deploy": "pnpm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist .output .wrangler"
