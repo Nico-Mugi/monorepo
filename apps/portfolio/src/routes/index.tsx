@@ -65,8 +65,8 @@ function Portfolio() {
           },
         ]}
         ctaLink={{
-          label: m.portfolio_nav_access_playground(),
-          shortLabel: m.portfolio_nav_access_playground_short(),
+          label: m.shared_nav_access_playground(),
+          shortLabel: m.shared_nav_access_playground_short(),
           href: PLAYGROUND_URL,
           icon: <LayoutGridIcon size={20} />,
           target: "_blank",

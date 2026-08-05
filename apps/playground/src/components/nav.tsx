@@ -1,7 +1,10 @@
+import { UserRoundIcon } from "lucide-react";
 import { Nav as NavBase, GitHubLink, LocaleSwitcher } from "@repo/ui";
 import { Logo } from "./logo";
 import { getLocale, setLocale, locales } from "~/lib/paraglide/runtime";
 import { m } from "~/lib/paraglide/messages";
+
+const PORTFOLIO_URL = "https://nicolas-thouvenin.dev";
 
 export function Nav() {
   return (
@@ -9,6 +12,14 @@ export function Nav() {
       links={[]}
       logo={<Logo />}
       logoMobile={<Logo orientation="vertical" />}
+      ctaLink={{
+        label: m.shared_nav_access_portfolio(),
+        shortLabel: m.shared_nav_access_portfolio_short(),
+        href: PORTFOLIO_URL,
+        icon: <UserRoundIcon size={20} />,
+        target: "_blank",
+        rel: "noreferrer",
+      }}
       actions={
         <>
           <GitHubLink ariaLabel={m.shared_github_profile_aria()} />
