@@ -7,9 +7,5 @@
   "routes": [
     { "pattern": "nicolas-thouvenin.dev", "custom_domain": true },
     { "pattern": "www.nicolas-thouvenin.dev", "custom_domain": true }
-  ],
-  "browser": {
-    "binding": "BROWSER",
-    "remote": true
-  }
+  ]
 }
