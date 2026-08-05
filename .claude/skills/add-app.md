@@ -182,7 +182,18 @@ Import it as `import { seo } from "@repo/ui";` in `__root.tsx`.
 Copy from `apps/playground/src/routes/` as a starting point. Update the SEO metadata
 (title, description, url, site_name) to match the new app.
 
-## Step 10 — src/router.tsx
+## Step 10 — Favicon
+
+Every app uses the same favicon as portfolio. Copy it in:
+
+```bash
+cp apps/portfolio/public/logos/vertical.svg apps/<name>/public/favicon.svg
+```
+
+`__root.tsx` (copied from playground in Step 9) already links `rel: "icon"` to
+`/favicon.svg` — without this file present, that link 404s.
+
+## Step 11 — src/router.tsx
 
 Required by TanStack Start to locate the router. Without it, vite dev throws
 "Could not resolve entry for router entry: router".
@@ -200,10 +211,10 @@ export const getRouter = () => {
 };
 ```
 
-If the app uses Paraglide i18n, add the `rewrite` option — see Step 15 and
+If the app uses Paraglide i18n, add the `rewrite` option — see Step 16 and
 `.claude/skills/paraglide-i18n.md`.
 
-## Step 11 — src/server.ts
+## Step 12 — src/server.ts
 
 The Cloudflare Worker entry point. Referenced by `wrangler.jsonc` as `"main"`.
 
@@ -221,10 +232,10 @@ Must be `async fetch`, not a plain function returning `handler.fetch(req)` direc
 is typed as `Response | Promise<Response>`, which fails `tsc --noEmit` against the declared
 `Promise<Response>` return type otherwise.
 
-If the app uses Paraglide i18n, wrap with `paraglideMiddleware` — see Step 15 and
+If the app uses Paraglide i18n, wrap with `paraglideMiddleware` — see Step 16 and
 `.claude/skills/paraglide-i18n.md`.
 
-## Step 12 — Not-found & error boundary
+## Step 13 — Not-found & error boundary
 
 `NotFound` and `DefaultCatchBoundary` live in `@repo/ui` (`packages/ui/src/components/`) —
 themed to match `theme.css` (glow blobs, badge pill, primary/destructive accents) so every
@@ -259,7 +270,7 @@ export function DefaultCatchBoundary(props: ErrorComponentProps) {
 
 If the app uses Paraglide i18n, both wrappers pass translated text as props instead of
 using the English defaults — use the `shared_not_found_*` / `shared_error_boundary_*`
-message keys (see Step 15 and `.claude/skills/paraglide-i18n.md`), not per-app keys;
+message keys (see Step 16 and `.claude/skills/paraglide-i18n.md`), not per-app keys;
 that copy is identical across every app on purpose.
 
 Wire both into `__root.tsx`:
@@ -278,7 +289,7 @@ export const Route = createRootRoute({
 
 Without this, TanStack Router falls back to its unstyled default 404/error screens.
 
-## Step 13 — src/routeTree.gen.ts (seed)
+## Step 14 — src/routeTree.gen.ts (seed)
 
 TanStack Router generates this file on first `dev` run, but it must exist for Vite to
 start. Seed it manually with only the routes you've created, then let the dev server
@@ -321,14 +332,14 @@ export const routeTree = rootRouteImport
   ._addRouteTypes<FileRouteTypes>();
 ```
 
-## Step 14 — Wire up
+## Step 15 — Wire up
 
 ```bash
 pnpm install   # run at repo root to link @repo/ui workspace dependency
 pnpm dev --filter <name>   # verify it starts
 ```
 
-## Step 15 — Paraglide i18n (only if the app needs translations)
+## Step 16 — Paraglide i18n (only if the app needs translations)
 
 Full instructions, rationale, and gotchas: `.claude/skills/paraglide-i18n.md`. Don't
 skip it for "just the Vite plugin" — three more integration points are required beyond
@@ -356,10 +367,11 @@ connection to i18n. Condensed checklist:
 ## Checklist
 
 - [ ] Unique port assigned and recorded in this file (Step 1)
-- [ ] All files created (Steps 2–13)
+- [ ] All files created (Steps 2–14)
 - [ ] `@repo/ui` in dependencies as `workspace:*`
-- [ ] `not-found.tsx` / `default-catch-boundary.tsx` wrappers created and wired into `__root.tsx` (Step 12)
+- [ ] Favicon copied from portfolio to `public/favicon.svg` (Step 10)
+- [ ] `not-found.tsx` / `default-catch-boundary.tsx` wrappers created and wired into `__root.tsx` (Step 13)
 - [ ] wrangler `name` matches the desired Cloudflare Worker name
 - [ ] `pnpm install` run at repo root
 - [ ] App starts with `pnpm dev --filter <name>`
-- [ ] If i18n needed: complete Step 15 (`.claude/skills/paraglide-i18n.md`)
+- [ ] If i18n needed: complete Step 16 (`.claude/skills/paraglide-i18n.md`)
