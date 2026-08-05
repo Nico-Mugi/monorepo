@@ -72,11 +72,11 @@ export function seo({
     ...(url ? [{ rel: "canonical", href: url }] : []),
     ...(alternates?.map((a) => ({
       rel: "alternate",
-      hreflang: a.locale,
+      hrefLang: a.locale,
       href: a.url,
     })) ?? []),
     ...(xDefaultUrl
-      ? [{ rel: "alternate", hreflang: "x-default", href: xDefaultUrl }]
+      ? [{ rel: "alternate", hrefLang: "x-default", href: xDefaultUrl }]
       : []),
   ];
 

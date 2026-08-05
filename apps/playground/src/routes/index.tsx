@@ -48,6 +48,18 @@ function useApps(): ProjectCardProps[] {
         alt: m.playground_card_playground_alt(),
       },
     },
+    {
+      name: "Signature",
+      description: m.playground_card_signature_description(),
+      href: "https://signature.playground.nicolas-thouvenin.dev",
+      githubHref: `${GITHUB_ROOT}/apps/signature`,
+      openSource: true,
+      chromeLabel: "signature.playground.nicolas-thouvenin.dev",
+      screenshot: {
+        src: "/screenshots/signature.png",
+        alt: m.playground_card_signature_alt(),
+      },
+    },
   ];
 }
 

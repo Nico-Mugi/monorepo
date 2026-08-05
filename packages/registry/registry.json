@@ -16,6 +16,121 @@
           "target": "components/ui/button.tsx"
         }
       ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A styled native input built on Base UI, usable standalone or inside Field.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "A styled label for form fields.",
+      "files": [
+        {
+          "path": "registry/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A styled divider built on Base UI.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Form-library-agnostic layout primitives (Field, FieldLabel, FieldError, FieldDescription, FieldGroup, FieldSet) for building accessible form fields with any state management, not tied to a specific form library.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["label", "separator"],
+      "files": [
+        {
+          "path": "registry/field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-field",
+      "type": "registry:ui",
+      "title": "Text Field",
+      "description": "A labeled text input bound to a TanStack Form field, with built-in validation error display.",
+      "dependencies": ["@tanstack/react-form"],
+      "registryDependencies": ["field", "input"],
+      "files": [
+        {
+          "path": "registry/text-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-field",
+      "type": "registry:ui",
+      "title": "Color Field",
+      "description": "A native color picker synced with a hex text input, bound to a TanStack Form field.",
+      "dependencies": ["@tanstack/react-form"],
+      "registryDependencies": ["field", "input"],
+      "files": [
+        {
+          "path": "registry/color-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/color-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "A button that copies text to the clipboard and shows a temporary copied or failed state.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/copy-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/copy-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "An unstyled expand/collapse primitive built on Base UI, style the trigger and content to fit your use case.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
+        }
+      ]
     }
   ]
 }
