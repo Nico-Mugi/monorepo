@@ -141,7 +141,7 @@ export function CvDocument() {
 
   return (
     <div
-      className="min-w-fit py-24 bg-neutral-900 print:py-0 print:h-fit relative"
+      className="w-full overflow-x-auto py-24 bg-neutral-900 print:py-0 print:h-fit print:overflow-visible relative"
       style={{ printColorAdjust: "exact" }}
     >
       <div className="aspect-210/297 w-[210mm] mx-auto bg-[#8FAF83] flex flex-row">
