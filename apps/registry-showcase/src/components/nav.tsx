@@ -1,5 +1,7 @@
-import { Nav as NavBase, GitHubLink } from "@repo/ui";
+import { Nav as NavBase, GitHubLink, LocaleSwitcher } from "@repo/ui";
 import { Logo } from "./logo";
+import { getLocale, setLocale, locales } from "~/lib/paraglide/runtime";
+import { m } from "~/lib/paraglide/messages";
 
 export function Nav() {
   return (
@@ -7,7 +9,17 @@ export function Nav() {
       links={[]}
       logo={<Logo />}
       logoMobile={<Logo orientation="vertical" />}
-      actions={<GitHubLink />}
+      actions={
+        <>
+          <GitHubLink ariaLabel={m.shared_github_profile_aria()} />
+          <LocaleSwitcher
+            locales={locales.map((code) => ({ code, label: code.toUpperCase() }))}
+            activeLocale={getLocale()}
+            onSelect={(code) => setLocale(code as (typeof locales)[number])}
+            ariaLabel={m.shared_locale_switch_aria()}
+          />
+        </>
+      }
     />
   );
 }

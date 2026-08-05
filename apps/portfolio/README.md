@@ -28,7 +28,7 @@ This app lives in the [monorepo](../../) — run commands from the repo root or 
 Paraglide output is gitignored and must be generated before the first dev server start:
 
 ```bash
-pnpm exec paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
+pnpm exec paraglide-js compile --project ../../packages/i18n/project.inlang --outdir ./src/lib/paraglide
 ```
 
 ### Development

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { switchLocale, expectActiveLocale } from "@repo/e2e-utils";
 
 test.describe("Paraglide i18n language switching", () => {
   test("switches from French to English on homepage", async ({ page }) => {
@@ -7,17 +8,14 @@ test.describe("Paraglide i18n language switching", () => {
     await expect(
       page.getByText("Ingénieur en Informatique & Consultant IT"),
     ).toBeVisible();
+    await expectActiveLocale(page, "fr");
 
-    const langButton = page.getByRole("button", { name: "Switch language" });
-    await expect(langButton).toHaveText("EN");
-
-    await langButton.click();
-
-    await expect(page).toHaveURL(/\/en/, { timeout: 10000 });
-    await expect(
-      page.getByText("Software Engineer & IT Consultant"),
-    ).toBeVisible();
-    await expect(langButton).toHaveText("FR");
+    await switchLocale(page, {
+      to: "en",
+      expectUrl: /\/en/,
+      expectText: "Software Engineer & IT Consultant",
+    });
+    await expectActiveLocale(page, "en");
   });
 
   test("switches from English to French on homepage", async ({ page }) => {
@@ -26,17 +24,14 @@ test.describe("Paraglide i18n language switching", () => {
     await expect(
       page.getByText("Software Engineer & IT Consultant"),
     ).toBeVisible();
+    await expectActiveLocale(page, "en");
 
-    const langButton = page.getByRole("button", { name: "Switch language" });
-    await expect(langButton).toHaveText("FR");
-
-    await langButton.click();
-
-    await expect(page).toHaveURL(/\/fr/, { timeout: 10000 });
-    await expect(
-      page.getByText("Ingénieur en Informatique & Consultant IT"),
-    ).toBeVisible();
-    await expect(langButton).toHaveText("EN");
+    await switchLocale(page, {
+      to: "fr",
+      expectUrl: /\/fr/,
+      expectText: "Ingénieur en Informatique & Consultant IT",
+    });
+    await expectActiveLocale(page, "fr");
   });
 
   test("language switch on French CV redirects to English resume URL", async ({
@@ -46,11 +41,11 @@ test.describe("Paraglide i18n language switching", () => {
 
     await expect(page.getByText("Expérience Professionnelle")).toBeVisible();
 
-    const langButton = page.getByRole("button", { name: "Switch language" });
-    await langButton.click();
-
-    await expect(page).toHaveURL(/\/en\/resume/, { timeout: 10000 });
-    await expect(page.getByText("Professional Experience")).toBeVisible();
+    await switchLocale(page, {
+      to: "en",
+      expectUrl: /\/en\/resume/,
+      expectText: "Professional Experience",
+    });
   });
 
   test("language switch on English resume redirects to French CV URL", async ({
@@ -60,10 +55,10 @@ test.describe("Paraglide i18n language switching", () => {
 
     await expect(page.getByText("Professional Experience")).toBeVisible();
 
-    const langButton = page.getByRole("button", { name: "Switch language" });
-    await langButton.click();
-
-    await expect(page).toHaveURL(/\/fr\/cv/, { timeout: 10000 });
-    await expect(page.getByText("Expérience Professionnelle")).toBeVisible();
+    await switchLocale(page, {
+      to: "fr",
+      expectUrl: /\/fr\/cv/,
+      expectText: "Expérience Professionnelle",
+    });
   });
 });

@@ -4,26 +4,26 @@ import { m } from "~/lib/paraglide/messages";
 export function EducationSection() {
   const locale_education = [
     {
-      degreeShort: m.education_1_degree(),
-      school: m.education_1_school(),
-      periodShort: m.education_1_date(),
+      degreeShort: m.portfolio_education_1_degree(),
+      school: m.portfolio_education_1_school(),
+      periodShort: m.portfolio_education_1_date(),
     },
     {
-      degreeShort: m.education_2_degree(),
-      school: m.education_2_school(),
-      periodShort: m.education_2_date(),
+      degreeShort: m.portfolio_education_2_degree(),
+      school: m.portfolio_education_2_school(),
+      periodShort: m.portfolio_education_2_date(),
     },
     {
-      degreeShort: m.education_3_degree(),
-      school: m.education_3_school(),
-      periodShort: m.education_3_date(),
+      degreeShort: m.portfolio_education_3_degree(),
+      school: m.portfolio_education_3_school(),
+      periodShort: m.portfolio_education_3_date(),
     },
   ];
 
   return (
     <section id="education" className="bg-background py-24">
       <div className="max-w-5xl mx-auto px-6">
-        <SectionHeading>{m.sections_education_title()}</SectionHeading>
+        <SectionHeading>{m.portfolio_sections_education_title()}</SectionHeading>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
           {locale_education.map((edu, i) => (

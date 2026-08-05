@@ -1,7 +1,8 @@
-import { Nav as NavBase, GitHubLink } from "@repo/ui";
+import { Nav as NavBase, GitHubLink, LocaleSwitcher } from "@repo/ui";
 import type { NavLink } from "@repo/ui";
 import { Logo } from "./logo";
-import { getLocale, setLocale } from "~/lib/paraglide/runtime";
+import { getLocale, setLocale, locales } from "~/lib/paraglide/runtime";
+import { m } from "~/lib/paraglide/messages";
 
 interface NavProps {
   links: NavLink[];
@@ -20,15 +21,13 @@ export function Nav({ links, ctaLink }: NavProps) {
       logoMobile={<Logo orientation="vertical" />}
       actions={
         <>
-          <GitHubLink />
-          <button
-            type="button"
-            onClick={() => setLocale(getLocale() === "en" ? "fr" : "en")}
-            className="text-sm font-medium px-3 py-1.5 rounded-lg border border-input text-muted-foreground hover:border-primary hover:text-foreground transition-all duration-200"
-            aria-label="Switch language"
-          >
-            {getLocale() === "en" ? "FR" : "EN"}
-          </button>
+          <GitHubLink ariaLabel={m.shared_github_profile_aria()} />
+          <LocaleSwitcher
+            locales={locales.map((code) => ({ code, label: code.toUpperCase() }))}
+            activeLocale={getLocale()}
+            onSelect={(code) => setLocale(code as (typeof locales)[number])}
+            ariaLabel={m.shared_locale_switch_aria()}
+          />
         </>
       }
     />

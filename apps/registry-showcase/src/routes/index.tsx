@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@repo/ui";
 import registryData from "@repo/registry/registry.json";
 import { Nav } from "~/components/nav";
+import { m } from "~/lib/paraglide/messages";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -56,14 +57,12 @@ function Home() {
         <header className="mb-12">
           <h1 className="text-4xl font-bold">{registry.name}</h1>
           <p className="mt-2 text-muted-foreground">
-            A live showcase of every component published in this registry.
+            {m.registry_hero_description()}
           </p>
         </header>
 
         {registry.items.length === 0 ? (
-          <p className="text-muted-foreground">
-            No components have been published to the registry yet.
-          </p>
+          <p className="text-muted-foreground">{m.registry_empty_state()}</p>
         ) : (
           <div className="flex flex-col gap-10">
             {registry.items.map((item) => (
@@ -84,7 +83,7 @@ function Home() {
                     demos[item.name]()
                   ) : (
                     <p className="text-sm text-muted-foreground/70">
-                      No live preview registered for “{item.name}” yet.
+                      {m.registry_no_preview({ name: item.name })}
                     </p>
                   )}
                 </div>

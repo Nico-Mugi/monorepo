@@ -5,30 +5,30 @@ import { m } from "~/lib/paraglide/messages";
 export function ExperienceSection() {
   const locale_experience = [
     {
-      title: m.experience_1_position(),
-      company: m.experience_1_company(),
-      periodShort: m.experience_1_date(),
+      title: m.portfolio_experience_1_position(),
+      company: m.portfolio_experience_1_company(),
+      periodShort: m.portfolio_experience_1_date(),
       highlights: [
-        m.experience_1_highlight_1(),
-        m.experience_1_highlight_2(),
-        m.experience_1_highlight_3(),
+        m.portfolio_experience_1_highlight_1(),
+        m.portfolio_experience_1_highlight_2(),
+        m.portfolio_experience_1_highlight_3(),
       ],
     },
     {
-      title: m.experience_2_position(),
-      company: m.experience_2_company(),
-      periodShort: m.experience_2_date(),
+      title: m.portfolio_experience_2_position(),
+      company: m.portfolio_experience_2_company(),
+      periodShort: m.portfolio_experience_2_date(),
       highlights: [
-        m.experience_2_highlight_1(),
-        m.experience_2_highlight_2(),
-        m.experience_2_highlight_3(),
+        m.portfolio_experience_2_highlight_1(),
+        m.portfolio_experience_2_highlight_2(),
+        m.portfolio_experience_2_highlight_3(),
       ],
     },
     {
-      title: m.experience_3_position(),
-      company: m.experience_3_company(),
-      periodShort: m.experience_3_date(),
-      highlights: [m.experience_3_highlight_1(), m.experience_3_highlight_2()],
+      title: m.portfolio_experience_3_position(),
+      company: m.portfolio_experience_3_company(),
+      periodShort: m.portfolio_experience_3_date(),
+      highlights: [m.portfolio_experience_3_highlight_1(), m.portfolio_experience_3_highlight_2()],
     },
   ];
 
@@ -38,10 +38,10 @@ export function ExperienceSection() {
         <div className="flex items-center gap-3 mb-3">
           <BriefcaseIcon size={14} className="text-primary" />
           <span className="text-primary text-xs font-semibold uppercase tracking-widest">
-            {m.sections_experience_subtitle()}
+            {m.portfolio_sections_experience_subtitle()}
           </span>
         </div>
-        <SectionHeading>{m.sections_experience_title()}</SectionHeading>
+        <SectionHeading>{m.portfolio_sections_experience_title()}</SectionHeading>
 
         <div className="relative mt-12">
           <div className="absolute left-6 top-2 bottom-2 w-px bg-linear-to-b from-primary/50 via-input to-transparent hidden md:block" />
@@ -64,7 +64,7 @@ export function ExperienceSection() {
                     <div className="flex items-center gap-2 shrink-0">
                       {index === 0 && (
                         <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/25">
-                          {m.experience_current_badge()}
+                          {m.portfolio_experience_current_badge()}
                         </span>
                       )}
                       <span className="text-xs text-muted-foreground/70 italic">

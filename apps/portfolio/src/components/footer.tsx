@@ -21,7 +21,7 @@ export function Footer() {
           to="/cv"
           className="text-sm text-muted-foreground/70 hover:text-primary transition-colors duration-200"
         >
-          {m.footer_view_cv()}
+          {m.portfolio_footer_view_cv()}
         </Link>
       </div>
     </footer>

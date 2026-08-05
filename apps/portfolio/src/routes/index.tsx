@@ -13,22 +13,26 @@ import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
 import { m } from "~/lib/paraglide/messages";
+import { getLocale } from "~/lib/paraglide/runtime";
+import { localizedSeoUrls } from "~/utils/seo-urls";
 import { seo } from "@repo/ui";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      ...seo({
-        title: "Nicolas Thouvenin - Portfolio",
-        description:
-          "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
-        image: "https://nicolas-thouvenin.dev/logos/vertical.png",
-        url: "https://nicolas-thouvenin.dev",
-        site_name: "Nicolas Thouvenin - Portfolio",
-        twitterHandle: "@Nico-Mugi",
-      }),
-    ],
-  }),
+  head: () => {
+    const { current, alternates, xDefaultUrl } = localizedSeoUrls("/");
+    const pageSeo = seo({
+      title: "Nicolas Thouvenin - Portfolio",
+      description: m.portfolio_seo_home_description(),
+      image: "https://nicolas-thouvenin.dev/logos/vertical.png",
+      url: current,
+      alternates,
+      xDefaultUrl,
+      locale: getLocale(),
+      site_name: "Nicolas Thouvenin - Portfolio",
+      twitterHandle: "@Nico-Mugi",
+    });
+    return { meta: pageSeo.meta, links: pageSeo.links };
+  },
   component: Portfolio,
 });
 
@@ -38,28 +42,28 @@ function Portfolio() {
       <Nav
         links={[
           {
-            label: m.nav_experience(),
+            label: m.portfolio_nav_experience(),
             href: "#experience",
             icon: <BriefcaseIcon size={20} />,
           },
           {
-            label: m.nav_education(),
+            label: m.portfolio_nav_education(),
             href: "#education",
             icon: <GraduationCap size={20} />,
           },
           {
-            label: m.nav_skills(),
+            label: m.portfolio_nav_skills(),
             href: "#skills",
             icon: <ChartNoAxesCombined size={20} />,
           },
           {
-            label: m.nav_contact(),
+            label: m.portfolio_nav_contact(),
             href: "#contact",
             icon: <MailCheckIcon size={20} />,
           },
         ]}
         ctaLink={{
-          label: m.nav_view_cv(),
+          label: m.portfolio_nav_view_cv(),
           href: "/cv",
         }}
       />

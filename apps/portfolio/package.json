@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/compile-cv-pdf-css.mjs && vite dev",
-    "build": "npx paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide && node scripts/compile-cv-pdf-css.mjs && vite build && tsc --noEmit",
+    "build": "npx paraglide-js compile --project ../../packages/i18n/project.inlang --outdir ./src/lib/paraglide && node scripts/compile-cv-pdf-css.mjs && vite build && tsc --noEmit",
     "preview": "vite preview --port 3001",
     "deploy": "pnpm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
@@ -41,6 +41,7 @@
     "@cloudflare/vite-plugin": "^1.39.1",
     "@inlang/paraglide-js": "^2.18.2",
     "@playwright/test": "^1.60.0",
+    "@repo/e2e-utils": "workspace:*",
     "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",

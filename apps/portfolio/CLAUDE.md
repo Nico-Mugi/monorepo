@@ -20,16 +20,22 @@ routing back to the same locale instead of switching. The bug disappears in the
 production build where each locale URL is a prerendered static file.
 
 ### Paraglide messages require compile after editing
-Editing `messages/fr.json` or `messages/en.json` does not immediately update
-TypeScript types. The build script runs `paraglide-js compile` first. In dev,
-the Vite plugin recompiles automatically. If TS doesn't see a new key, trigger
-a dev server restart or run `npx paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide`.
+The message source (`project.inlang/`, `messages/fr.json`, `messages/en.json`)
+lives in `packages/i18n/` — shared across all apps, not just portfolio. Editing
+those files does not immediately update TypeScript types here. The build script
+runs `paraglide-js compile` first. In dev, the Vite plugin recompiles
+automatically. If TS doesn't see a new key, trigger a dev server restart or run
+`npx paraglide-js compile --project ../../packages/i18n/project.inlang --outdir ./src/lib/paraglide`.
 
 ## Message key naming convention
 
-`section_subsection_description` — all lowercase, underscores, hierarchical.
-Examples: `contact_label_email`, `cv_skill_web`, `experience_1_highlight_2`.
-Always add keys to **both** `messages/fr.json` and `messages/en.json`.
+`<scope>_<section>_<description>` — all lowercase, underscores, hierarchical.
+`scope` is `portfolio` for everything in this app, `shared` for copy reused
+across apps via `@repo/ui` (nav labels, locale switcher, etc.), or another
+app's name (`playground`, `registry`) for keys that belong to it.
+Examples: `portfolio_contact_label_email`, `portfolio_cv_skill_web`,
+`portfolio_experience_1_highlight_2`, `shared_nav_home`.
+Always add keys to **both** `packages/i18n/messages/fr.json` and `en.json`.
 Base locale is `fr` — the key must exist there or inlang will warn.
 
 ## Adding a new route — checklist

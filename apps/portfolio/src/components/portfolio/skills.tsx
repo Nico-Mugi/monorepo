@@ -21,35 +21,35 @@ export function SkillsSection() {
         "Tailwind CSS",
         "CSS3",
       ],
-      category: m.skill_group_frontend(),
+      category: m.portfolio_skill_group_frontend(),
     },
     {
       icon: ServerIcon,
       items: ["Node.js", "Python", ".NET Core", "C#"],
-      category: m.skill_group_backend(),
+      category: m.portfolio_skill_group_backend(),
     },
     {
       icon: DatabaseIcon,
       items: ["PostgreSQL", "Supabase", "MSSQL"],
-      category: m.skill_group_databases(),
+      category: m.portfolio_skill_group_databases(),
     },
     {
       icon: LayersIcon,
       items: ["Git", "Docker", "Vercel", "Azure", "Windows Server"],
-      category: m.skill_group_devops(),
+      category: m.portfolio_skill_group_devops(),
     },
     {
       icon: ZapIcon,
       items: ["Puppeteer", "Zapier", "n8n", "Postman"],
-      category: m.skill_group_automation(),
+      category: m.portfolio_skill_group_automation(),
     },
     {
       icon: ShieldCheckIcon,
-      category: m.skill_group_pm(),
+      category: m.portfolio_skill_group_pm(),
       items: [
         ...["Scrum", "Kanban", "Jira", "Trello"],
-        m.skill_is_architecture(),
-        m.skill_gdpr(),
+        m.portfolio_skill_is_architecture(),
+        m.portfolio_skill_gdpr(),
       ],
     },
   ];
@@ -57,7 +57,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="bg-card py-24">
       <div className="max-w-5xl mx-auto px-6">
-        <SectionHeading>{m.sections_skills_title()}</SectionHeading>
+        <SectionHeading>{m.portfolio_sections_skills_title()}</SectionHeading>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {skillGroups.map(({ category, icon: Icon, items }) => (

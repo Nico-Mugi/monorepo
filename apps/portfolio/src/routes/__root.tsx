@@ -6,8 +6,14 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import appCss from "../styles.css?url";
 import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
 import { NotFound } from "~/components/not-found.js";
-import { seo } from "@repo/ui";
 
+// No seo() call here on purpose: every route in this app (index.tsx, cv.tsx)
+// defines its own complete seo(), including canonical/hreflang links scoped
+// to its own path. TanStack Router dedupes `meta` tags by name/property when
+// a child route overrides one, but does not dedupe `link` tags — a
+// root-level seo() call would stack a second, path="/"-scoped canonical and
+// hreflang set on top of every other route's own (e.g. /cv would carry both
+// its own canonical and root's, pointing at two different URLs).
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -18,15 +24,6 @@ export const Route = createRootRoute({
         name: "viewport",
         content: "width=device-width, initial-scale=1",
       },
-      ...seo({
-        title: "Nicolas Thouvenin - Portfolio",
-        description:
-          "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
-        image: "https://nicolas-thouvenin.dev/logos/vertical.png",
-        url: "https://nicolas-thouvenin.dev",
-        site_name: "Nicolas Thouvenin - Portfolio",
-        twitterHandle: "@Nico-Mugi",
-      }),
     ],
     links: [
       {

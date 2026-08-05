@@ -28,114 +28,114 @@ export const CV_GOOGLE_FONTS_HREF =
  */
 export function CvDocument() {
   const languages = [
-    { lang: m.language_1_name(), level: m.language_1_level() },
-    { lang: m.language_2_name(), level: m.language_2_level() },
+    { lang: m.portfolio_language_1_name(), level: m.portfolio_language_1_level() },
+    { lang: m.portfolio_language_2_name(), level: m.portfolio_language_2_level() },
   ];
 
   const cvSkillLines = [
-    m.cv_skill_web(),
-    m.cv_skill_software(),
-    m.cv_skill_dbms(),
-    m.cv_skill_orm(),
-    m.cv_skill_styling(),
-    m.cv_skill_deployment(),
-    m.cv_skill_scraping(),
-    m.cv_skill_testing(),
-    //m.cv_skill_automation(),
-    m.cv_skill_tools(),
+    m.portfolio_cv_skill_web(),
+    m.portfolio_cv_skill_software(),
+    m.portfolio_cv_skill_dbms(),
+    m.portfolio_cv_skill_orm(),
+    m.portfolio_cv_skill_styling(),
+    m.portfolio_cv_skill_deployment(),
+    m.portfolio_cv_skill_scraping(),
+    m.portfolio_cv_skill_testing(),
+    //m.portfolio_cv_skill_automation(),
+    m.portfolio_cv_skill_tools(),
   ];
 
   const projectManagementSkills = [
-    m.pm_skill_agile(),
-    m.pm_skill_project_tools(),
-    m.pm_skill_architecture(),
-    m.pm_skill_security(),
-    //m.pm_skill_budget(),
-    m.pm_skill_risk(),
-    m.pm_skill_planning(),
+    m.portfolio_pm_skill_agile(),
+    m.portfolio_pm_skill_project_tools(),
+    m.portfolio_pm_skill_architecture(),
+    m.portfolio_pm_skill_security(),
+    //m.portfolio_pm_skill_budget(),
+    m.portfolio_pm_skill_risk(),
+    m.portfolio_pm_skill_planning(),
   ];
 
-  const interests = [m.interest_tech(), m.interest_quantum_physics()];
+  const interests = [m.portfolio_interest_tech(), m.portfolio_interest_quantum_physics()];
 
   const locale_experience = [
     {
-      title: m.experience_1_position(),
-      company: m.experience_1_company(),
-      period: m.experience_1_date(),
-      location: m.experience_1_location(),
+      title: m.portfolio_experience_1_position(),
+      company: m.portfolio_experience_1_company(),
+      period: m.portfolio_experience_1_date(),
+      location: m.portfolio_experience_1_location(),
       subEntries: [
         {
-          company: m.experience_1_sub_1_company(),
-          period: m.experience_1_sub_1_date(),
+          company: m.portfolio_experience_1_sub_1_company(),
+          period: m.portfolio_experience_1_sub_1_date(),
           bullets: [
-            <BoldMessage message={m.experience_1_sub_1_bullet_1} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_2} />,
-            // <BoldMessage message={m.experience_1_sub_1_bullet_3} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_4} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_5} />,
-            // <BoldMessage message={m.experience_1_sub_1_bullet_6} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_7} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_8} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_9} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_10} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_1} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_2} />,
+            // <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_3} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_4} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_5} />,
+            // <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_6} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_7} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_8} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_9} />,
+            <BoldMessage message={m.portfolio_experience_1_sub_1_bullet_10} />,
           ],
         },
         // {
-        //   company: m.experience_1_sub_2_company(),
-        //   period: m.experience_1_sub_2_date(),
+        //   company: m.portfolio_experience_1_sub_2_company(),
+        //   period: m.portfolio_experience_1_sub_2_date(),
         //   bullets: [
-        //     m.experience_1_sub_2_bullet_1(),
-        //     m.experience_1_sub_2_bullet_2(),
+        //     m.portfolio_experience_1_sub_2_bullet_1(),
+        //     m.portfolio_experience_1_sub_2_bullet_2(),
         //   ],
         // },
       ],
     },
     {
-      title: m.experience_2_position(),
-      company: m.experience_2_company(),
-      period: m.experience_2_date(),
-      location: m.experience_2_location(),
+      title: m.portfolio_experience_2_position(),
+      company: m.portfolio_experience_2_company(),
+      period: m.portfolio_experience_2_date(),
+      location: m.portfolio_experience_2_location(),
       bullets: [
-        <BoldMessage message={m.experience_2_bullet_1} />,
-        <BoldMessage message={m.experience_2_bullet_2} />,
-        <BoldMessage message={m.experience_2_bullet_3} />,
-        <BoldMessage message={m.experience_2_bullet_4} />,
+        <BoldMessage message={m.portfolio_experience_2_bullet_1} />,
+        <BoldMessage message={m.portfolio_experience_2_bullet_2} />,
+        <BoldMessage message={m.portfolio_experience_2_bullet_3} />,
+        <BoldMessage message={m.portfolio_experience_2_bullet_4} />,
       ],
     },
     {
-      title: m.experience_3_position(),
-      company: m.experience_3_company(),
-      period: m.experience_3_date(),
-      location: m.experience_3_location(),
+      title: m.portfolio_experience_3_position(),
+      company: m.portfolio_experience_3_company(),
+      period: m.portfolio_experience_3_date(),
+      location: m.portfolio_experience_3_location(),
       bullets: [
-        <BoldMessage message={m.experience_3_bullet_1} />,
-        <BoldMessage message={m.experience_3_bullet_2} />,
-        <BoldMessage message={m.experience_3_bullet_3} />,
-        <BoldMessage message={m.experience_3_bullet_4} />,
-        <BoldMessage message={m.experience_3_bullet_5} />,
-        <BoldMessage message={m.experience_3_bullet_6} />,
+        <BoldMessage message={m.portfolio_experience_3_bullet_1} />,
+        <BoldMessage message={m.portfolio_experience_3_bullet_2} />,
+        <BoldMessage message={m.portfolio_experience_3_bullet_3} />,
+        <BoldMessage message={m.portfolio_experience_3_bullet_4} />,
+        <BoldMessage message={m.portfolio_experience_3_bullet_5} />,
+        <BoldMessage message={m.portfolio_experience_3_bullet_6} />,
       ],
     },
   ];
 
   const locale_education = [
     {
-      degree: m.education_1_degree(),
-      school: m.education_1_school(),
-      period: m.education_1_date(),
-      location: m.education_1_location(),
+      degree: m.portfolio_education_1_degree(),
+      school: m.portfolio_education_1_school(),
+      period: m.portfolio_education_1_date(),
+      location: m.portfolio_education_1_location(),
     },
     {
-      degree: m.education_2_degree(),
-      school: m.education_2_school(),
-      period: m.education_2_date(),
-      location: m.education_2_location(),
+      degree: m.portfolio_education_2_degree(),
+      school: m.portfolio_education_2_school(),
+      period: m.portfolio_education_2_date(),
+      location: m.portfolio_education_2_location(),
     },
     {
-      degree: m.education_3_degree(),
-      school: m.education_3_school(),
-      period: m.education_3_date(),
-      location: m.education_3_location(),
+      degree: m.portfolio_education_3_degree(),
+      school: m.portfolio_education_3_school(),
+      period: m.portfolio_education_3_date(),
+      location: m.portfolio_education_3_location(),
     },
   ];
 
@@ -157,7 +157,7 @@ export function CvDocument() {
           </div>
           <div className="w-55 flex flex-col grow justify-between">
             <SideSection
-              title={m.cv_sidebar_contact()}
+              title={m.portfolio_cv_sidebar_contact()}
               items={[
                 ...contactItems,
                 {
@@ -203,28 +203,28 @@ export function CvDocument() {
             />
 
             <SideSection
-              title={m.cv_sidebar_languages()}
+              title={m.portfolio_cv_sidebar_languages()}
               items={languages.map((l) => (
                 <LangItem key={l.lang} lang={l.lang} level={l.level} />
               ))}
             />
 
             <SideSection
-              title={m.cv_sidebar_skills()}
+              title={m.portfolio_cv_sidebar_skills()}
               items={cvSkillLines.map((item) => (
                 <SkillItem key={item} label={item} />
               ))}
             />
 
             <SideSection
-              title={m.cv_sidebar_pm()}
+              title={m.portfolio_cv_sidebar_pm()}
               items={projectManagementSkills.map((item) => (
                 <SkillItem key={item} label={item} />
               ))}
             />
 
             <SideSection
-              title={m.cv_sidebar_interests()}
+              title={m.portfolio_cv_sidebar_interests()}
               items={interests.map((item) => (
                 <SkillItem key={item} label={item} />
               ))}
@@ -238,18 +238,18 @@ export function CvDocument() {
               Nicolas Thouvenin
             </h1>
             <p className="font-[Raleway,sans-serif] text-[14px] text-white/90 uppercase mt-1 mb-0">
-              {m.personal_title()}
+              {m.portfolio_personal_title()}
             </p>
           </div>
           <div className="px-2 pt-1 bg-white flex flex-col gap-1">
             <div>
-              <SectionTitle>{m.profile_summary_title()}</SectionTitle>
+              <SectionTitle>{m.portfolio_profile_summary_title()}</SectionTitle>
               <p className="font-[Lato,sans-serif] text-[12px] text-neutral-800 leading-snug">
-                {m.profile_summary_paragraph()}
+                {m.portfolio_profile_summary_paragraph()}
               </p>
             </div>
             <div>
-              <SectionTitle>{m.cv_section_experience()}</SectionTitle>
+              <SectionTitle>{m.portfolio_cv_section_experience()}</SectionTitle>
               <div className="flex flex-col gap-1">
                 {locale_experience.map((exp) => (
                   <ExperienceEntry
@@ -277,7 +277,7 @@ export function CvDocument() {
               </div>
             </div>
             <div>
-              <SectionTitle>{m.cv_section_education()}</SectionTitle>
+              <SectionTitle>{m.portfolio_cv_section_education()}</SectionTitle>
               <div className="flex flex-col gap-1">
                 {locale_education.map((edu) => (
                   <EduEntry

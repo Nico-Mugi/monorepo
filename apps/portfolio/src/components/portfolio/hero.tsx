@@ -15,7 +15,7 @@ export function HeroSection() {
           <div className="flex-1 text-center md:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/25 text-primary text-xs font-medium mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              {m.hero_available_badge()}
+              {m.portfolio_hero_available_badge()}
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-none mb-4">
@@ -25,11 +25,11 @@ export function HeroSection() {
             </h1>
 
             <p className="text-base md:text-lg text-primary font-medium mb-6 tracking-wide">
-              {m.personal_title()}
+              {m.portfolio_personal_title()}
             </p>
 
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
-              {m.personal_bio()}
+              {m.portfolio_personal_bio()}
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
@@ -37,14 +37,14 @@ export function HeroSection() {
                 href="#contact"
                 className="px-6 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-200"
               >
-                {m.hero_contact_cta()}
+                {m.portfolio_hero_contact_cta()}
               </a>
 
               <Link
                 to="/cv"
                 className="px-6 py-2.5 rounded-lg border border-input text-foreground/90 text-sm font-medium hover:border-muted-foreground hover:text-foreground transition-all duration-200"
               >
-                {m.hero_view_cv_cta()}
+                {m.portfolio_hero_view_cv_cta()}
               </Link>
             </div>
           </div>

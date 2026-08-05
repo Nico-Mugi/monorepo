@@ -26,6 +26,10 @@ export type NavProps = {
   logoHref?: string;
   /** Extra controls after the CTA — GitHub link, locale switcher, theme toggle, etc. */
   actions?: ReactNode;
+  /** Consumers should pass their own translated string. */
+  primaryNavAriaLabel?: string;
+  /** Consumers should pass their own translated string. */
+  mobileNavAriaLabel?: string;
 };
 
 export function Nav({
@@ -35,6 +39,8 @@ export function Nav({
   logoMobile = logo,
   logoHref = "/",
   actions,
+  primaryNavAriaLabel = "Primary navigation",
+  mobileNavAriaLabel = "Mobile navigation",
 }: NavProps) {
   return (
     <>
@@ -48,7 +54,7 @@ export function Nav({
           </Link>
           <nav
             className="hidden md:flex items-center gap-8"
-            aria-label="Primary navigation"
+            aria-label={primaryNavAriaLabel}
           >
             {links.map(({ label, icon, ...props }, index) => (
               <a
@@ -77,7 +83,7 @@ export function Nav({
       {links.length > 0 && (
         <nav
           className="flex md:hidden fixed bottom-0 justify-around w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/50 text-center py-2 print:hidden"
-          aria-label="Mobile navigation"
+          aria-label={mobileNavAriaLabel}
         >
           {links.map(({ label, icon, ...props }, index) => (
             <a

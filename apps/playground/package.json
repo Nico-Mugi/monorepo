@@ -5,15 +5,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && tsc --noEmit",
+    "build": "npx paraglide-js compile --project ../../packages/i18n/project.inlang --outdir ./src/lib/paraglide && vite build && tsc --noEmit",
     "preview": "vite preview --port 3002",
     "deploy": "pnpm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
+    "test": "playwright test",
+    "test:watch": "playwright test --watch",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist .output .wrangler",
     "screenshot": "node scripts/screenshot.mjs"
   },
   "dependencies": {
+    "@inlang/paraglide-js-react": "^1.0.2",
     "@repo/ui": "workspace:*",
     "@tanstack/react-router": "^1.168.25",
     "@tanstack/react-router-devtools": "^1.166.13",
@@ -27,6 +34,9 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.39.1",
+    "@inlang/paraglide-js": "^2.18.2",
+    "@playwright/test": "^1.60.0",
+    "@repo/e2e-utils": "workspace:*",
     "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",

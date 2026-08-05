@@ -200,7 +200,8 @@ export const getRouter = () => {
 };
 ```
 
-If the app uses Paraglide i18n, add the `rewrite` option (see portfolio's `router.tsx`).
+If the app uses Paraglide i18n, add the `rewrite` option — see Step 15 and
+`.claude/skills/paraglide-i18n.md`.
 
 ## Step 11 — src/server.ts
 
@@ -220,7 +221,8 @@ Must be `async fetch`, not a plain function returning `handler.fetch(req)` direc
 is typed as `Response | Promise<Response>`, which fails `tsc --noEmit` against the declared
 `Promise<Response>` return type otherwise.
 
-If the app uses Paraglide i18n, wrap with `paraglideMiddleware` (see portfolio's `server.ts`).
+If the app uses Paraglide i18n, wrap with `paraglideMiddleware` — see Step 15 and
+`.claude/skills/paraglide-i18n.md`.
 
 ## Step 12 — Not-found & error boundary
 
@@ -256,8 +258,9 @@ export function DefaultCatchBoundary(props: ErrorComponentProps) {
 ```
 
 If the app uses Paraglide i18n, both wrappers pass translated text as props instead of
-using the English defaults (see `apps/portfolio/src/components/not-found.tsx` and
-`default-catch-boundary.tsx` for the pattern — both pass `m.*()` message calls as props).
+using the English defaults — use the `shared_not_found_*` / `shared_error_boundary_*`
+message keys (see Step 15 and `.claude/skills/paraglide-i18n.md`), not per-app keys;
+that copy is identical across every app on purpose.
 
 Wire both into `__root.tsx`:
 
@@ -325,6 +328,31 @@ pnpm install   # run at repo root to link @repo/ui workspace dependency
 pnpm dev --filter <name>   # verify it starts
 ```
 
+## Step 15 — Paraglide i18n (only if the app needs translations)
+
+Full instructions, rationale, and gotchas: `.claude/skills/paraglide-i18n.md`. Don't
+skip it for "just the Vite plugin" — three more integration points are required beyond
+`vite.config.ts`, and missing any one produces a 404 on `/fr` or `/en` with no obvious
+connection to i18n. Condensed checklist:
+
+- [ ] `@inlang/paraglide-js` (devDependency) + `@inlang/paraglide-js-react`
+      (dependency) added, versions matching other apps
+- [ ] `vite.config.ts` — `paraglideVitePlugin` added first in the `plugins` array,
+      pointing at `../../packages/i18n/project.inlang`
+- [ ] `src/utils/translated-pathnames.ts` created — root `/` pattern explicitly
+      mapped per locale, plus a catch-all
+- [ ] `src/server.ts` — wrapped with `paraglideMiddleware`
+- [ ] `src/router.tsx` — `rewrite: { input, output }` added using
+      `deLocalizeUrl`/`localizeUrl`
+- [ ] `not-found.tsx` / `default-catch-boundary.tsx` wrappers use `shared_not_found_*`
+      / `shared_error_boundary_*` message keys, not English defaults
+- [ ] Nav wrapper wires `GitHubLink` + `LocaleSwitcher` with `shared_github_profile_aria`
+      / `shared_locale_switch_aria`
+- [ ] `build` script compiles Paraglide before `vite build`
+- [ ] `@repo/e2e-utils` added as devDependency; `playwright.config.ts` webServer runs
+      `build && preview`, never `dev` (locale switching silently no-ops in dev mode)
+- [ ] Ran `npx paraglide-js compile --project ../../packages/i18n/project.inlang --outdir ./src/lib/paraglide` once manually before first `dev`/`build`
+
 ## Checklist
 
 - [ ] Unique port assigned and recorded in this file (Step 1)
@@ -334,4 +362,4 @@ pnpm dev --filter <name>   # verify it starts
 - [ ] wrangler `name` matches the desired Cloudflare Worker name
 - [ ] `pnpm install` run at repo root
 - [ ] App starts with `pnpm dev --filter <name>`
-- [ ] If i18n needed: wire up Paraglide (see portfolio as reference)
+- [ ] If i18n needed: complete Step 15 (`.claude/skills/paraglide-i18n.md`)

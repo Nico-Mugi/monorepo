@@ -1,6 +1,7 @@
 import type { ComponentType, SVGProps } from "react";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { cn, GithubIcon } from "@repo/ui";
+import { m } from "~/lib/paraglide/messages";
 
 export interface ProjectCardProps {
   name: string;
@@ -82,7 +83,9 @@ export function ProjectCard({
             ) : (
               <Lock className="size-3" />
             )}
-            {openSource ? "Open source" : "Private"}
+            {openSource
+              ? m.playground_card_open_source_badge()
+              : m.playground_card_private_badge()}
           </span>
         </div>
 
@@ -96,7 +99,7 @@ export function ProjectCard({
               rel="noreferrer"
               className="inline-flex items-center gap-1 rounded-lg border border-input px-3 py-1.5 text-sm font-medium text-foreground transition-all hover:border-primary hover:text-primary"
             >
-              Visit
+              {m.playground_card_visit_link()}
               <ArrowUpRight className="size-3.5" />
             </a>
           ) : null}
@@ -105,11 +108,11 @@ export function ProjectCard({
               href={githubHref}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${name} on GitHub`}
+              aria-label={m.playground_card_github_aria({ name })}
               className="inline-flex items-center gap-1 rounded-lg border border-input px-3 py-1.5 text-sm font-medium text-muted-foreground transition-all hover:border-primary hover:text-foreground"
             >
               <GithubIcon className="size-3.5" />
-              Source
+              {m.playground_card_source_link()}
             </a>
           ) : null}
         </div>

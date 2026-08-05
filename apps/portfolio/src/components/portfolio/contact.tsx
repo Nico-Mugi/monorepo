@@ -8,13 +8,13 @@ export function ContactSection() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            {m.contact_section_title()}{" "}
+            {m.portfolio_contact_section_title()}{" "}
             <span className="text-primary">
-              {m.contact_section_title_accent()}
+              {m.portfolio_contact_section_title_accent()}
             </span>
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            {m.contact_section_description()}
+            {m.portfolio_contact_section_description()}
           </p>
         </div>
 

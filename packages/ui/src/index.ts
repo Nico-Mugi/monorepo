@@ -7,6 +7,8 @@ export { LogoMark, AppLogo } from "./components/logo";
 export type { LogoOrientation, AppLogoProps } from "./components/logo";
 export { GitHubLink } from "./components/github-link";
 export { GithubIcon } from "./components/github-icon";
+export { LocaleSwitcher } from "./components/locale-switcher";
+export type { LocaleOption, LocaleSwitcherProps } from "./components/locale-switcher";
 export { NotFound } from "./components/not-found";
 export type { NotFoundProps } from "./components/not-found";
 export { DefaultCatchBoundary } from "./components/default-catch-boundary";
