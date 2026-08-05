@@ -2,5 +2,5 @@ import { AppLogo } from "@repo/ui";
 import type { LogoOrientation } from "@repo/ui";
 
 export function Logo({ orientation }: { orientation?: LogoOrientation }) {
-  return <AppLogo appName="PORTFOLIO" orientation={orientation} />;
+  return <AppLogo appName="REGISTRY" orientation={orientation} />;
 }

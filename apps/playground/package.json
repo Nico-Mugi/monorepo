@@ -10,7 +10,8 @@
     "deploy": "pnpm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
     "type-check": "tsc --noEmit",
-    "clean": "rimraf dist .output .wrangler"
+    "clean": "rimraf dist .output .wrangler",
+    "screenshot": "node scripts/screenshot.mjs"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
@@ -31,6 +32,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "playwright": "^1.60.0",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",
     "vite": "^8.0.10",

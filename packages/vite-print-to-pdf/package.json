@@ -1,0 +1,62 @@
+{
+  "name": "vite-plugin-print-to-pdf",
+  "version": "0.1.0",
+  "description": "Vite dev-server plugin that watches route source files and re-exports the corresponding pages to PDF via Playwright on every change.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Nicolas Thouvenin",
+  "keywords": [
+    "vite-plugin",
+    "vite",
+    "pdf",
+    "playwright",
+    "watch",
+    "print"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nico-Mugi/monorepo.git",
+    "directory": "packages/vite-print-to-pdf"
+  },
+  "homepage": "https://github.com/Nico-Mugi/monorepo/tree/main/packages/vite-print-to-pdf#readme",
+  "bugs": "https://github.com/Nico-Mugi/monorepo/issues",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "dependencies": {
+    "playwright": "^1.60.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.10"
+  },
+  "compatiblePackages": {
+    "schemaVersion": 1,
+    "vite": {
+      "type": "compatible",
+      "versions": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+    }
+  }
+}

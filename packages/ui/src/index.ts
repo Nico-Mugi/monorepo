@@ -1,6 +1,12 @@
 export { cn } from "./utils/cn";
 export { seo } from "./utils/seo";
 export { Button, buttonVariants } from "./components/button";
+export { Nav } from "./components/nav";
+export type { NavProps, NavLink } from "./components/nav";
+export { LogoMark, AppLogo } from "./components/logo";
+export type { LogoOrientation, AppLogoProps } from "./components/logo";
+export { GitHubLink } from "./components/github-link";
+export { GithubIcon } from "./components/github-icon";
 export { NotFound } from "./components/not-found";
 export type { NotFoundProps } from "./components/not-found";
 export { DefaultCatchBoundary } from "./components/default-catch-boundary";

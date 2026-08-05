@@ -1,16 +1,18 @@
 import type { Plugin } from "vite";
-import type { UserConfig } from "./types.ts";
-import { exportPDF } from "./pdf.ts";
+import type { UserConfig } from "./types";
+import { exportPDF } from "./pdf";
 import {
   isInDependencyTree,
   resolvePageUrl,
   resolveServerBaseUrl,
-} from "./utils.ts";
+} from "./utils";
 
-export default function watchPrintToPdf(option: UserConfig): Plugin {
+export type { UserConfig } from "./types";
+
+export default function printToPdf(option: UserConfig): Plugin {
   let baseUrl: string;
   return {
-    name: "vite-plugin-watch-print-to-pdf",
+    name: "vite-plugin-print-to-pdf",
     apply: "serve",
 
     configResolved(config) {
@@ -41,7 +43,7 @@ export default function watchPrintToPdf(option: UserConfig): Plugin {
         if (pages.length === 0) return;
 
         console.log(
-          "[watch-print-to-pdf] %s triggered export for: %s",
+          "[vite-plugin-print-to-pdf] %s triggered export for: %s",
           changedFile,
           pages.map((p) => p.outPath).join(", "),
         );

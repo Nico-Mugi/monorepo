@@ -6,7 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { translatedPathnames } from "./src/utils/translated-pathnames";
 import { prerenderRoutes } from "./src/utils/prerender";
-import watchPrintToPdf from "./vite-custom-plugins/watch-print-to-pdf";
+import printToPdf from "vite-plugin-print-to-pdf";
 
 const config = defineConfig({
   server: {
@@ -25,7 +25,7 @@ const config = defineConfig({
       strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
       urlPatterns: translatedPathnames,
     }),
-    watchPrintToPdf({
+    printToPdf({
       // Optional: ignore node_modules or generated files
       filter: (f) =>
         !f.includes("node_modules") &&

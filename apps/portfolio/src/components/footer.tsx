@@ -1,4 +1,4 @@
-import { Logo, LogoVertical } from "./logo";
+import { Logo } from "./logo";
 import { Link } from "@tanstack/react-router";
 import { m } from "~/lib/paraglide/messages";
 
@@ -10,7 +10,7 @@ export function Footer() {
           <Logo />
         </a>
         <a href="#" className="h-full sm:flex hidden w-16 items-center">
-          <LogoVertical />
+          <Logo orientation="vertical" />
         </a>
 
         <p className="text-muted-foreground/50 text-sm">

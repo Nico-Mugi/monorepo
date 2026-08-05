@@ -93,6 +93,14 @@ Tailwind classes (`rounded-lg`, `rounded-xl`, `rounded-2xl`, `rounded-full`) —
 hardcode a pixel radius. If the scale ever needs to change, change `--radius` once in
 `theme.css`, not per-component.
 
+## Punctuation
+
+No em-dash (`—`) in any user-displayed text — page copy, headings, SEO
+`title`/`description`/`site_name` strings, alt text, button/link labels. Use a
+comma, colon, period, or a plain hyphen (`-`) instead, whichever reads best
+for the sentence. This is about rendered/meta text only, not source comments
+or docs (`.md` files, code comments) — those may still use em-dashes freely.
+
 ## Font
 
 `Inter Variable` (self-hosted via `@fontsource-variable/inter`, wired as `font-sans` and
@@ -132,3 +140,4 @@ After touching styling in any app:
 - [ ] Radius via standard `rounded-*` classes, not arbitrary pixel values
 - [ ] Inline SVG fills use `fill-foreground`/`fill-primary` classes, not `fill="..."` attributes
 - [ ] `styles.css` only imports the shared stack — no forked/duplicated tokens
+- [ ] No em-dash in displayed text (page copy, SEO strings, labels, alt text)

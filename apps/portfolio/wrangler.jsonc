@@ -1,11 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
-  "compatibility_date": "2025-09-02",
+  "compatibility_date": "2025-09-15",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./src/server.ts",
   "routes": [
     { "pattern": "nicolas-thouvenin.dev", "custom_domain": true },
     { "pattern": "www.nicolas-thouvenin.dev", "custom_domain": true }
-  ]
+  ],
+  "browser": {
+    "binding": "BROWSER",
+    "remote": true
+  }
 }
