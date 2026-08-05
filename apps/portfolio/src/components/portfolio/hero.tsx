@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { contactItems } from "~/config/contactItems";
+import { PLAYGROUND_URL } from "~/config/externalLinks";
 import { m } from "~/lib/paraglide/messages";
 
 export function HeroSection() {
@@ -34,8 +35,17 @@ export function HeroSection() {
 
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               <a
-                href="#contact"
+                href={PLAYGROUND_URL}
+                target="_blank"
+                rel="noreferrer"
                 className="px-6 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-200"
+              >
+                {m.portfolio_hero_playground_cta()}
+              </a>
+
+              <a
+                href="#contact"
+                className="px-6 py-2.5 rounded-lg border border-input text-foreground/90 text-sm font-medium hover:border-muted-foreground hover:text-foreground transition-all duration-200"
               >
                 {m.portfolio_hero_contact_cta()}
               </a>

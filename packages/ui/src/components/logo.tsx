@@ -84,7 +84,7 @@ export function AppLogo({
     return (
       <div className={cn("flex items-center gap-2", className)}>
         <LogoMark orientation="vertical" />
-        <span className="text-[25px] leading-none font-bold tracking-tight text-foreground/90 whitespace-nowrap">
+        <span className="hidden min-[360px]:inline text-[25px] leading-none font-bold tracking-tight text-foreground/90 whitespace-nowrap">
           {appName}
         </span>
       </div>

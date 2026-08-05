@@ -3,6 +3,7 @@ import {
   BriefcaseIcon,
   ChartNoAxesCombined,
   GraduationCap,
+  LayoutGridIcon,
   MailCheckIcon,
 } from "lucide-react";
 import { Footer } from "~/components/footer";
@@ -12,6 +13,7 @@ import { EducationSection } from "~/components/portfolio/education";
 import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
+import { PLAYGROUND_URL } from "~/config/externalLinks";
 import { m } from "~/lib/paraglide/messages";
 import { getLocale } from "~/lib/paraglide/runtime";
 import { localizedSeoUrls } from "~/utils/seo-urls";
@@ -63,8 +65,12 @@ function Portfolio() {
           },
         ]}
         ctaLink={{
-          label: m.portfolio_nav_view_cv(),
-          href: "/cv",
+          label: m.portfolio_nav_access_playground(),
+          shortLabel: m.portfolio_nav_access_playground_short(),
+          href: PLAYGROUND_URL,
+          icon: <LayoutGridIcon size={20} />,
+          target: "_blank",
+          rel: "noreferrer",
         }}
       />
       <HeroSection />

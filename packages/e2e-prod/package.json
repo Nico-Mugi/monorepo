@@ -1,0 +1,15 @@
+{
+  "name": "@repo/e2e-prod",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:prod": "playwright test",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@repo/e2e-utils": "workspace:*",
+    "typescript": "^6.0.3"
+  }
+}

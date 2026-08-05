@@ -22,6 +22,7 @@ const config = defineConfig({
       outdir: "./src/lib/paraglide",
       outputStructure: "message-modules",
       cookieName: "PARAGLIDE_LOCALE",
+      cookieDomain: ".nicolas-thouvenin.dev",
       strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
       urlPatterns: translatedPathnames,
     }),
@@ -71,7 +72,10 @@ const config = defineConfig({
     tanstackStart({
       pages: prerenderRoutes,
       prerender: {
-        filter: ({ path }) => !path.startsWith("/files"), // don't prerender the PDF files
+        // don't prerender the PDF files, and keep "/" + "/cv" dynamic so the
+        // Worker (not a cached static asset) handles locale detection for them
+        filter: ({ path }) =>
+          !path.startsWith("/files") && path !== "/" && path !== "/cv",
       },
     }),
     // react's vite plugin must come after start's vite plugin

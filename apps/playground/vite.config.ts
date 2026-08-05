@@ -20,6 +20,7 @@ export default defineConfig({
       outdir: "./src/lib/paraglide",
       outputStructure: "message-modules",
       cookieName: "PARAGLIDE_LOCALE",
+      cookieDomain: ".nicolas-thouvenin.dev",
       strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
       urlPatterns: translatedPathnames,
     }),

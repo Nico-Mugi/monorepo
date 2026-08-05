@@ -69,6 +69,7 @@ paraglideVitePlugin({
   outdir: "./src/lib/paraglide",
   outputStructure: "message-modules",
   cookieName: "PARAGLIDE_LOCALE",
+  cookieDomain: ".nicolas-thouvenin.dev",
   strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
   urlPatterns: translatedPathnames,
 }),
@@ -76,6 +77,17 @@ paraglideVitePlugin({
 
 Place it first in the `plugins` array (before `cloudflare`, `tailwindcss`,
 `tanstackStart`, `viteReact`) — later plugins consume its output.
+
+`cookieDomain` is what makes the locale choice travel between apps. All apps in this
+monorepo live on subdomains of `nicolas-thouvenin.dev` (portfolio at the apex,
+playground and registry-showcase on subdomains) but paraglide's compiled `setLocale()`
+(`node_modules/@inlang/paraglide-js/dist/compiler/runtime/set-locale.js`) only sets a
+`domain=` attribute on the `PARAGLIDE_LOCALE` cookie when `cookieDomain` is configured —
+otherwise the cookie defaults to the exact host that set it and a locale choice made on
+one app is invisible on another. Every app must set the same
+`cookieDomain: ".nicolas-thouvenin.dev"` for the cookie to be readable across all of
+them; skipping it on a new app doesn't break that app, it just silently fails to pick up
+(or share) the cross-app preference.
 
 ### 2. `src/utils/translated-pathnames.ts` — url patterns, including root
 

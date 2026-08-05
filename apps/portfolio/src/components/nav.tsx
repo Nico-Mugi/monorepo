@@ -1,15 +1,12 @@
 import { Nav as NavBase, GitHubLink, LocaleSwitcher } from "@repo/ui";
-import type { NavLink } from "@repo/ui";
+import type { NavLink, NavProps as NavBaseProps } from "@repo/ui";
 import { Logo } from "./logo";
 import { getLocale, setLocale, locales } from "~/lib/paraglide/runtime";
 import { m } from "~/lib/paraglide/messages";
 
 interface NavProps {
   links: NavLink[];
-  ctaLink: {
-    label: string;
-    href: string;
-  };
+  ctaLink: NonNullable<NavBaseProps["ctaLink"]>;
 }
 
 export function Nav({ links, ctaLink }: NavProps) {
