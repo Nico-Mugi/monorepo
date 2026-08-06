@@ -45,6 +45,18 @@ export { SelectField } from "./components/select-field";
 export type { SelectFieldProps, SelectFieldOption } from "./components/select-field";
 export { DateTimeField } from "./components/date-time-field";
 export type { DateTimeFieldProps } from "./components/date-time-field";
+export {
+  Modal,
+  ModalPortal,
+  ModalOverlay,
+  ModalTrigger,
+  ModalClose,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalTitle,
+  ModalDescription,
+} from "./components/responsive-modal";
 export { Textarea } from "./components/textarea";
 export { Badge, badgeVariants } from "./components/badge";
 export { Skeleton } from "./components/skeleton";

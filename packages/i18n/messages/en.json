@@ -165,6 +165,7 @@
   "registry_hero_description": "A live showcase of every component published in this registry.",
   "registry_empty_state": "No components have been published to the registry yet.",
   "registry_no_preview": "No live preview registered for \"{name}\" yet.",
+  "registry_block_live_demo_cta": "View live demo",
   "registry_copy_cta": "Copy",
   "registry_copied_confirmation": "Copied",
   "portfolio_seo_home_description": "Portfolio of Nicolas Thouvenin, web developer specialized in React and Node.js. Discover my experience, skills, and how to get in touch.",

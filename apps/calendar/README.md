@@ -1,7 +1,8 @@
 # Calendar
 
-Full-featured calendar component built with TanStack Start and shadcn/ui, published
-as its own installable shadcn registry item. Day, week, month, year, and agenda views
+Full-featured calendar component built with TanStack Start and shadcn/ui. The block
+itself lives in `@repo/ui` and is published as an installable shadcn registry item via
+`@repo/registry`; this app is its live demo. Day, week, month, year, and agenda views
 over a shared event/user data model, with drag-and-drop, resizing, filtering, and
 per-user preferences.
 
@@ -54,17 +55,17 @@ per-user preferences.
   is a thin shell: routing, i18n wiring, and demo data (`src/data/`) around that component.
 - **Styling**: Tailwind CSS v4 + `@repo/ui` design tokens (Base UI primitives, `@repo/ui`
   `style: "base-luma"`)
-- **Forms**: react-hook-form + Zod (`packages/ui/src/blocks/calendar/schemas.ts`)
+- **Forms**: TanStack Form + Zod (`packages/ui/src/blocks/calendar/schemas.ts`)
 - **Drag & drop**: native HTML5 DnD (`draggable`, `dragstart`/`dragover`/`drop`)
 - **Resize**: `re-resizable`
-- **Animations**: Motion (framer-motion)
 - **Dates**: date-fns
 - **i18n**: Paraglide JS — `fr` base locale, `en` second
 - **Tests**: Playwright E2E
 - **Deploy**: Cloudflare Workers via Wrangler
-- **Registry**: self-published shadcn registry (`registry.json`, `public/r/*.json`) —
-  install this calendar into another project with
-  `npx shadcn@latest add https://calendar.playground.nicolas-thouvenin.dev/r/full-calendar.json`
+- **Registry**: published as `full-calendar` in the shared `@repo/registry` (see
+  [packages/registry](../../packages/registry)), not self-published from this app —
+  install it into another project with
+  `npx shadcn@latest add https://registry.playground.nicolas-thouvenin.dev/r/full-calendar.json`
 
 ## Getting started
 
@@ -143,14 +144,12 @@ The calendar UI itself lives in `@repo/ui`, not in this app — this repo only w
 ```
 apps/calendar/src/
 ├── components/               # App-local wrappers around @repo/ui (Nav, Logo, NotFound, ...)
-│   └── icons.tsx                # Landing-page tech logos, unrelated to the calendar block
 ├── data/
 │   ├── mocks.ts, requests.ts   # Random demo data (real visitors)
 │   └── e2e-fixtures.ts          # Deterministic data (?e2e=1, tests only)
 ├── routes/                   # TanStack Router file-based routes
 ├── lib/paraglide/             # Generated i18n runtime (gitignored)
 └── tests/e2e/                 # Playwright test suites
-public/r/, registry.json     # Self-published shadcn registry output
 
 packages/ui/src/blocks/calendar/   # The actual calendar block (published as @repo/ui's Calendar)
 ├── calendar.tsx                     # Entry point — providers + header + body

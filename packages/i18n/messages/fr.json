@@ -165,6 +165,7 @@
   "registry_hero_description": "Une vitrine en direct de chaque composant publié dans ce registre.",
   "registry_empty_state": "Aucun composant n'a encore été publié dans le registre.",
   "registry_no_preview": "Aucun aperçu en direct enregistré pour « {name} » pour le moment.",
+  "registry_block_live_demo_cta": "Voir la démo en direct",
   "registry_copy_cta": "Copier",
   "registry_copied_confirmation": "Copié",
   "portfolio_seo_home_description": "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
