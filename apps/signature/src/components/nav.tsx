@@ -22,7 +22,10 @@ export function Nav() {
       }}
       actions={
         <>
-          <GitHubLink ariaLabel={m.shared_github_profile_aria()} />
+          <GitHubLink
+            href="https://github.com/Nico-Mugi/monorepo/tree/main/apps/signature"
+            ariaLabel={m.shared_github_source_aria()}
+          />
           <LocaleSwitcher
             locales={locales.map((code) => ({ code, label: code.toUpperCase() }))}
             activeLocale={getLocale()}

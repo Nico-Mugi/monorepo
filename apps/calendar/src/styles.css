@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@repo/ui/styles/theme.css";
+@source "../../../packages/ui/src";
+
+@custom-variant dark (&:is(.dark *));
+
+/* remove scroll bar */
+*::-webkit-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+@page {
+  margin: 0; /* Remove default margins for printing */
+  size: A4; /* Set the page size to A4 */
+}
+
+.drop-target {
+  position: relative;
+}
+
+.drop-target::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(var(--primary), 0.05);
+  border: 2px dashed rgba(var(--primary), 0.3);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.drop-target.bg-primary\/10::after {
+  opacity: 1;
+}
+
+/* Add a dragging cursor */
+[draggable="true"] {
+  cursor: grab;
+}
+
+[draggable="true"]:active {
+  cursor: grabbing;
+}

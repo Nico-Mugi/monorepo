@@ -1,6 +1,6 @@
 while read -r local_ref local_sha remote_ref remote_sha; do
   if [ "$remote_ref" = "refs/heads/main" ]; then
-    echo "Pushing to main — running build && deploy first..."
-    pnpm build && pnpm deploy || exit 1
+    echo "Pushing to main, running test && build && deploy first..."
+    pnpm test && pnpm build && pnpm deploy || exit 1
   fi
 done

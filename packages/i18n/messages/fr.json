@@ -140,6 +140,7 @@
   "portfolio_education_3_date": "09.2017 – 09.2020",
   "portfolio_education_3_location": "Annecy, France",
   "shared_github_profile_aria": "Profil GitHub",
+  "shared_github_source_aria": "Voir le code source sur GitHub",
   "shared_locale_switch_aria": "Changer de langue",
   "playground_seo_description": "Une vitrine des expérimentations et projets personnels de Nicolas Thouvenin.",
   "playground_hero_title": "Playground",
@@ -202,5 +203,108 @@
   "signature_history_save_cta": "Enregistrer",
   "signature_history_empty": "Aucune signature enregistrée pour le moment. Remplissez le formulaire et enregistrez-le pour le réutiliser plus tard.",
   "signature_history_load_cta": "Charger",
-  "signature_history_delete_cta": "Supprimer"
+  "signature_history_delete_cta": "Supprimer",
+  "calendar_app_title": "Calendrier complet",
+  "calendar_app_description": "Un composant calendrier complet construit avec React et Shadcn UI, supportant plusieurs vues, la gestion d'événements et un design réactif.",
+  "calendar_home_tagline": "Organisez votre emploi du temps sans effort",
+  "calendar_home_headline": "Gérez votre temps plus efficacement avec",
+  "calendar_home_highlight": "notre composant Calendrier complet.",
+  "calendar_home_subtitle": "Planifiez, suivez et restez au fait de vos événements avec un calendrier intuitif et personnalisable conçu pour une planification fluide.",
+  "calendar_home_cta": "Ouvrir la démo",
+  "calendar_calendar_title": "Calendrier complet",
+  "calendar_calendar_built_by": "Construit avec TanStack Start et Shadcn UI par",
+  "calendar_calendar_view_on_github": "Voir sur Github",
+  "calendar_calendar_portfolio": "Portfolio",
+  "calendar_calendar_add_event": "Ajouter",
+  "calendar_calendar_event_count": [
+    {
+      "declarations": [
+        "input count",
+        "local countPlural = count: plural"
+      ],
+      "selectors": [
+        "countPlural"
+      ],
+      "match": {
+        "countPlural=one": "{count} événement",
+        "countPlural=other": "{count} événements"
+      }
+    }
+  ],
+  "calendar_color_blue": "Bleu",
+  "calendar_color_green": "Vert",
+  "calendar_color_red": "Rouge",
+  "calendar_color_yellow": "Jaune",
+  "calendar_color_purple": "Violet",
+  "calendar_color_orange": "Orange",
+  "calendar_filter_clear": "Effacer le filtre",
+  "calendar_view_agenda": "Agenda",
+  "calendar_view_day": "Jour",
+  "calendar_view_week": "Semaine",
+  "calendar_view_month": "Mois",
+  "calendar_view_year": "Année",
+  "calendar_user_select_placeholder": "Sélectionner un utilisateur",
+  "calendar_user_all": "Tous",
+  "calendar_dialog_edit_event_title": "Modifier l'événement",
+  "calendar_dialog_add_event_title": "Ajouter un événement",
+  "calendar_dialog_edit_event_description": "Modifiez votre événement existant.",
+  "calendar_dialog_add_event_description": "Créez un nouvel événement pour votre calendrier.",
+  "calendar_dialog_field_title": "Titre",
+  "calendar_dialog_title_placeholder": "Entrer un titre",
+  "calendar_dialog_field_variant": "Variante",
+  "calendar_dialog_variant_placeholder": "Sélectionner une variante",
+  "calendar_dialog_field_description": "Description",
+  "calendar_dialog_description_placeholder": "Entrer une description",
+  "calendar_dialog_cancel": "Annuler",
+  "calendar_dialog_save_changes": "Enregistrer",
+  "calendar_dialog_create_event": "Créer l'événement",
+  "calendar_toast_event_updated": "Événement mis à jour avec succès",
+  "calendar_toast_event_created": "Événement créé avec succès",
+  "calendar_toast_event_edit_failed": "Échec de la modification de l'événement",
+  "calendar_toast_event_add_failed": "Échec de l'ajout de l'événement",
+  "calendar_dialog_delete_button": "Supprimer",
+  "calendar_dialog_delete_title": "Êtes-vous absolument sûr ?",
+  "calendar_dialog_delete_description": "Cette action est irréversible. Cela supprimera définitivement votre événement et supprimera les données de nos serveurs.",
+  "calendar_dialog_delete_cancel": "Annuler",
+  "calendar_dialog_delete_continue": "Continuer",
+  "calendar_toast_event_deleted": "Événement supprimé avec succès.",
+  "calendar_toast_event_delete_error": "Erreur lors de la suppression de l'événement.",
+  "calendar_dialog_responsible": "Responsable",
+  "calendar_dialog_start_date": "Date de début",
+  "calendar_dialog_end_date": "Date de fin",
+  "calendar_dialog_at": "à",
+  "calendar_dialog_description_label": "Description",
+  "calendar_dialog_edit_button": "Modifier",
+  "calendar_dialog_delete_event_button": "Supprimer",
+  "calendar_dialog_more": "plus...",
+  "calendar_dialog_events_on": [
+    {
+      "declarations": [
+        "input date",
+        "local formattedDate = date: datetime weekday=long day=numeric month=long year=numeric"
+      ],
+      "match": {
+        "date=*": "Événements du {formattedDate}"
+      }
+    }
+  ],
+  "calendar_dialog_no_events": "Aucun événement pour cette date.",
+  "calendar_settings_label": "Paramètres du calendrier",
+  "calendar_settings_dot_badge": "Badge point",
+  "calendar_settings_24h": "Format 24 heures",
+  "calendar_settings_24h_title": "Format 24 heures",
+  "calendar_settings_12h_title": "Format 12 heures",
+  "calendar_settings_days_start_at": "Les jours commencent à",
+  "calendar_settings_h": "h",
+  "calendar_settings_agenda_group_by": "Grouper l'agenda par",
+  "calendar_settings_group_by_date": "Date",
+  "calendar_settings_group_by_color": "Couleur",
+  "calendar_agenda_search_placeholder": "Rechercher un événement...",
+  "calendar_agenda_no_results": "Aucun résultat trouvé.",
+  "calendar_agenda_at": "à",
+  "calendar_week_view_mobile_warning": "La vue hebdomadaire n'est pas recommandée sur les petits appareils.",
+  "calendar_week_view_mobile_suggestion": "Veuillez utiliser un ordinateur ou passer en vue journalière.",
+  "calendar_day_happening_now": "En ce moment",
+  "calendar_day_no_appointments": "Aucun rendez-vous ou consultation en ce moment",
+  "calendar_event_day_of_badge": "Jour {currentDay} sur {totalDays}"
 }
