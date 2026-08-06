@@ -1,5 +1,4 @@
-import { COLORS } from "~/features/calendar/constants";
-import type { IEvent, IUser } from "~/features/calendar/interfaces";
+import { COLORS, type IEvent, type IUser } from "@repo/ui";
 
 export const USERS_MOCK: IUser[] = [
   {

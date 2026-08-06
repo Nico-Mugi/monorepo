@@ -1,9 +1,8 @@
 import type { ReactNode } from "react";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { Toaster } from "~/components/shadcn/ui/sonner";
 import appCss from "../styles.css?url";
-import { seo } from "@repo/ui";
+import { seo, Toaster } from "@repo/ui";
 import { getLocale } from "~/lib/paraglide/runtime.js";
 import { m } from "~/lib/paraglide/messages.js";
 import { localizedSeoUrls } from "~/utils/seo-urls.js";
@@ -53,7 +52,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body className="bg-background text-foreground">
         {children}
-        <Toaster richColors closeButton />
+        <Toaster />
         <div className="hidden">
           <TanStackRouterDevtools />
         </div>

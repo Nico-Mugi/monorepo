@@ -53,7 +53,7 @@ test.describe("settings", () => {
 
     await openSettings(page);
     await page
-      .getByRole("menuitem", { name: "Days start at" })
+      .getByTestId("settings-days-start-at")
       .getByRole("spinbutton")
       .fill("5");
     await page.keyboard.press("Escape");

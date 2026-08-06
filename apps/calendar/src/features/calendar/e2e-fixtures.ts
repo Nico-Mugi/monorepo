@@ -1,7 +1,6 @@
 import { addDays, addMonths, addYears, setHours, setMinutes, startOfDay, subMonths } from "date-fns";
 import { USERS_MOCK } from "~/features/calendar/mocks";
-import type { IEvent } from "~/features/calendar/interfaces";
-import type { TEventColor } from "~/features/calendar/types";
+import type { IEvent, TEventColor } from "@repo/ui";
 
 /**
  * Fully deterministic event fixtures used only when the `e2e` search param is

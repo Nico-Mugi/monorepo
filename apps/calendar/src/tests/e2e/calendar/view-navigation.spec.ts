@@ -14,8 +14,8 @@ test.describe("view navigation", () => {
   test("defaults to month view on first load", async ({ page }) => {
     await gotoCalendar(page);
     await expect(page.getByRole("tab", { name: "Month" })).toHaveAttribute(
-      "data-state",
-      "active",
+      "aria-selected",
+      "true",
     );
     await expect(
       page.getByText(`${format(today(), "MMMM")} ${today().getFullYear()}`),
@@ -36,8 +36,8 @@ test.describe("view navigation", () => {
     ] as const) {
       await switchView(page, view);
       await expect(page.getByRole("tab", { name: label })).toHaveAttribute(
-        "data-state",
-        "active",
+        "aria-selected",
+        "true",
       );
     }
   });

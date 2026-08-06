@@ -24,8 +24,8 @@ import {
   getEventsCount,
   navigateDate,
   toCapitalize,
-} from "~/features/calendar/helpers";
-import type { TCalendarView } from "~/features/calendar/types";
+  type TCalendarView,
+} from "@repo/ui";
 
 // Re-exported so spec files have a single import source for fixture data and
 // the exact same date/counting helpers the app itself uses — expectations
