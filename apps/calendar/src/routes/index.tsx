@@ -2,7 +2,7 @@ import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { Loader2Icon } from "lucide-react";
 import { Calendar, type CalendarLabels } from "@repo/ui";
 import { Nav } from "~/components/nav";
-import { getEvents, getUsers } from "~/features/calendar/requests";
+import { getEvents, getUsers } from "~/data/requests";
 import { getDateFnsLocale } from "~/lib/date-locale";
 import { m } from "~/lib/paraglide/messages";
 import { Suspense } from "react";

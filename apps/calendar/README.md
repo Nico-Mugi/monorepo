@@ -49,10 +49,12 @@ per-user preferences.
 
 - **Framework**: TanStack Start (React 19, SSR on Cloudflare Workers)
 - **Routing**: File-based TanStack Router
-- **Styling**: Tailwind CSS v4 + `@repo/ui` design tokens, local Radix UI + shadcn
-  primitives (`src/components/shadcn/ui`) — a different, larger primitive set than
-  `@repo/ui` ships, kept local rather than merged upstream
-- **Forms**: react-hook-form + Zod (`src/features/calendar/schemas.ts`)
+- **Component**: the calendar itself is `Calendar` from `@repo/ui`
+  (`packages/ui/src/blocks/calendar/`) — a reusable block, not app-local code. This app
+  is a thin shell: routing, i18n wiring, and demo data (`src/data/`) around that component.
+- **Styling**: Tailwind CSS v4 + `@repo/ui` design tokens (Base UI primitives, `@repo/ui`
+  `style: "base-luma"`)
+- **Forms**: react-hook-form + Zod (`packages/ui/src/blocks/calendar/schemas.ts`)
 - **Drag & drop**: native HTML5 DnD (`draggable`, `dragstart`/`dragover`/`drop`)
 - **Resize**: `re-resizable`
 - **Animations**: Motion (framer-motion)
@@ -100,7 +102,7 @@ pnpm deploy --filter calendar
 60 Playwright end-to-end tests across 11 spec files (`src/tests/e2e/calendar/`), covering
 every feature above — all five views, navigation, event CRUD and validation, event
 details, color/user filters, settings, and drag-and-drop/resize. Deterministic by design:
-tests run against a hand-authored fixture set (`src/features/calendar/e2e-fixtures.ts`,
+tests run against a hand-authored fixture set (`src/data/e2e-fixtures.ts`,
 enabled via `?e2e=1`) instead of the random data real visitors see, so titles, colors,
 users, and dates are known in advance regardless of which day the suite runs.
 
@@ -136,21 +138,26 @@ rather than asserting a guessed-at outcome. Worth a manual check before ruling o
 
 ## Project structure
 
+The calendar UI itself lives in `@repo/ui`, not in this app — this repo only wires it up:
+
 ```
-src/
-├── components/shadcn/ui/   # Local Radix UI + shadcn primitives (registry source)
-├── features/calendar/
-│   ├── calendar.tsx         # Entry point — providers + header + body
-│   ├── contexts/            # CalendarProvider (state, filters, settings) + DndProvider
-│   ├── header/               # View tabs, date navigator, filter, user select, today button
-│   ├── views/                 # month/, week-and-day-view/, year-view/, agenda-view/
-│   ├── dialogs/                # Add/edit event, event details, delete, event list
-│   ├── dnd/                     # DraggableEvent, DroppableArea, ResizableEvent
-│   ├── settings/                 # Settings dropdown
-│   ├── mocks.ts, requests.ts       # Random demo data (real visitors)
-│   └── e2e-fixtures.ts              # Deterministic data (?e2e=1, tests only)
-├── routes/                  # TanStack Router file-based routes
-├── lib/paraglide/            # Generated i18n runtime (gitignored)
-└── tests/e2e/                # Playwright test suites
-public/r/, registry.json    # Self-published shadcn registry output
+apps/calendar/src/
+├── components/               # App-local wrappers around @repo/ui (Nav, Logo, NotFound, ...)
+│   └── icons.tsx                # Landing-page tech logos, unrelated to the calendar block
+├── data/
+│   ├── mocks.ts, requests.ts   # Random demo data (real visitors)
+│   └── e2e-fixtures.ts          # Deterministic data (?e2e=1, tests only)
+├── routes/                   # TanStack Router file-based routes
+├── lib/paraglide/             # Generated i18n runtime (gitignored)
+└── tests/e2e/                 # Playwright test suites
+public/r/, registry.json     # Self-published shadcn registry output
+
+packages/ui/src/blocks/calendar/   # The actual calendar block (published as @repo/ui's Calendar)
+├── calendar.tsx                     # Entry point — providers + header + body
+├── contexts/                        # CalendarProvider (state, filters, settings) + DndProvider
+├── header/                           # View tabs, date navigator, filter, user select, today button
+├── views/                             # month/, week-and-day-view/, year-view/, agenda-view/
+├── dialogs/                            # Add/edit event, event details, delete, event list
+├── dnd/                                  # DraggableEvent, DroppableArea, ResizableEvent
+└── settings/                              # Settings dropdown
 ```

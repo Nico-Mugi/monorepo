@@ -18,7 +18,7 @@ import {
   E2E_FIXTURES,
   EVENT_HAPPENING_NOW_TITLE,
   type E2eEventFixture,
-} from "~/features/calendar/e2e-fixtures";
+} from "~/data/e2e-fixtures";
 import {
   formatTime,
   getEventsCount,

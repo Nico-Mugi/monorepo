@@ -166,17 +166,17 @@ export {
   toast,
   useToastManager,
 } from "./components/toast";
-export { Calendar } from "./components/calendar/calendar";
-export type { CalendarProps } from "./components/calendar/calendar";
-export type { IEvent, IUser, ICalendarCell } from "./components/calendar/interfaces";
-export type { TCalendarView, TEventColor } from "./components/calendar/types";
-export type { CalendarLabels } from "./components/calendar/labels";
-export { defaultCalendarLabels } from "./components/calendar/labels";
-export { COLORS } from "./components/calendar/constants";
+export { Calendar } from "./blocks/calendar/calendar";
+export type { CalendarProps } from "./blocks/calendar/calendar";
+export type { IEvent, IUser, ICalendarCell } from "./blocks/calendar/interfaces";
+export type { TCalendarView, TEventColor } from "./blocks/calendar/types";
+export type { CalendarLabels } from "./blocks/calendar/labels";
+export { defaultCalendarLabels } from "./blocks/calendar/labels";
+export { COLORS } from "./blocks/calendar/constants";
 export {
   formatTime,
   getEventsCount,
   navigateDate,
   rangeText,
   toCapitalize,
-} from "./components/calendar/helpers";
+} from "./blocks/calendar/helpers";
