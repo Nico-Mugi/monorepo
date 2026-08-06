@@ -2,6 +2,7 @@ import type { ComponentType, SVGProps } from "react";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { cn, GithubIcon } from "@repo/ui";
 import { m } from "~/lib/paraglide/messages";
+import { ReadmeDialog } from "~/components/readme-dialog";
 
 export interface ProjectCardProps {
   name: string;
@@ -12,6 +13,7 @@ export interface ProjectCardProps {
   href?: string;
   screenshot?: { src: string; alt: string };
   icon?: ComponentType<SVGProps<SVGSVGElement>>;
+  readme?: string;
   className?: string;
 }
 
@@ -24,6 +26,7 @@ export function ProjectCard({
   href,
   screenshot,
   icon: Icon,
+  readme,
   className,
 }: ProjectCardProps) {
   return (
@@ -115,6 +118,7 @@ export function ProjectCard({
               {m.playground_card_source_link()}
             </a>
           ) : null}
+          {readme ? <ReadmeDialog name={name} readme={readme} /> : null}
         </div>
       </div>
     </article>

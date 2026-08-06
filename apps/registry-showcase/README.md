@@ -1,6 +1,6 @@
 # Registry Showcase
 
-Live, interactive showcase of the components published in `@repo/registry` —
+Live, interactive showcase of the components published in `@repo/registry`,
 a shadcn-compatible registry generated from `@repo/ui`. Each entry renders a
 working demo alongside its `shadcn add` install command.
 
@@ -12,13 +12,13 @@ working demo alongside its `shadcn add` install command.
 - **Routing**: File-based TanStack Router
 - **Styling**: Tailwind CSS v4 + `@repo/ui`
 - **Registry data**: `@repo/registry` (`registry.json`, synced from `@repo/ui`)
-- **i18n**: Paraglide JS — `fr` base locale, `en` second
+- **i18n**: Paraglide JS (`fr` base locale, `en` second)
 - **Tests**: Playwright E2E
 - **Deploy**: Cloudflare Workers via Wrangler
 
 ## Getting started
 
-This app lives in the [monorepo](../../) — run commands from the repo root or from this directory.
+This app lives in the [monorepo](../../); run commands from the repo root or from this directory.
 
 ### Bootstrap (first run only)
 
@@ -51,7 +51,7 @@ pnpm deploy --filter registry-showcase
 
 ### Tests
 
-Playwright tests require the **production build** — do not test against `pnpm dev`.
+Playwright tests require the **production build**: do not test against `pnpm dev`.
 
 ```bash
 pnpm build --filter registry-showcase && pnpm preview   # in one terminal
@@ -63,7 +63,7 @@ pnpm test --filter registry-showcase                    # in another
 ```
 src/
 ├── components/       # Nav, error/not-found boundaries
-├── routes/           # TanStack Router file-based routes — demo registry per component
+├── routes/           # TanStack Router file-based routes: demo registry per component
 ├── lib/paraglide/     # Generated i18n runtime (gitignored)
 └── tests/e2e/         # Playwright test suites
 ```

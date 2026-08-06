@@ -3,7 +3,7 @@
 A Vite dev-server plugin that watches your route source files and re-exports
 the corresponding pages to PDF (via [Playwright](https://playwright.dev)) every
 time a dependency of that route changes. Useful for keeping a generated
-artifact — a resume, an invoice template, a print stylesheet — in sync with
+artifact (a resume, an invoice template, a print stylesheet) in sync with
 the page it's rendered from while you edit it.
 
 ## How it works
@@ -21,7 +21,7 @@ npm install -D vite-plugin-print-to-pdf playwright
 npx playwright install chromium
 ```
 
-`playwright` is a peer of this plugin's runtime behavior — it's listed as a
+`playwright` is a peer of this plugin's runtime behavior: it's listed as a
 regular dependency so browser binaries are pulled in automatically, but you
 still need to install the Chromium browser itself once via
 `playwright install`.
@@ -71,7 +71,7 @@ Each `Page` entry:
 | `watchFile` | `string` | The entry file whose dependency tree should be watched to trigger this export. |
 | `pdf` | `Parameters<Page["pdf"]>[0]` (Playwright) | Options forwarded to Playwright's `page.pdf()`, minus `path`. |
 
-The plugin only runs in dev (`apply: "serve"`) — it's a no-op in production
+The plugin only runs in dev (`apply: "serve"`). It's a no-op in production
 builds.
 
 ## License

@@ -7,20 +7,20 @@ Personal monorepo for nicolas-thouvenin.dev and related apps/packages, managed w
 ```
 monorepo/
 ├── apps/
-│   ├── portfolio/          # nicolas-thouvenin.dev — TanStack Start + Cloudflare Workers
-│   ├── playground/         # playground.nicolas-thouvenin.dev — TanStack Start + Cloudflare Workers
-│   ├── registry-showcase/  # registry.playground.nicolas-thouvenin.dev — live showcase of @repo/registry components
-│   ├── signature/          # signature.playground.nicolas-thouvenin.dev — TanStack Start app built on @repo/ui form components
+│   ├── portfolio/          # nicolas-thouvenin.dev: TanStack Start + Cloudflare Workers
+│   ├── playground/         # playground.nicolas-thouvenin.dev: TanStack Start + Cloudflare Workers
+│   ├── registry-showcase/  # registry.playground.nicolas-thouvenin.dev: live showcase of @repo/registry components
+│   ├── signature/          # signature.playground.nicolas-thouvenin.dev: TanStack Start app built on @repo/ui form components
 │   └── [private apps]      # gitignored, each has its own private GitHub repo
 ├── packages/
-│   ├── ui/                     # @repo/ui — shared React component library (source exports)
-│   ├── registry/                # @repo/registry — shadcn registry data
+│   ├── ui/                     # @repo/ui: shared React component library (source exports)
+│   ├── registry/                # @repo/registry: shadcn registry data
 │   ├── i18n/                    # shared inlang/Paraglide translation project
-│   ├── e2e-utils/                # @repo/e2e-utils — shared Playwright test helpers
-│   ├── e2e-prod/                 # @repo/e2e-prod — production smoke tests
+│   ├── e2e-utils/                # @repo/e2e-utils: shared Playwright test helpers
+│   ├── e2e-prod/                 # @repo/e2e-prod: production smoke tests
 │   ├── react-tailwind-to-pdf/    # render a React + Tailwind component to PDF via Playwright
 │   ├── vite-print-to-pdf/        # Vite dev-server plugin that re-exports routes to PDF on change
-│   └── private/                  # gitignored — private skills, memory, sensitive config (own private GitHub repo)
+│   └── private/                  # gitignored: private skills, memory, sensitive config (own private GitHub repo)
 ├── pnpm-workspace.yaml
 ├── package.json           # workspace root (turbo scripts, shared devDeps)
 ├── turbo.json             # task pipeline
@@ -38,8 +38,8 @@ monorepo/
 
 ## Package manager & task runner
 
-- **pnpm** workspaces — use `pnpm` commands from the root to run tasks across all packages/apps, or filter to a single package/app
-- **Turborepo** — run tasks from the root; Turbo handles build order (e.g. `packages/ui` builds before any `apps/*` that depend on it)
+- **pnpm** workspaces: use `pnpm` commands from the root to run tasks across all packages/apps, or filter to a single package/app
+- **Turborepo**: run tasks from the root; Turbo handles build order (e.g. `packages/ui` builds before any `apps/*` that depend on it)
 
 ## Commands
 

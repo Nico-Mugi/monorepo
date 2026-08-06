@@ -12,13 +12,13 @@ straight into your email client. Drafts and saved signatures persist locally.
 - **Routing**: File-based TanStack Router
 - **Forms**: TanStack Form + Zod schema (`src/lib/schema.ts`)
 - **Styling**: Tailwind CSS v4 + `@repo/ui`
-- **i18n**: Paraglide JS — `fr` base locale, `en` second
+- **i18n**: Paraglide JS (`fr` base locale, `en` second)
 - **Tests**: Playwright E2E
 - **Deploy**: Cloudflare Workers via Wrangler
 
 ## Getting started
 
-This app lives in the [monorepo](../../) — run commands from the repo root or from this directory.
+This app lives in the [monorepo](../../); run commands from the repo root or from this directory.
 
 ### Bootstrap (first run only)
 
@@ -49,7 +49,7 @@ pnpm deploy --filter signature
 
 ### Tests
 
-Playwright tests require the **production build** — do not test against `pnpm dev`.
+Playwright tests require the **production build**: do not test against `pnpm dev`.
 
 ```bash
 pnpm build --filter signature && pnpm preview   # in one terminal

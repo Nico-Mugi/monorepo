@@ -3,6 +3,8 @@ import { Blocks, FileDown, Palette, Printer } from "lucide-react";
 import { Nav } from "~/components/nav";
 import { ProjectCard, type ProjectCardProps } from "~/components/project-card";
 import { m } from "~/lib/paraglide/messages";
+import { getLocale } from "~/lib/paraglide/runtime";
+import { getAppReadme, getPackageReadme } from "~/lib/readmes";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -10,7 +12,7 @@ export const Route = createFileRoute("/")({
 
 const GITHUB_ROOT = "https://github.com/Nico-Mugi/monorepo/tree/main";
 
-function useApps(): ProjectCardProps[] {
+function useApps(locale: string): ProjectCardProps[] {
   return [
     {
       name: "Portfolio",
@@ -23,6 +25,7 @@ function useApps(): ProjectCardProps[] {
         src: "/screenshots/portfolio.png",
         alt: m.playground_card_portfolio_alt(),
       },
+      readme: getAppReadme("portfolio", locale),
     },
     {
       name: "Registry Showcase",
@@ -35,6 +38,7 @@ function useApps(): ProjectCardProps[] {
         src: "/screenshots/registry-showcase.png",
         alt: m.playground_card_registry_alt(),
       },
+      readme: getAppReadme("registry-showcase", locale),
     },
     {
       name: "Playground",
@@ -47,6 +51,7 @@ function useApps(): ProjectCardProps[] {
         src: "/screenshots/playground.png",
         alt: m.playground_card_playground_alt(),
       },
+      readme: getAppReadme("playground", locale),
     },
     {
       name: "Signature",
@@ -59,6 +64,7 @@ function useApps(): ProjectCardProps[] {
         src: "/screenshots/signature.png",
         alt: m.playground_card_signature_alt(),
       },
+      readme: getAppReadme("signature", locale),
     },
     {
       name: "Calendar",
@@ -71,11 +77,12 @@ function useApps(): ProjectCardProps[] {
         src: "/screenshots/calendar.png",
         alt: m.playground_card_calendar_alt(),
       },
+      readme: getAppReadme("calendar", locale),
     },
   ];
 }
 
-function usePackages(): ProjectCardProps[] {
+function usePackages(locale: string): ProjectCardProps[] {
   return [
     {
       name: "@repo/ui",
@@ -84,6 +91,7 @@ function usePackages(): ProjectCardProps[] {
       openSource: true,
       chromeLabel: "packages/ui",
       icon: Palette,
+      readme: getPackageReadme("ui", locale),
     },
     {
       name: "@repo/registry",
@@ -92,6 +100,7 @@ function usePackages(): ProjectCardProps[] {
       openSource: true,
       chromeLabel: "packages/registry",
       icon: Blocks,
+      readme: getPackageReadme("registry", locale),
     },
     {
       name: "react-tailwind-to-pdf",
@@ -100,6 +109,7 @@ function usePackages(): ProjectCardProps[] {
       openSource: true,
       chromeLabel: "packages/react-tailwind-to-pdf",
       icon: FileDown,
+      readme: getPackageReadme("react-tailwind-to-pdf", locale),
     },
     {
       name: "vite-plugin-print-to-pdf",
@@ -108,13 +118,15 @@ function usePackages(): ProjectCardProps[] {
       openSource: true,
       chromeLabel: "packages/vite-print-to-pdf",
       icon: Printer,
+      readme: getPackageReadme("vite-print-to-pdf", locale),
     },
   ];
 }
 
 function Home() {
-  const apps = useApps();
-  const packages = usePackages();
+  const locale = getLocale();
+  const apps = useApps(locale);
+  const packages = usePackages(locale);
 
   return (
     <div className="min-h-screen bg-background text-foreground">

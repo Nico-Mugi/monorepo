@@ -1,6 +1,6 @@
 # Playground
 
-Landing hub for everything built in this monorepo — links out to the portfolio,
+Landing hub for everything built in this monorepo: links out to the portfolio,
 registry showcase, signature generator, and other apps as they ship, each with
 a live preview screenshot and a link to its source.
 
@@ -11,13 +11,13 @@ a live preview screenshot and a link to its source.
 - **Framework**: TanStack Start (React 19, SSR on Cloudflare Workers)
 - **Routing**: File-based TanStack Router
 - **Styling**: Tailwind CSS v4 + `@repo/ui`
-- **i18n**: Paraglide JS — `fr` base locale, `en` second
+- **i18n**: Paraglide JS (`fr` base locale, `en` second)
 - **Tests**: Playwright E2E
 - **Deploy**: Cloudflare Workers via Wrangler
 
 ## Getting started
 
-This app lives in the [monorepo](../../) — run commands from the repo root or from this directory.
+This app lives in the [monorepo](../../); run commands from the repo root or from this directory.
 
 ### Bootstrap (first run only)
 
@@ -48,7 +48,7 @@ pnpm deploy --filter playground
 
 ### Tests
 
-Playwright tests require the **production build** — do not test against `pnpm dev`.
+Playwright tests require the **production build**: do not test against `pnpm dev`.
 
 ```bash
 pnpm build --filter playground && pnpm preview   # in one terminal

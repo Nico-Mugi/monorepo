@@ -1,4 +1,4 @@
-# Portfolio — Nicolas Thouvenin
+# Portfolio: Nicolas Thouvenin
 
 Personal portfolio showcasing work, skills, and experience. Fully bilingual (FR/EN), deployed globally on Cloudflare Workers.
 
@@ -9,13 +9,13 @@ Personal portfolio showcasing work, skills, and experience. Fully bilingual (FR/
 - **Framework**: TanStack Start (React 19, SSR on Cloudflare Workers)
 - **Routing**: File-based TanStack Router
 - **Styling**: Tailwind CSS v4 + shadcn (CVA + clsx + tw-merge)
-- **i18n**: Paraglide JS — `fr` base locale, `en` second
+- **i18n**: Paraglide JS (`fr` base locale, `en` second)
 - **Tests**: Playwright E2E
 - **Deploy**: Cloudflare Workers via Wrangler
 
 ## Getting started
 
-This app lives in the [monorepo](../../) — run commands from the repo root or from this directory.
+This app lives in the [monorepo](../../); run commands from the repo root or from this directory.
 
 ### Prerequisites
 
@@ -56,7 +56,7 @@ pnpm deploy
 
 ### Tests
 
-Playwright tests require the **production build** — do not test against `pnpm dev`.
+Playwright tests require the **production build**: do not test against `pnpm dev`.
 
 ```bash
 pnpm build && pnpm preview   # in one terminal

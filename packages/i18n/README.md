@@ -11,7 +11,7 @@ consistent across apps.
 
 ## Message key naming convention
 
-`<scope>_<section>_<description>` — all lowercase, underscores, hierarchical.
+`<scope>_<section>_<description>`, all lowercase, underscores, hierarchical.
 `scope` is the owning app's name (`portfolio`, `playground`, `registry`,
 `signature`, …), or `shared` for copy reused across apps via `@repo/ui`
 (nav labels, locale switcher, etc.).
@@ -19,13 +19,13 @@ consistent across apps.
 Examples: `portfolio_contact_label_email`, `signature_field_name_label`,
 `shared_nav_home`.
 
-Always add new keys to **both** `fr.json` and `en.json` — `fr` is the base
+Always add new keys to **both** `fr.json` and `en.json`. `fr` is the base
 locale, so inlang warns if a key exists in `en` but not `fr`.
 
 ## Compiling
 
 Each app compiles its own copy of the Paraglide runtime into its gitignored
-`src/lib/paraglide/` directory. This isn't run from this package — run it from
+`src/lib/paraglide/` directory. This isn't run from this package: run it from
 the consuming app (or let its `dev`/`build` script do it):
 
 ```bash
@@ -40,6 +40,6 @@ restart its dev server, which recompiles automatically via its Vite plugin).
 ```
 project.inlang/    # inlang project config + build cache (gitignored cache/)
 messages/
-├── fr.json        # base locale — source of truth for which keys exist
+├── fr.json        # base locale: source of truth for which keys exist
 └── en.json
 ```

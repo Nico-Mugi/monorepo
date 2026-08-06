@@ -95,11 +95,17 @@ hardcode a pixel radius. If the scale ever needs to change, change `--radius` on
 
 ## Punctuation
 
-No em-dash (`—`) in any user-displayed text — page copy, headings, SEO
+No em-dash (`—`) in any user-displayed text: page copy, headings, SEO
 `title`/`description`/`site_name` strings, alt text, button/link labels. Use a
 comma, colon, period, or a plain hyphen (`-`) instead, whichever reads best
 for the sentence. This is about rendered/meta text only, not source comments
-or docs (`.md` files, code comments) — those may still use em-dashes freely.
+or docs (code comments, most `.md` files) — those may still use em-dashes
+freely.
+
+Exception: each package/app's `README.md` and `README_fr.md` are rendered
+in-app (see `apps/playground/src/lib/readmes.ts` and its README dialog), so
+they count as user-displayed text too and must follow the same no-em-dash
+rule. Other `.md` files (skills, `CLAUDE.md`, nested docs) stay exempt.
 
 ## Font
 

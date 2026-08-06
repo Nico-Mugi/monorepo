@@ -2,7 +2,7 @@
 
 shadcn-compatible component registry generated from `@repo/ui`. Lets anyone
 run `npx shadcn add <url>/r/<component>.json` to pull a component's source
-directly into their own project — same pattern as shadcn/ui's own registry.
+directly into their own project, same pattern as shadcn/ui's own registry.
 
 `@repo/ui` is the source of truth; this package never hand-edits component
 code, it only repackages it for external distribution. Served live by the
@@ -14,12 +14,12 @@ code, it only repackages it for external distribution. Served live by the
 2. `pnpm sync` (`scripts/sync-from-ui.mjs`) reads those source files straight out of
    `packages/ui/src/components/`, rewrites monorepo-internal imports to the
    shadcn-standard aliases external consumers expect (e.g. `../utils/cn` →
-   `@/lib/utils`), and writes the result into `registry/` — since `shadcn build`
+   `@/lib/utils`), and writes the result into `registry/`, since `shadcn build`
    inlines file content verbatim and won't read outside `packages/registry`.
 3. `pnpm build` runs the sync, then `shadcn build` compiles `registry/` into the
    static JSON files served under `public/r/`.
 
-`registry/` and `public/` are both gitignored — generated output, rebuilt on demand.
+`registry/` and `public/` are both gitignored: generated output, rebuilt on demand.
 
 ## Commands
 

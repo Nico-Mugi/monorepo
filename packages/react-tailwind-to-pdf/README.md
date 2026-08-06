@@ -2,20 +2,20 @@
 
 Render a React component styled with Tailwind CSS v4 to a PDF, server-side,
 via a Playwright-compatible browser. Meant for on-demand exports (a "Download
-PDF" button calling a server function), not for a dev-watch workflow — see
+PDF" button calling a server function), not for a dev-watch workflow: see
 `packages/vite-print-to-pdf` for that.
 
 Runtime-agnostic: the underlying primitive takes any object shaped like a
 Playwright `Browser` (`newPage()` → a page with `setContent`/`pdf`/`close`).
 Bring your own browser. Which entry point you use depends on where CSS gets
-compiled — see below.
+compiled: see below.
 
-## Node — `.`
+## Node: `.`
 
 JIT-compiles Tailwind for you via `@tailwindcss/node`, scoped to exactly the
 classes the element uses. This needs a real Node.js process: `@tailwindcss/node`
 loads a native binary (`@tailwindcss/oxide`), which cannot run in a V8-isolate
-runtime (Cloudflare Workers, Vercel Edge, etc.) — merely *importing* it there
+runtime (Cloudflare Workers, Vercel Edge, etc.). Merely *importing* it there
 is enough to crash, not just calling it.
 
 ```ts
@@ -35,7 +35,7 @@ try {
 }
 ```
 
-## Cloudflare Workers — `./cloudflare`
+## Cloudflare Workers: `./cloudflare`
 
 Requires a `browser` binding (see
 [Cloudflare's Browser Rendering docs](https://developers.cloudflare.com/browser-run/)):
@@ -45,7 +45,7 @@ Requires a `browser` binding (see
 { "browser": { "binding": "MYBROWSER" } }
 ```
 
-This entry point deliberately never imports `@tailwindcss/node` — `css` here
+This entry point deliberately never imports `@tailwindcss/node`: `css` here
 must already be **final, compiled CSS**, not Tailwind source. Compile it ahead
 of time with `./compile` (below), in a normal Node build step, and pass the
 result in:
@@ -61,33 +61,33 @@ const pdf = await renderToPdfOnCloudflare(env.MYBROWSER, {
 });
 ```
 
-## Precompiling CSS for an edge runtime — `./compile`
+## Precompiling CSS for an edge runtime: `./compile`
 
-Node-only, meant to run once in a build script — not in a request handler.
+Node-only, meant to run once in a build script: not in a request handler.
 JIT-compiles the same way `.` does, but just returns the CSS text so you can
 write it to a file and ship *that* instead of compiling at request time:
 
 ```ts
-// scripts/compile-invoice-css.mjs — run as part of your build
+// scripts/compile-invoice-css.mjs: run as part of your build
 import { writeFileSync } from "node:fs";
 import { compileTailwindCssForElement } from "react-tailwind-to-pdf/compile";
 import { Invoice } from "../src/Invoice";
 
 const css = await compileTailwindCssForElement(
   `@import "tailwindcss"; @theme { --color-brand: oklch(0.6 0.2 280); }`,
-  <Invoice total={0} />, // representative props — only the classes used matter
+  <Invoice total={0} />, // representative props: only the classes used matter
 );
 writeFileSync("./src/invoice.generated.css", css);
 ```
 
 Because this only cares about which class names appear in the markup, the
-props/data you pass don't need to be real — they just need to exercise every
+props/data you pass don't need to be real; they just need to exercise every
 conditional class your component can render. Wire the script into your normal
 build (`prebuild`/before `vite build`/etc.) so it can't go stale.
 
 ## How it works
 
-- The element is rendered with `renderToStaticMarkup` (no hydration markers —
+- The element is rendered with `renderToStaticMarkup` (no hydration markers;
   this is print output, not a hydrated page).
 - The result is wrapped in a minimal standalone HTML document and handed to
   the browser via `page.setContent()` (no HTTP request), then printed with
