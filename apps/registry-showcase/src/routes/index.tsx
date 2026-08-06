@@ -571,6 +571,45 @@ const demos: Record<string, () => ReactNode> = {
   toast: () => <ToastDemo />,
 };
 
+// registry.json's own `description` is a single, unlocalized string (it also
+// serves the shadcn CLI directly, e.g. as install output) — the showcase page
+// shows this localized version instead, keyed by item name.
+const descriptions: Record<string, () => string> = {
+  button: m.registry_desc_button,
+  input: m.registry_desc_input,
+  label: m.registry_desc_label,
+  separator: m.registry_desc_separator,
+  field: m.registry_desc_field,
+  "text-field": m.registry_desc_text_field,
+  "color-field": m.registry_desc_color_field,
+  "copy-button": m.registry_desc_copy_button,
+  collapsible: m.registry_desc_collapsible,
+  badge: m.registry_desc_badge,
+  skeleton: m.registry_desc_skeleton,
+  textarea: m.registry_desc_textarea,
+  avatar: m.registry_desc_avatar,
+  popover: m.registry_desc_popover,
+  "scroll-area": m.registry_desc_scroll_area,
+  switch: m.registry_desc_switch,
+  tooltip: m.registry_desc_tooltip,
+  tabs: m.registry_desc_tabs,
+  toggle: m.registry_desc_toggle,
+  calendar: m.registry_desc_calendar,
+  "alert-dialog": m.registry_desc_alert_dialog,
+  dialog: m.registry_desc_dialog,
+  "dropdown-menu": m.registry_desc_dropdown_menu,
+  "responsive-modal": m.registry_desc_responsive_modal,
+  select: m.registry_desc_select,
+  "input-group": m.registry_desc_input_group,
+  command: m.registry_desc_command,
+  "date-time-picker": m.registry_desc_date_time_picker,
+  "select-field": m.registry_desc_select_field,
+  "textarea-field": m.registry_desc_textarea_field,
+  "date-time-field": m.registry_desc_date_time_field,
+  toast: m.registry_desc_toast,
+  "full-calendar": m.registry_desc_full_calendar,
+};
+
 function Home() {
   return (
     <div className="bg-background text-foreground min-h-screen">
@@ -590,6 +629,7 @@ function Home() {
             {registry.items.map((item) => {
               const installCommand = `pnpm dlx shadcn@latest add ${registry.homepage}/r/${item.name}.json`;
               const blockDemoLink = blockDemoLinks[item.name];
+              const description = descriptions[item.name]?.() ?? item.description;
               return (
                 <section
                   key={item.name}
@@ -598,9 +638,9 @@ function Home() {
                   <h2 className="text-xl font-semibold">
                     {item.title ?? item.name}
                   </h2>
-                  {item.description ? (
+                  {description ? (
                     <p className="mt-1 text-sm text-muted-foreground">
-                      {item.description}
+                      {description}
                     </p>
                   ) : null}
                   <div className="mt-6">
