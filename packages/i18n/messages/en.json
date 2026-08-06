@@ -159,6 +159,8 @@
   "playground_card_vite_pdf_description": "Vite dev-server plugin that watches route source files and re-exports pages to PDF via Playwright.",
   "playground_card_signature_description": "Generates an HTML Gmail signature from your own details, logo and photo. Everything runs client-side, built on TanStack Start and deployed to Cloudflare Workers.",
   "playground_card_signature_alt": "Screenshot of the signature generator homepage",
+  "playground_card_calendar_description": "A full-featured calendar component built with React and Shadcn UI, supporting multiple views, event management, and responsive design.",
+  "playground_card_calendar_alt": "Screenshot of the calendar app homepage",
   "registry_seo_description": "A live showcase of the ntdev-registry components, browsable and interactive.",
   "registry_hero_description": "A live showcase of every component published in this registry.",
   "registry_empty_state": "No components have been published to the registry yet.",

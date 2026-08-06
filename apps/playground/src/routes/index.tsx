@@ -60,6 +60,18 @@ function useApps(): ProjectCardProps[] {
         alt: m.playground_card_signature_alt(),
       },
     },
+    {
+      name: "Calendar",
+      description: m.playground_card_calendar_description(),
+      href: "https://calendar.playground.nicolas-thouvenin.dev",
+      githubHref: `${GITHUB_ROOT}/apps/calendar`,
+      openSource: true,
+      chromeLabel: "calendar.playground.nicolas-thouvenin.dev",
+      screenshot: {
+        src: "/screenshots/calendar.png",
+        alt: m.playground_card_calendar_alt(),
+      },
+    },
   ];
 }
 
