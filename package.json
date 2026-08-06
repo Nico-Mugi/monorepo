@@ -5,7 +5,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "test": "turbo test",
+    "test": "turbo test --concurrency=2",
     "type-check": "turbo type-check",
     "deploy": "turbo deploy",
     "clean": "turbo clean && rimraf node_modules",

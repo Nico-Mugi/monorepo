@@ -6,13 +6,13 @@ test.describe("Paraglide i18n language switching", () => {
     await page.goto("/fr");
 
     await expectHtmlLang(page, "fr");
-    await expect(page.getByText("paramètres de signature de Gmail")).toBeVisible();
+    await expect(page.getByText("Remplissez vos informations")).toBeVisible();
     await expectActiveLocale(page, "fr");
 
     await switchLocale(page, {
       to: "en",
       expectUrl: /\/en/,
-      expectText: "Gmail signature settings",
+      expectText: "Fill in your details",
     });
     await expectHtmlLang(page, "en");
     await expectActiveLocale(page, "en");
@@ -22,13 +22,13 @@ test.describe("Paraglide i18n language switching", () => {
     await page.goto("/en");
 
     await expectHtmlLang(page, "en");
-    await expect(page.getByText("Gmail signature settings")).toBeVisible();
+    await expect(page.getByText("Fill in your details")).toBeVisible();
     await expectActiveLocale(page, "en");
 
     await switchLocale(page, {
       to: "fr",
       expectUrl: /\/fr/,
-      expectText: "paramètres de signature de Gmail",
+      expectText: "Remplissez vos informations",
     });
     await expectHtmlLang(page, "fr");
     await expectActiveLocale(page, "fr");
