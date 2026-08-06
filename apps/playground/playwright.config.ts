@@ -13,7 +13,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  /* Uncapped local worker counts can overwhelm the single Cloudflare Workers preview server (connection resets under load); 4 is safe headroom under that. */
+  workers: process.env.CI ? 1 : 4,
   reporter: "html",
   use: {
     baseURL: "http://localhost:3002",
