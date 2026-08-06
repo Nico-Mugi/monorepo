@@ -19,7 +19,7 @@ export const Route = createRootRoute({
       alternates,
       xDefaultUrl,
       locale: getLocale(),
-      site_name: "NT Registry",
+      site_name: "NT.dev Registry",
     });
     return {
       meta: [

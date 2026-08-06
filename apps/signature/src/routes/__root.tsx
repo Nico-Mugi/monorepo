@@ -19,7 +19,7 @@ export const Route = createRootRoute({
       alternates,
       xDefaultUrl,
       locale: getLocale(),
-      site_name: "NT Signature",
+      site_name: "NT.dev Signature",
     });
     return {
       meta: [

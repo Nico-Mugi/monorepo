@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "nt-registry",
+  "name": "ntdev-registry",
   "homepage": "https://registry.playground.nicolas-thouvenin.dev",
   "items": [
     {
@@ -8,7 +8,10 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "A button built on Base UI with CVA-driven variant and size styles.",
-      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/button.tsx",
@@ -22,7 +25,9 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "A styled native input built on Base UI, usable standalone or inside Field.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/input.tsx",
@@ -49,7 +54,9 @@
       "type": "registry:ui",
       "title": "Separator",
       "description": "A styled divider built on Base UI.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/separator.tsx",
@@ -63,8 +70,13 @@
       "type": "registry:ui",
       "title": "Field",
       "description": "Form-library-agnostic layout primitives (Field, FieldLabel, FieldError, FieldDescription, FieldGroup, FieldSet) for building accessible form fields with any state management, not tied to a specific form library.",
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["label", "separator"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "label",
+        "separator"
+      ],
       "files": [
         {
           "path": "registry/field.tsx",
@@ -78,8 +90,13 @@
       "type": "registry:ui",
       "title": "Text Field",
       "description": "A labeled text input bound to a TanStack Form field, with built-in validation error display.",
-      "dependencies": ["@tanstack/react-form"],
-      "registryDependencies": ["field", "input"],
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "input"
+      ],
       "files": [
         {
           "path": "registry/text-field.tsx",
@@ -93,8 +110,13 @@
       "type": "registry:ui",
       "title": "Color Field",
       "description": "A native color picker synced with a hex text input, bound to a TanStack Form field.",
-      "dependencies": ["@tanstack/react-form"],
-      "registryDependencies": ["field", "input"],
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "input"
+      ],
       "files": [
         {
           "path": "registry/color-field.tsx",
@@ -108,8 +130,12 @@
       "type": "registry:ui",
       "title": "Copy Button",
       "description": "A button that copies text to the clipboard and shows a temporary copied or failed state.",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["button"],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/copy-button.tsx",
@@ -123,7 +149,9 @@
       "type": "registry:ui",
       "title": "Collapsible",
       "description": "An unstyled expand/collapse primitive built on Base UI, style the trigger and content to fit your use case.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/collapsible.tsx",

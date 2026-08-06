@@ -158,7 +158,7 @@
   "playground_card_vite_pdf_description": "Plugin de serveur de développement Vite qui surveille les fichiers source des routes et réexporte les pages en PDF via Playwright.",
   "playground_card_signature_description": "Génère une signature email HTML à partir de vos informations, logo et photo. Tout s'exécute côté client, construit avec TanStack Start et déployé sur Cloudflare Workers.",
   "playground_card_signature_alt": "Capture d'écran de la page d'accueil du générateur de signature",
-  "registry_seo_description": "Une vitrine en direct des composants nt-registry, consultable et interactive.",
+  "registry_seo_description": "Une vitrine en direct des composants ntdev-registry, consultable et interactive.",
   "registry_hero_description": "Une vitrine en direct de chaque composant publié dans ce registre.",
   "registry_empty_state": "Aucun composant n'a encore été publié dans le registre.",
   "registry_no_preview": "Aucun aperçu en direct enregistré pour « {name} » pour le moment.",
