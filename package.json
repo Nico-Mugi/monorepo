@@ -9,9 +9,11 @@
     "type-check": "turbo type-check",
     "deploy": "turbo deploy",
     "clean": "turbo clean && rimraf node_modules",
-    "kill-dev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/kill-dev-servers.ps1"
+    "kill-dev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/kill-dev-servers.ps1",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
     "rimraf": "^6.0.1",
     "turbo": "^2.5.4",
     "typescript": "^6.0.3"
