@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-field",
+  "title": "Select Field",
+  "description": "A labeled select bound to a TanStack Form field.",
+  "dependencies": [
+    "@tanstack/react-form"
+  ],
+  "registryDependencies": [
+    "field",
+    "select"
+  ],
+  "files": [
+    {
+      "path": "registry/select-field.tsx",
+      "content": "import type { ReactNode } from \"react\";\nimport type { AnyFieldApi } from \"@tanstack/react-form\";\n\nimport { Field, FieldLabel, FieldDescription, FieldError } from \"./field\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"./select\";\n\nexport type SelectFieldOption = {\n  value: string;\n  label: ReactNode;\n};\n\nexport type SelectFieldProps = {\n  field: AnyFieldApi;\n  label: string;\n  options: SelectFieldOption[];\n  placeholder?: string;\n  description?: string;\n};\n\nfunction fieldErrors(field: AnyFieldApi) {\n  if (!field.state.meta.isTouched) return [];\n  return field.state.meta.errors.map((error) => ({\n    message: typeof error === \"string\" ? error : error?.message,\n  }));\n}\n\nexport function SelectField({\n  field,\n  label,\n  options,\n  placeholder,\n  description,\n}: SelectFieldProps) {\n  return (\n    <Field data-invalid={field.state.meta.errors.length > 0}>\n      <FieldLabel htmlFor={field.name}>{label}</FieldLabel>\n      <Select\n        value={field.state.value}\n        onValueChange={(value) => field.handleChange(value)}\n      >\n        <SelectTrigger\n          id={field.name}\n          className=\"w-full\"\n          aria-invalid={field.state.meta.errors.length > 0}\n          onBlur={field.handleBlur}\n        >\n          <SelectValue placeholder={placeholder} />\n        </SelectTrigger>\n        <SelectContent>\n          {options.map((option) => (\n            <SelectItem value={option.value} key={option.value}>\n              {option.label}\n            </SelectItem>\n          ))}\n        </SelectContent>\n      </Select>\n      {description ? <FieldDescription>{description}</FieldDescription> : null}\n      <FieldError errors={fieldErrors(field)} />\n    </Field>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/select-field.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

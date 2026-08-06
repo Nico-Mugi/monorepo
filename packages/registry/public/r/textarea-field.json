@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-field",
+  "title": "Textarea Field",
+  "description": "A labeled textarea bound to a TanStack Form field, with built-in validation error display.",
+  "dependencies": [
+    "@tanstack/react-form"
+  ],
+  "registryDependencies": [
+    "field",
+    "textarea"
+  ],
+  "files": [
+    {
+      "path": "registry/textarea-field.tsx",
+      "content": "import type { AnyFieldApi } from \"@tanstack/react-form\";\n\nimport { Field, FieldLabel, FieldDescription, FieldError } from \"./field\";\nimport { Textarea } from \"./textarea\";\n\nexport type TextareaFieldProps = {\n  field: AnyFieldApi;\n  label: string;\n  placeholder?: string;\n  description?: string;\n};\n\nfunction fieldErrors(field: AnyFieldApi) {\n  if (!field.state.meta.isTouched) return [];\n  return field.state.meta.errors.map((error) => ({\n    message: typeof error === \"string\" ? error : error?.message,\n  }));\n}\n\nexport function TextareaField({\n  field,\n  label,\n  placeholder,\n  description,\n}: TextareaFieldProps) {\n  return (\n    <Field data-invalid={field.state.meta.errors.length > 0}>\n      <FieldLabel htmlFor={field.name}>{label}</FieldLabel>\n      <Textarea\n        id={field.name}\n        name={field.name}\n        value={field.state.value}\n        placeholder={placeholder}\n        aria-invalid={field.state.meta.errors.length > 0}\n        onBlur={field.handleBlur}\n        onChange={(event) => field.handleChange(event.target.value)}\n      />\n      {description ? <FieldDescription>{description}</FieldDescription> : null}\n      <FieldError errors={fieldErrors(field)} />\n    </Field>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/textarea-field.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

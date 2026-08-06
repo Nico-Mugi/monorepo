@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button",
+  "title": "Copy Button",
+  "description": "A button that copies text to the clipboard and shows a temporary copied or failed state.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/copy-button.tsx",
+      "content": "import { useState, type ComponentProps } from \"react\";\nimport { CheckIcon, CopyIcon } from \"lucide-react\";\n\nimport { Button } from \"./button\";\n\nexport type CopyButtonProps = {\n  /** The text copied to the clipboard when clicked. */\n  text: string;\n  /** If provided, copies this as rich `text/html` (with `text` as the `text/plain` fallback) instead of plain text. */\n  html?: string;\n  /** Consumers should pass their own translated string. */\n  label: string;\n  /** Consumers should pass their own translated string. */\n  copiedLabel: string;\n  /** Called after a copy attempt, `success` is false if the clipboard write was rejected. */\n  onResult?: (success: boolean) => void;\n  /** How long the copied state is shown before reverting, in ms. */\n  resetAfterMs?: number;\n} & Omit<ComponentProps<typeof Button>, \"onClick\" | \"children\">;\n\nexport function CopyButton({\n  text,\n  html,\n  label,\n  copiedLabel,\n  onResult,\n  resetAfterMs = 2000,\n  variant = \"outline\",\n  size = \"sm\",\n  ...props\n}: CopyButtonProps) {\n  const [copied, setCopied] = useState(false);\n\n  async function handleClick() {\n    try {\n      if (html) {\n        await navigator.clipboard.write([\n          new ClipboardItem({\n            \"text/html\": new Blob([html], { type: \"text/html\" }),\n            \"text/plain\": new Blob([text], { type: \"text/plain\" }),\n          }),\n        ]);\n      } else {\n        await navigator.clipboard.writeText(text);\n      }\n      setCopied(true);\n      onResult?.(true);\n      setTimeout(() => setCopied(false), resetAfterMs);\n    } catch {\n      onResult?.(false);\n    }\n  }\n\n  return (\n    <Button variant={variant} size={size} onClick={handleClick} {...props}>\n      {copied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}\n      {copied ? copiedLabel : label}\n    </Button>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/copy-button.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

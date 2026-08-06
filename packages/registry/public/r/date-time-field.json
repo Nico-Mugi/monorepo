@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-time-field",
+  "title": "Date Time Field",
+  "description": "A labeled date-time picker bound to a TanStack Form field.",
+  "dependencies": [
+    "@tanstack/react-form"
+  ],
+  "registryDependencies": [
+    "field",
+    "date-time-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/date-time-field.tsx",
+      "content": "import type { AnyFieldApi } from \"@tanstack/react-form\";\n\nimport { Field, FieldLabel, FieldError } from \"./field\";\nimport { DateTimePicker } from \"./date-time-picker\";\n\nexport type DateTimeFieldProps = {\n  field: AnyFieldApi;\n  label: string;\n  use24HourFormat?: boolean;\n  placeholder?: string;\n};\n\nfunction fieldErrors(field: AnyFieldApi) {\n  if (!field.state.meta.isTouched) return [];\n  return field.state.meta.errors.map((error) => ({\n    message: typeof error === \"string\" ? error : error?.message,\n  }));\n}\n\nexport function DateTimeField({\n  field,\n  label,\n  use24HourFormat,\n  placeholder,\n}: DateTimeFieldProps) {\n  return (\n    <Field data-invalid={field.state.meta.errors.length > 0}>\n      <FieldLabel htmlFor={field.name}>{label}</FieldLabel>\n      <DateTimePicker\n        value={field.state.value}\n        onChange={(date) => field.handleChange(date)}\n        use24HourFormat={use24HourFormat}\n        placeholder={placeholder}\n        invalid={field.state.meta.errors.length > 0}\n      />\n      <FieldError errors={fieldErrors(field)} />\n    </Field>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/date-time-field.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "color-field",
+  "title": "Color Field",
+  "description": "A native color picker synced with a hex text input, bound to a TanStack Form field.",
+  "dependencies": [
+    "@tanstack/react-form"
+  ],
+  "registryDependencies": [
+    "field",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/color-field.tsx",
+      "content": "import type { AnyFieldApi } from \"@tanstack/react-form\";\n\nimport { cn } from \"@/lib/utils\";\nimport { Field, FieldLabel, FieldDescription, FieldError } from \"./field\";\nimport { Input } from \"./input\";\n\nexport type ColorFieldProps = {\n  field: AnyFieldApi;\n  label: string;\n  description?: string;\n};\n\nconst HEX_COLOR_PATTERN = /^#[0-9a-f]{6}$/i;\n\nfunction fieldErrors(field: AnyFieldApi) {\n  if (!field.state.meta.isTouched) return [];\n  return field.state.meta.errors.map((error) => ({\n    message: typeof error === \"string\" ? error : error?.message,\n  }));\n}\n\n/** Native color swatch synced with a hex text input, both driving the same field value. */\nexport function ColorField({ field, label, description }: ColorFieldProps) {\n  const value = field.state.value as string;\n  const swatchValue = HEX_COLOR_PATTERN.test(value) ? value : \"#000000\";\n\n  return (\n    <Field data-invalid={field.state.meta.errors.length > 0}>\n      <FieldLabel htmlFor={field.name}>{label}</FieldLabel>\n      <div className=\"flex items-center gap-2\">\n        <input\n          type=\"color\"\n          aria-label={label}\n          value={swatchValue}\n          onChange={(event) => field.handleChange(event.target.value)}\n          className={cn(\n            \"size-9 shrink-0 cursor-pointer rounded-lg border border-input bg-transparent p-1\",\n            \"focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 outline-none\",\n          )}\n        />\n        <Input\n          id={field.name}\n          name={field.name}\n          type=\"text\"\n          value={value}\n          placeholder=\"#8faf83\"\n          aria-invalid={field.state.meta.errors.length > 0}\n          onBlur={field.handleBlur}\n          onChange={(event) => field.handleChange(event.target.value)}\n        />\n      </div>\n      {description ? <FieldDescription>{description}</FieldDescription> : null}\n      <FieldError errors={fieldErrors(field)} />\n    </Field>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/color-field.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

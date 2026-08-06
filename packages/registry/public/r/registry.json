@@ -1,0 +1,834 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ntdev-registry",
+  "homepage": "https://registry.playground.nicolas-thouvenin.dev",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A button built on Base UI with CVA-driven variant and size styles.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A styled native input built on Base UI, usable standalone or inside Field.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "A styled label for form fields.",
+      "files": [
+        {
+          "path": "registry/label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/label.tsx"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A styled divider built on Base UI.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/separator.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/separator.tsx"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Form-library-agnostic layout primitives (Field, FieldLabel, FieldError, FieldDescription, FieldGroup, FieldSet) for building accessible form fields with any state management, not tied to a specific form library.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "label",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "registry/field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "text-field",
+      "type": "registry:ui",
+      "title": "Text Field",
+      "description": "A labeled text input bound to a TanStack Form field, with built-in validation error display.",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/text-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/text-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-field",
+      "type": "registry:ui",
+      "title": "Color Field",
+      "description": "A native color picker synced with a hex text input, bound to a TanStack Form field.",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/color-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/color-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "A button that copies text to the clipboard and shows a temporary copied or failed state.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/copy-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/copy-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "An unstyled expand/collapse primitive built on Base UI, style the trigger and content to fit your use case.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/collapsible.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/collapsible.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small status/label pill with CVA-driven color variants.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A pulsing placeholder block for loading states.",
+      "files": [
+        {
+          "path": "registry/skeleton.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/skeleton.tsx"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A styled native textarea, usable standalone or inside Field.",
+      "files": [
+        {
+          "path": "registry/textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "An avatar built on Base UI, with image/fallback and grouping/badge support.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/avatar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/avatar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A floating panel anchored to a trigger, built on Base UI.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/popover.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/popover.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A custom-styled scrollable container built on Base UI.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/scroll-area.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/scroll-area.tsx"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A toggle switch built on Base UI.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/switch.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/switch.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A hover/focus tooltip built on Base UI.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "files": [
+        {
+          "path": "registry/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tooltip.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A tabbed interface built on Base UI with CVA-driven list styles.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state toggle button built on Base UI with CVA-driven variant and size styles.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "files": [
+        {
+          "path": "registry/toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A date-grid calendar built on react-day-picker, styled to match the design system.",
+      "dependencies": [
+        "react-day-picker",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/calendar.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/calendar.tsx"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A modal confirmation dialog built on Base UI, for actions that need explicit confirmation.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/alert-dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/alert-dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal dialog built on Base UI.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/dialog.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dialog.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "A dropdown menu built on Base UI, with support for items, checkboxes, radio groups, and submenus.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/dropdown-menu.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/dropdown-menu.tsx"
+        }
+      ]
+    },
+    {
+      "name": "responsive-modal",
+      "type": "registry:ui",
+      "title": "Responsive Modal",
+      "description": "A modal that centers on desktop and slides up from the bottom on mobile, built on Base UI.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/responsive-modal.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/responsive-modal.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A styled select built on Base UI.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "A container for composing inputs with addons, buttons, and icons.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/input-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "A composable command palette/menu built on cmdk, with an optional dialog wrapper.",
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/command.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/command.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-time-picker",
+      "type": "registry:ui",
+      "title": "Date Time Picker",
+      "description": "A combined date and time picker built on a calendar popover and scrollable time list.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover",
+        "scroll-area"
+      ],
+      "files": [
+        {
+          "path": "registry/date-time-picker.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/date-time-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select-field",
+      "type": "registry:ui",
+      "title": "Select Field",
+      "description": "A labeled select bound to a TanStack Form field.",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/select-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "textarea-field",
+      "type": "registry:ui",
+      "title": "Textarea Field",
+      "description": "A labeled textarea bound to a TanStack Form field, with built-in validation error display.",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/textarea-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/textarea-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-time-field",
+      "type": "registry:ui",
+      "title": "Date Time Field",
+      "description": "A labeled date-time picker bound to a TanStack Form field.",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "date-time-picker"
+      ],
+      "files": [
+        {
+          "path": "registry/date-time-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/date-time-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A toast notification system built on Base UI, with a Toaster viewport and status-variant styling.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/toast.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toast.tsx"
+        }
+      ]
+    },
+    {
+      "name": "full-calendar",
+      "type": "registry:block",
+      "title": "Full Calendar",
+      "description": "A full-featured calendar block with day, week, month, year, and agenda views over a shared event/user data model, with drag-and-drop, resizing, filtering, and per-user preferences. Live demo: https://calendar.playground.nicolas-thouvenin.dev.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "re-resizable",
+        "zod"
+      ],
+      "registryDependencies": [
+        "alert-dialog",
+        "avatar",
+        "badge",
+        "button",
+        "calendar",
+        "command",
+        "date-time-field",
+        "dialog",
+        "dropdown-menu",
+        "input",
+        "responsive-modal",
+        "scroll-area",
+        "select-field",
+        "separator",
+        "skeleton",
+        "switch",
+        "tabs",
+        "text-field",
+        "textarea-field",
+        "toast",
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/calendar/calendar-body.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/calendar-body.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/calendar.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/calendar.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/constants.ts",
+          "type": "registry:block",
+          "target": "components/calendar/constants.ts"
+        },
+        {
+          "path": "registry/blocks/calendar/contexts/calendar-context.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/contexts/calendar-context.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/contexts/dnd-context.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/contexts/dnd-context.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/dialogs/add-edit-event-dialog.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/dialogs/add-edit-event-dialog.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/dialogs/delete-event-dialog.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/dialogs/delete-event-dialog.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/dialogs/event-details-dialog.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/dialogs/event-details-dialog.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/dialogs/events-list-dialog.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/dialogs/events-list-dialog.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/dnd/draggable-event.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/dnd/draggable-event.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/dnd/droppable-area.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/dnd/droppable-area.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/dnd/resizable-event.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/dnd/resizable-event.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/header/calendar-header.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/header/calendar-header.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/header/date-navigator.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/header/date-navigator.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/header/filter.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/header/filter.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/header/today-button.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/header/today-button.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/header/user-select.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/header/user-select.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/header/view-tabs.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/header/view-tabs.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/helpers.ts",
+          "type": "registry:block",
+          "target": "components/calendar/helpers.ts"
+        },
+        {
+          "path": "registry/blocks/calendar/hooks.ts",
+          "type": "registry:block",
+          "target": "components/calendar/hooks.ts"
+        },
+        {
+          "path": "registry/blocks/calendar/interfaces.ts",
+          "type": "registry:block",
+          "target": "components/calendar/interfaces.ts"
+        },
+        {
+          "path": "registry/blocks/calendar/labels.ts",
+          "type": "registry:block",
+          "target": "components/calendar/labels.ts"
+        },
+        {
+          "path": "registry/blocks/calendar/schemas.ts",
+          "type": "registry:block",
+          "target": "components/calendar/schemas.ts"
+        },
+        {
+          "path": "registry/blocks/calendar/settings/settings.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/settings/settings.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/skeletons/calendar-header-skeleton.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/skeletons/calendar-header-skeleton.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/skeletons/calendar-skeleton.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/skeletons/calendar-skeleton.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/skeletons/day-view-skeleton.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/skeletons/day-view-skeleton.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/skeletons/month-view-skeleton.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/skeletons/month-view-skeleton.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/skeletons/week-view-skeleton.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/skeletons/week-view-skeleton.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/skeletons/year-view-skeleton.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/skeletons/year-view-skeleton.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/types.ts",
+          "type": "registry:block",
+          "target": "components/calendar/types.ts"
+        },
+        {
+          "path": "registry/blocks/calendar/views/agenda-view/agenda-events.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/agenda-view/agenda-events.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/month-view/calendar-month-view.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/month-view/calendar-month-view.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/month-view/day-cell.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/month-view/day-cell.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/month-view/event-bullet.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/month-view/event-bullet.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/month-view/month-event-badge.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/month-view/month-event-badge.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/week-and-day-view/calendar-day-view.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/week-and-day-view/calendar-day-view.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/week-and-day-view/calendar-time-line.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/week-and-day-view/calendar-time-line.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/week-and-day-view/calendar-week-view.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/week-and-day-view/calendar-week-view.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/week-and-day-view/day-view-multi-day-events-row.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/week-and-day-view/day-view-multi-day-events-row.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/week-and-day-view/event-block.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/week-and-day-view/event-block.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/week-and-day-view/render-grouped-events.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/week-and-day-view/render-grouped-events.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/week-and-day-view/week-view-multi-day-events-row.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/week-and-day-view/week-view-multi-day-events-row.tsx"
+        },
+        {
+          "path": "registry/blocks/calendar/views/year-view/calendar-year-view.tsx",
+          "type": "registry:block",
+          "target": "components/calendar/views/year-view/calendar-year-view.tsx"
+        }
+      ]
+    }
+  ]
+}
