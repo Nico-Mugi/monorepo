@@ -141,12 +141,16 @@ function TextFieldDemo() {
         validators={{
           onChange: ({ value }) =>
             value.length > 0 && value.length < 3
-              ? "Must be at least 3 characters"
+              ? m.registry_demo_text_field_validation()
               : undefined,
         }}
       >
         {(field) => (
-          <TextField field={field} label="Name" placeholder="Jane Doe" />
+          <TextField
+            field={field}
+            label={m.registry_demo_text_field_label()}
+            placeholder={m.registry_demo_text_field_placeholder()}
+          />
         )}
       </form.Field>
     </div>
@@ -158,7 +162,9 @@ function ColorFieldDemo() {
   return (
     <div className="max-w-sm">
       <form.Field name="accentColor">
-        {(field) => <ColorField field={field} label="Accent color" />}
+        {(field) => (
+          <ColorField field={field} label={m.registry_demo_color_field_label()} />
+        )}
       </form.Field>
     </div>
   );
@@ -172,12 +178,12 @@ function SelectFieldDemo() {
         {(field) => (
           <SelectField
             field={field}
-            label="Favorite color"
-            placeholder="Select a color"
+            label={m.registry_demo_select_field_label()}
+            placeholder={m.registry_demo_select_field_placeholder()}
             options={[
-              { value: "blue", label: "Blue" },
-              { value: "green", label: "Green" },
-              { value: "red", label: "Red" },
+              { value: "blue", label: m.registry_demo_color_blue() },
+              { value: "green", label: m.registry_demo_color_green() },
+              { value: "red", label: m.registry_demo_color_red() },
             ]}
           />
         )}
@@ -194,8 +200,8 @@ function TextareaFieldDemo() {
         {(field) => (
           <TextareaField
             field={field}
-            label="Bio"
-            placeholder="Tell us about yourself"
+            label={m.registry_demo_textarea_field_label()}
+            placeholder={m.registry_demo_textarea_field_placeholder()}
           />
         )}
       </form.Field>
@@ -210,7 +216,12 @@ function DateTimeFieldDemo() {
   return (
     <div className="max-w-sm">
       <form.Field name="when">
-        {(field) => <DateTimeField field={field} label="Event date & time" />}
+        {(field) => (
+          <DateTimeField
+            field={field}
+            label={m.registry_demo_date_time_field_label()}
+          />
+        )}
       </form.Field>
     </div>
   );
@@ -244,13 +255,13 @@ function ToastDemo() {
         variant="outline"
         onClick={() =>
           toast.add({
-            title: "Event created",
-            description: "Your changes have been saved.",
+            title: m.registry_demo_toast_title(),
+            description: m.registry_demo_toast_description(),
             type: "success",
           })
         }
       >
-        Show toast
+        {m.registry_demo_toast_trigger()}
       </Button>
       <Toaster />
     </>
@@ -273,34 +284,36 @@ const demos: Record<string, () => ReactNode> = {
   ),
   input: () => (
     <div className="flex max-w-sm flex-col gap-3">
-      <Input placeholder="Type something..." />
-      <Input placeholder="Disabled" disabled />
+      <Input placeholder={m.registry_demo_input_placeholder()} />
+      <Input placeholder={m.registry_demo_input_disabled_placeholder()} disabled />
     </div>
   ),
   label: () => (
     <div className="flex max-w-sm flex-col gap-2">
-      <Label htmlFor="demo-label-input">Email</Label>
+      <Label htmlFor="demo-label-input">{m.registry_demo_label_email()}</Label>
       <Input id="demo-label-input" type="email" placeholder="you@example.com" />
     </div>
   ),
   separator: () => (
     <div className="max-w-sm">
-      <div className="text-sm">Section one</div>
+      <div className="text-sm">{m.registry_demo_separator_section_one()}</div>
       <Separator className="my-3" />
-      <div className="text-sm">Section two</div>
+      <div className="text-sm">{m.registry_demo_separator_section_two()}</div>
       <div className="mt-3 flex h-8 items-center gap-3 text-sm">
-        <span>Left</span>
+        <span>{m.registry_demo_separator_left()}</span>
         <Separator orientation="vertical" />
-        <span>Right</span>
+        <span>{m.registry_demo_separator_right()}</span>
       </div>
     </div>
   ),
   field: () => (
     <div className="max-w-sm">
       <Field>
-        <FieldLabel htmlFor="demo-field-input">Username</FieldLabel>
+        <FieldLabel htmlFor="demo-field-input">
+          {m.registry_demo_field_label()}
+        </FieldLabel>
         <Input id="demo-field-input" placeholder="jane_doe" />
-        <FieldDescription>Visible to other users.</FieldDescription>
+        <FieldDescription>{m.registry_demo_field_description()}</FieldDescription>
       </Field>
     </div>
   ),
@@ -321,10 +334,10 @@ const demos: Record<string, () => ReactNode> = {
             size={16}
             className="transition-transform group-data-panel-open/collapsible:rotate-90"
           />
-          Toggle content
+          {m.registry_demo_collapsible_trigger()}
         </CollapsibleTrigger>
         <CollapsibleContent className="mt-2 text-sm text-muted-foreground">
-          This content is hidden until the trigger above is clicked.
+          {m.registry_demo_collapsible_content()}
         </CollapsibleContent>
       </Collapsible>
     </div>
@@ -349,7 +362,7 @@ const demos: Record<string, () => ReactNode> = {
   ),
   textarea: () => (
     <div className="max-w-sm">
-      <Textarea placeholder="Type your message..." />
+      <Textarea placeholder={m.registry_demo_textarea_placeholder()} />
     </div>
   ),
   avatar: () => (
@@ -382,12 +395,14 @@ const demos: Record<string, () => ReactNode> = {
   ),
   popover: () => (
     <Popover>
-      <PopoverTrigger render={<Button variant="outline">Open popover</Button>} />
+      <PopoverTrigger
+        render={<Button variant="outline">{m.registry_demo_popover_trigger()}</Button>}
+      />
       <PopoverContent>
         <PopoverHeader>
-          <PopoverTitle>Dimensions</PopoverTitle>
+          <PopoverTitle>{m.registry_demo_popover_title()}</PopoverTitle>
           <PopoverDescription>
-            Set the dimensions for the layer.
+            {m.registry_demo_popover_description()}
           </PopoverDescription>
         </PopoverHeader>
       </PopoverContent>
@@ -397,7 +412,7 @@ const demos: Record<string, () => ReactNode> = {
     <ScrollArea className="h-48 max-w-sm rounded-2xl border border-border p-4">
       <div className="flex flex-col gap-3 text-sm">
         {Array.from({ length: 12 }, (_, i) => (
-          <div key={i}>Item {i + 1}</div>
+          <div key={i}>{m.registry_demo_scroll_item({ n: i + 1 })}</div>
         ))}
       </div>
     </ScrollArea>
@@ -405,97 +420,106 @@ const demos: Record<string, () => ReactNode> = {
   switch: () => (
     <div className="flex items-center gap-2">
       <Switch id="demo-switch" defaultChecked />
-      <Label htmlFor="demo-switch">Enable notifications</Label>
+      <Label htmlFor="demo-switch">{m.registry_demo_switch_label()}</Label>
     </div>
   ),
   tooltip: () => (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger render={<Button variant="outline">Hover me</Button>} />
-        <TooltipContent>Helpful hint</TooltipContent>
+        <TooltipTrigger
+          render={<Button variant="outline">{m.registry_demo_tooltip_trigger()}</Button>}
+        />
+        <TooltipContent>{m.registry_demo_tooltip_content()}</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   ),
   tabs: () => (
     <Tabs defaultValue="account" className="max-w-sm">
       <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="account">{m.registry_demo_tabs_account()}</TabsTrigger>
+        <TabsTrigger value="password">{m.registry_demo_tabs_password()}</TabsTrigger>
       </TabsList>
-      <TabsContent value="account">Manage your account settings.</TabsContent>
-      <TabsContent value="password">Change your password here.</TabsContent>
+      <TabsContent value="account">{m.registry_demo_tabs_account_content()}</TabsContent>
+      <TabsContent value="password">{m.registry_demo_tabs_password_content()}</TabsContent>
     </Tabs>
   ),
   toggle: () => (
     <div className="flex gap-2">
-      <Toggle aria-label="Toggle bold" defaultPressed>
+      <Toggle aria-label={m.registry_demo_toggle_bold_label()} defaultPressed>
         B
       </Toggle>
-      <Toggle aria-label="Toggle italic">I</Toggle>
+      <Toggle aria-label={m.registry_demo_toggle_italic_label()}>I</Toggle>
     </div>
   ),
   calendar: () => <CalendarDemo />,
   "alert-dialog": () => (
     <AlertDialog>
       <AlertDialogTrigger
-        render={<Button variant="destructive">Delete account</Button>}
+        render={
+          <Button variant="destructive">
+            {m.registry_demo_alert_dialog_trigger()}
+          </Button>
+        }
       />
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>{m.registry_demo_alert_dialog_title()}</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account.
+            {m.registry_demo_alert_dialog_description()}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogCancel>{m.registry_demo_cancel()}</AlertDialogCancel>
+          <AlertDialogAction>{m.registry_demo_alert_dialog_continue()}</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   ),
   dialog: () => (
     <Dialog>
-      <DialogTrigger render={<Button variant="outline">Edit profile</Button>} />
+      <DialogTrigger
+        render={<Button variant="outline">{m.registry_demo_dialog_edit_profile()}</Button>}
+      />
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </DialogDescription>
+          <DialogTitle>{m.registry_demo_dialog_edit_profile()}</DialogTitle>
+          <DialogDescription>{m.registry_demo_dialog_description()}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="outline">Cancel</Button>
-          <Button>Save changes</Button>
+          <Button variant="outline">{m.registry_demo_cancel()}</Button>
+          <Button>{m.registry_demo_dialog_save()}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
   ),
   "dropdown-menu": () => (
     <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline">Options</Button>} />
+      <DropdownMenuTrigger
+        render={<Button variant="outline">{m.registry_demo_dropdown_trigger()}</Button>}
+      />
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>{m.registry_demo_dropdown_label()}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem variant="destructive">Log out</DropdownMenuItem>
+        <DropdownMenuItem>{m.registry_demo_dropdown_profile()}</DropdownMenuItem>
+        <DropdownMenuItem>{m.registry_demo_dropdown_billing()}</DropdownMenuItem>
+        <DropdownMenuItem variant="destructive">
+          {m.registry_demo_dropdown_logout()}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   ),
   "responsive-modal": () => (
     <Modal>
-      <ModalTrigger render={<Button variant="outline">Open modal</Button>} />
+      <ModalTrigger render={<Button variant="outline">{m.registry_demo_modal_trigger()}</Button>} />
       <ModalContent>
         <ModalHeader>
-          <ModalTitle>Share this document</ModalTitle>
+          <ModalTitle>{m.registry_demo_modal_title()}</ModalTitle>
           <ModalDescription id="responsive-modal-description">
-            Centers on desktop, slides up from the bottom on mobile.
+            {m.registry_demo_modal_description()}
           </ModalDescription>
         </ModalHeader>
         <ModalFooter>
-          <ModalClose render={<Button variant="outline">Close</Button>} />
+          <ModalClose render={<Button variant="outline">{m.registry_demo_modal_close()}</Button>} />
         </ModalFooter>
       </ModalContent>
     </Modal>
@@ -503,21 +527,24 @@ const demos: Record<string, () => ReactNode> = {
   select: () => (
     <Select defaultValue="blue">
       <SelectTrigger className="w-40">
-        <SelectValue placeholder="Pick a color" />
+        <SelectValue placeholder={m.registry_demo_select_placeholder()} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="blue">Blue</SelectItem>
-        <SelectItem value="green">Green</SelectItem>
-        <SelectItem value="red">Red</SelectItem>
+        <SelectItem value="blue">{m.registry_demo_color_blue()}</SelectItem>
+        <SelectItem value="green">{m.registry_demo_color_green()}</SelectItem>
+        <SelectItem value="red">{m.registry_demo_color_red()}</SelectItem>
       </SelectContent>
     </Select>
   ),
   "input-group": () => (
     <div className="max-w-sm">
       <InputGroup>
-        <InputGroupInput placeholder="Search..." />
+        <InputGroupInput placeholder={m.registry_demo_input_group_placeholder()} />
         <InputGroupAddon align="inline-end">
-          <InputGroupButton size="icon-xs" aria-label="Submit">
+          <InputGroupButton
+            size="icon-xs"
+            aria-label={m.registry_demo_input_group_submit()}
+          >
             <SearchIcon />
           </InputGroupButton>
         </InputGroupAddon>
@@ -526,13 +553,13 @@ const demos: Record<string, () => ReactNode> = {
   ),
   command: () => (
     <Command className="max-w-sm rounded-2xl border border-border">
-      <CommandInput placeholder="Type a command or search..." />
+      <CommandInput placeholder={m.registry_demo_command_placeholder()} />
       <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem>Calendar</CommandItem>
-          <CommandItem>Search</CommandItem>
-          <CommandItem>Settings</CommandItem>
+        <CommandEmpty>{m.registry_demo_command_empty()}</CommandEmpty>
+        <CommandGroup heading={m.registry_demo_command_suggestions()}>
+          <CommandItem>{m.registry_demo_command_calendar()}</CommandItem>
+          <CommandItem>{m.registry_demo_command_search()}</CommandItem>
+          <CommandItem>{m.registry_demo_command_settings()}</CommandItem>
         </CommandGroup>
       </CommandList>
     </Command>
