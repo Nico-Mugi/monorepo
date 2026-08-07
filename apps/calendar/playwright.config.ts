@@ -28,21 +28,25 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
+  /* Firefox/webkit only run in CI (see .github/workflows/test.yml) — chromium
+     alone locally keeps a test run from spinning up 3x the browser processes. */
   projects: [
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
-
-    {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
-    },
+    ...(process.env.CI
+      ? [
+          {
+            name: "firefox",
+            use: { ...devices["Desktop Firefox"] },
+          },
+          {
+            name: "webkit",
+            use: { ...devices["Desktop Safari"] },
+          },
+        ]
+      : []),
   ],
 
   webServer: {

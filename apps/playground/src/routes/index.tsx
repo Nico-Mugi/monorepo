@@ -79,6 +79,18 @@ function useApps(locale: string): ProjectCardProps[] {
       },
       readme: getAppReadme("calendar", locale),
     },
+    {
+      name: "Parlor",
+      description: m.playground_card_parlor_description(),
+      href: "https://parlor.playground.nicolas-thouvenin.dev",
+      githubHref: "",
+      openSource: false,
+      chromeLabel: "parlor.playground.nicolas-thouvenin.dev",
+      screenshot: {
+        src: "/screenshots/parlor.png",
+        alt: m.playground_card_parlor_alt(),
+      },
+    },
   ];
 }
 

@@ -161,6 +161,8 @@
   "playground_card_signature_alt": "Screenshot of the signature generator homepage",
   "playground_card_calendar_description": "A full-featured calendar component built with React and Shadcn UI, supporting multiple views, event management, and responsive design.",
   "playground_card_calendar_alt": "Screenshot of the calendar app homepage",
+  "playground_card_parlor_description": "Invite-link chat room app with live typing indicators and presence, no accounts. Each room runs on its own Durable Object over the WebSocket Hibernation API.",
+  "playground_card_parlor_alt": "Screenshot of the Parlor homepage",
   "registry_seo_description": "A live showcase of the ntdev-registry components, browsable and interactive.",
   "registry_hero_description": "A live showcase of every component published in this registry.",
   "registry_empty_state": "No components have been published to the registry yet.",
@@ -431,5 +433,7 @@
   "parlor_typing_many": "Several people are typing…",
   "parlor_copy_invite": "Copy invite link",
   "parlor_copy_invite_done": "Copied!",
-  "parlor_composer_placeholder": "Write a message…"
+  "parlor_composer_placeholder": "Write a message…",
+  "parlor_home_recent_title": "Recent rooms",
+  "parlor_home_recent_forget": "Remove from list"
 }

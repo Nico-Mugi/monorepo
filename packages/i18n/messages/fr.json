@@ -161,6 +161,8 @@
   "playground_card_signature_alt": "Capture d'écran de la page d'accueil du générateur de signature",
   "playground_card_calendar_description": "Un composant calendrier complet construit avec React et Shadcn UI, supportant plusieurs vues, la gestion d'événements et un design réactif.",
   "playground_card_calendar_alt": "Capture d'écran de la page d'accueil de l'application calendrier",
+  "playground_card_parlor_description": "Application de chat par lien d'invitation avec indicateurs de saisie et présence en direct, sans compte. Chaque room tourne sur son propre Durable Object via la WebSocket Hibernation API.",
+  "playground_card_parlor_alt": "Capture d'écran de la page d'accueil de Parlor",
   "registry_seo_description": "Une vitrine en direct des composants ntdev-registry, consultable et interactive.",
   "registry_hero_description": "Une vitrine en direct de chaque composant publié dans ce registre.",
   "registry_empty_state": "Aucun composant n'a encore été publié dans le registre.",
@@ -431,5 +433,7 @@
   "parlor_typing_many": "Plusieurs personnes sont en train d'écrire…",
   "parlor_copy_invite": "Copier le lien d'invitation",
   "parlor_copy_invite_done": "Copié !",
-  "parlor_composer_placeholder": "Écrivez un message…"
+  "parlor_composer_placeholder": "Écrivez un message…",
+  "parlor_home_recent_title": "Salons récents",
+  "parlor_home_recent_forget": "Retirer de la liste"
 }
