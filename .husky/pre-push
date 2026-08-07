@@ -2,5 +2,22 @@ while read -r local_ref local_sha remote_ref remote_sha; do
   if [ "$remote_ref" = "refs/heads/main" ]; then
     echo "Pushing to main, running test && build && deploy first..."
     pnpm test && pnpm build && pnpm deploy || exit 1
+
+    echo "Checking private app repos for unpushed commits..."
+    for dir in apps/*/; do
+      if [ -d "${dir}.git" ]; then
+        name=$(basename "$dir")
+        # Only push repos that already have an upstream configured — the
+        # first push for a brand-new private app repo stays a manual,
+        # explicit step (see add-private-app.md), never done implicitly here.
+        if git -C "$dir" rev-parse --abbrev-ref --symbolic-full-name '@{u}' >/dev/null 2>&1; then
+          ahead=$(git -C "$dir" rev-list '@{u}..HEAD' --count)
+          if [ "$ahead" -gt 0 ]; then
+            echo "  Pushing $name ($ahead unpushed commit(s))..."
+            git -C "$dir" push || exit 1
+          fi
+        fi
+      fi
+    done
   fi
 done

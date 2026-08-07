@@ -21,7 +21,8 @@ Two ports needed per app — both must be unique across all apps:
 | registry-showcase | 3003          | 9233              |
 | signature         | 3004          | 9235              |
 | calendar          | 3005          | 9237              |
-| next app          | 3006          | 9239              |
+| parlor            | 3006          | 9239              |
+| next app          | 3007          | 9241              |
 
 The CF inspector port conflict causes an `ECONNRESET` crash when running multiple apps
 simultaneously with `pnpm dev`. Always set it explicitly in `vite.config.ts`.

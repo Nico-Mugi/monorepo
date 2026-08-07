@@ -1,0 +1,8 @@
+{
+  // Private apps (apps/<name>/.git) and packages/private/.git are gitignored
+  // from the monorepo root, so they're invisible to git status/diff here — but
+  // they're still real nested repos two levels deep from the workspace root.
+  // The default scan depth (1) stops at apps/, never reaching apps/<name>/.
+  // This lets VS Code's Source Control panel discover them as separate repos.
+  "git.repositoryScanMaxDepth": 2
+}

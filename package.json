@@ -10,6 +10,7 @@
     "deploy": "turbo deploy",
     "clean": "turbo clean && rimraf node_modules",
     "kill-dev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/kill-dev-servers.ps1",
+    "private:commit": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/private-commit.ps1",
     "prepare": "husky"
   },
   "devDependencies": {
