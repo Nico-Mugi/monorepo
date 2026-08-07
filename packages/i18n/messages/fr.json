@@ -435,5 +435,9 @@
   "parlor_copy_invite_done": "Copié !",
   "parlor_composer_placeholder": "Écrivez un message…",
   "parlor_home_recent_title": "Salons récents",
-  "parlor_home_recent_forget": "Retirer de la liste"
+  "parlor_home_recent_forget": "Retirer de la liste",
+  "parlor_call_join_cta": "Rejoindre l'appel",
+  "parlor_call_leave_cta": "Quitter l'appel",
+  "parlor_call_in_call_count": "{count} en appel",
+  "parlor_call_media_error": "L'accès à la caméra et au micro est nécessaire pour rejoindre l'appel."
 }

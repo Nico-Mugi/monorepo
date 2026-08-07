@@ -435,5 +435,9 @@
   "parlor_copy_invite_done": "Copied!",
   "parlor_composer_placeholder": "Write a message…",
   "parlor_home_recent_title": "Recent rooms",
-  "parlor_home_recent_forget": "Remove from list"
+  "parlor_home_recent_forget": "Remove from list",
+  "parlor_call_join_cta": "Join call",
+  "parlor_call_leave_cta": "Leave call",
+  "parlor_call_in_call_count": "{count} in call",
+  "parlor_call_media_error": "Camera and microphone access is required to join the call."
 }
