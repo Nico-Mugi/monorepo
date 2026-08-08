@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-table",
+  "title": "Data Table",
+  "description": "A thin, token-styled wrapper around TanStack Table v9's headless row and header model.",
+  "dependencies": [
+    "@tanstack/react-table"
+  ],
+  "files": [
+    {
+      "path": "registry/data-table.tsx",
+      "content": "import type { ReactNode } from \"react\";\nimport type { ReactTable } from \"@tanstack/react-table\";\nimport type { RowData, TableFeatures } from \"@tanstack/react-table\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport type DataTableProps<TFeatures extends TableFeatures, TData extends RowData> = {\n  /** Build this with `useTable({ features, columns, data })` in the consuming\n   *  component — a generic wrapper can't call `useTable` itself and stay typed,\n   *  since `ValidateFeatureSlots` needs the concrete `features` object from the\n   *  call site, not an upper-bounded generic. See `packages/ui/docs/tanstack-table-v9.md`. */\n  table: ReactTable<TFeatures, TData>;\n  columnCount: number;\n  emptyMessage?: ReactNode;\n  className?: string;\n};\n\nexport function DataTable<TFeatures extends TableFeatures, TData extends RowData>({\n  table,\n  columnCount,\n  emptyMessage,\n  className,\n}: DataTableProps<TFeatures, TData>) {\n  const rows = table.getRowModel().rows;\n\n  return (\n    <div className={cn(\"overflow-x-auto rounded-2xl border border-border\", className)}>\n      <table className=\"w-full text-left text-sm\">\n        <thead className=\"bg-muted/40\">\n          {table.getHeaderGroups().map((group) => (\n            <tr key={group.id}>\n              {group.headers.map((header) => (\n                <th\n                  key={header.id}\n                  className=\"px-4 py-3 font-medium text-muted-foreground\"\n                >\n                  {header.isPlaceholder ? null : <table.FlexRender header={header} />}\n                </th>\n              ))}\n            </tr>\n          ))}\n        </thead>\n        <tbody>\n          {rows.length === 0 ? (\n            <tr>\n              <td\n                colSpan={columnCount}\n                className=\"px-4 py-6 text-center text-muted-foreground\"\n              >\n                {emptyMessage}\n              </td>\n            </tr>\n          ) : (\n            rows.map((row) => (\n              <tr key={row.id} className=\"border-t border-border\">\n                {row.getAllCells().map((cell) => (\n                  <td key={cell.id} className=\"px-4 py-3\">\n                    <table.FlexRender cell={cell} />\n                  </td>\n                ))}\n              </tr>\n            ))\n          )}\n        </tbody>\n      </table>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/data-table.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

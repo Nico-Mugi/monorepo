@@ -554,6 +554,42 @@
       ]
     },
     {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "A labeled numeric input bound to a TanStack Form field, with optional prefix/suffix addons for currency or percentage units.",
+      "dependencies": [
+        "@tanstack/react-form"
+      ],
+      "registryDependencies": [
+        "field",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "registry/number-field.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/number-field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "A thin, token-styled wrapper around TanStack Table v9's headless row and header model.",
+      "dependencies": [
+        "@tanstack/react-table"
+      ],
+      "files": [
+        {
+          "path": "registry/data-table.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-table.tsx"
+        }
+      ]
+    },
+    {
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
