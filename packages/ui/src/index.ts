@@ -45,6 +45,10 @@ export { SelectField } from "./components/select-field";
 export type { SelectFieldProps, SelectFieldOption } from "./components/select-field";
 export { DateTimeField } from "./components/date-time-field";
 export type { DateTimeFieldProps } from "./components/date-time-field";
+export { NumberField } from "./components/number-field";
+export type { NumberFieldProps } from "./components/number-field";
+export { DataTable } from "./components/data-table";
+export type { DataTableProps } from "./components/data-table";
 export {
   Modal,
   ModalPortal,

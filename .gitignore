@@ -24,6 +24,7 @@ packages/private/
 # Private apps — each lives in apps/<name> but has its own GitHub repo.
 # Clone them manually: git clone git@github.com:Nico-Mugi/<name>.git apps/<name>
 apps/parlor/
+apps/facturation/
 
 **/playwright-report/index.html
 **/test-results/
