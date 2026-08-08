@@ -91,6 +91,18 @@ function useApps(locale: string): ProjectCardProps[] {
         alt: m.playground_card_parlor_alt(),
       },
     },
+    {
+      name: "Facturation",
+      description: m.playground_card_facturation_description(),
+      href: "https://facturation.playground.nicolas-thouvenin.dev",
+      githubHref: "",
+      openSource: false,
+      chromeLabel: "facturation.playground.nicolas-thouvenin.dev",
+      screenshot: {
+        src: "/screenshots/facturation.png",
+        alt: m.playground_card_facturation_alt(),
+      },
+    },
   ];
 }
 

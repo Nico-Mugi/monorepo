@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useForm } from "@tanstack/react-form";
+import { createColumnHelper, tableFeatures, useTable } from "@tanstack/react-table";
 import { ChevronRightIcon, SearchIcon } from "lucide-react";
 import {
   AlertDialog,
@@ -31,6 +32,7 @@ import {
   CommandList,
   CopyButton,
   DateTimeField,
+  DataTable,
   DateTimePicker,
   DayPicker,
   Dialog,
@@ -63,6 +65,7 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
+  NumberField,
   Popover,
   PopoverContent,
   PopoverDescription,
@@ -225,6 +228,43 @@ function DateTimeFieldDemo() {
       </form.Field>
     </div>
   );
+}
+
+function NumberFieldDemo() {
+  const form = useForm({ defaultValues: { quantity: 1 } });
+  return (
+    <div className="max-w-sm">
+      <form.Field name="quantity">
+        {(field) => (
+          <NumberField
+            field={field}
+            label={m.registry_demo_number_field_label()}
+            suffix={m.registry_demo_number_field_suffix()}
+            min={0}
+          />
+        )}
+      </form.Field>
+    </div>
+  );
+}
+
+type DataTableDemoRow = { name: string; qty: number; price: string };
+
+const dataTableDemoFeatures = tableFeatures({});
+const dataTableDemoHelper = createColumnHelper<typeof dataTableDemoFeatures, DataTableDemoRow>();
+
+function DataTableDemo() {
+  const columns = dataTableDemoHelper.columns([
+    dataTableDemoHelper.accessor("name", { header: m.registry_demo_data_table_column_name() }),
+    dataTableDemoHelper.accessor("qty", { header: m.registry_demo_data_table_column_qty() }),
+    dataTableDemoHelper.accessor("price", { header: m.registry_demo_data_table_column_price() }),
+  ]);
+  const data: DataTableDemoRow[] = [
+    { name: m.registry_demo_data_table_row_1(), qty: 2, price: "45,00 €" },
+    { name: m.registry_demo_data_table_row_2(), qty: 1, price: "120,00 €" },
+  ];
+  const table = useTable({ features: dataTableDemoFeatures, columns, data });
+  return <DataTable table={table} columnCount={columns.length} className="max-w-sm" />;
 }
 
 function DateTimePickerDemo() {
@@ -569,6 +609,8 @@ const demos: Record<string, () => ReactNode> = {
   "textarea-field": () => <TextareaFieldDemo />,
   "date-time-field": () => <DateTimeFieldDemo />,
   toast: () => <ToastDemo />,
+  "number-field": () => <NumberFieldDemo />,
+  "data-table": () => <DataTableDemo />,
 };
 
 // registry.json's own `description` is a single, unlocalized string (it also
@@ -608,6 +650,8 @@ const descriptions: Record<string, () => string> = {
   "date-time-field": m.registry_desc_date_time_field,
   toast: m.registry_desc_toast,
   "full-calendar": m.registry_desc_full_calendar,
+  "number-field": m.registry_desc_number_field,
+  "data-table": m.registry_desc_data_table,
 };
 
 function Home() {
