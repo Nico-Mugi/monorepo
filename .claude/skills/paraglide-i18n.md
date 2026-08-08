@@ -1,10 +1,14 @@
 ---
 description: How Paraglide.js i18n is wired into TanStack Start apps in this monorepo —
   message source location, the four integration points every localized app needs, the
-  message-key naming convention, and why @repo/ui stays translation-free. Invoked when
-  adding i18n to a new app, adding/renaming message keys, debugging locale routing
-  (404s on /fr or /en, wrong locale rendering), or touching packages/i18n,
-  paraglideVitePlugin, or any src/lib/paraglide/* generated output.
+  message-key naming convention, why @repo/ui stays translation-free, and how
+  getLocale()/setLocale() actually behave at runtime (reload semantics, no caching,
+  overwriteGetLocale() for reactive no-reload switching, the cookie-domain gotcha).
+  Invoked when adding i18n to a new app, adding/renaming message keys, debugging locale
+  routing (404s on /fr or /en, wrong locale rendering), touching packages/i18n,
+  paraglideVitePlugin, or any src/lib/paraglide/* generated output, or building a
+  locale switch that must not navigate/reload (e.g. a page holding live WebSocket/WebRTC
+  state).
 tools:
   - Read
   - Edit
@@ -234,6 +238,122 @@ strict-mode-violation error. Section headings and short labels are exactly the w
 most likely to also appear in surrounding prose, so this bites here more than in typical
 Playwright tests. Prefer a distinctive clause from a paragraph (`"living side by side in
 one pnpm monorepo"`) over the heading itself (`"Apps"`).
+
+## Runtime internals: what `getLocale()`/`setLocale()` actually do
+
+Relevant whenever an app needs to switch locale *without* a page navigation — e.g. a
+route holding live client-only state (an open WebSocket, an active WebRTC call,
+unsaved form state) that a hard reload would destroy. Every other app in this monorepo
+uses the default "url" strategy and just accepts the reload on switch, so none of this
+applies to them; skip this section unless you're building exactly that kind of
+no-reload switch. `apps/parlor/src/lib/locale-context.tsx` is a working, tested
+reference implementation of the full pattern below.
+
+**`getLocale()` re-derives from scratch on every call, no caching.** Past a one-time
+bootstrap sync on first call, there is no memoized "current locale" anywhere in the
+compiled runtime — every call re-resolves through the active strategy list
+(`packages/i18n`'s generated `src/lib/paraglide/runtime.js`, function `getLocale`).
+Every compiled `m.*()` message function calls it internally, so this is also true of
+every message call: nothing about `m.parlor_home_title()` is memoized by paraglide
+itself.
+
+**`setLocale()` defaults to a hard navigation, and drops it only if "url" strategy is
+present.** `newLocation` (the target URL `window.location.href` gets set to) is only
+computed at all when `"url"` is in the active strategy list; otherwise `setLocale()`
+still calls `window.location.reload()` by default — dropping "url" from the strategy
+array does **not**, by itself, stop the reload. The actual opt-out is the second
+argument: `setLocale(next, { reload: false })`. Paraglide's own doc comment on this
+option is exact about what it doesn't do: "It does not re-render the UI or update the
+document." You get a cookie/localStorage write (whichever strategies are active) and
+nothing else — building the actual reactivity is entirely on you.
+
+**The cookie is best-effort, not a live source of truth.** `cookieDomain` (set to
+`.nicolas-thouvenin.dev` for cross-app sharing, see integration point 1 above) makes
+`document.cookie` writes get silently rejected by the browser on any host that isn't a
+`nicolas-thouvenin.dev` subdomain — which is *every* local/test environment
+(`localhost`), and this generalizes: any cookie write can silently no-op wherever
+cookies are blocked, for any reason, on any host. A locale switch that relies on
+`getLocale()` re-reading a cookie that was just set is fragile in a way that's easy to
+miss locally and only shows up as "the picker says the new locale but nothing actually
+translated" — the UI driving the picker (if it reads its own separate reactive state)
+looks correct while every `m.*()` call quietly keeps returning the old locale. If
+persistence across a real reload matters (not just the live in-session switch), don't
+just accept this: rewrite the cookie yourself right after paraglide's own write, with
+`domain` computed against `window.location.hostname` at the moment of the call instead
+of the static config value (`cookieName`/`cookieMaxAge` are exported constants from the
+generated runtime, reuse them rather than hardcoding), and add `"localStorage"` to the
+strategy list too — paraglide's own docs recommend pairing it with `"cookie"`
+specifically because localStorage has no domain-matching failure mode at all, at the
+cost of being invisible during SSR (paraglide skips it server-side and falls through to
+the next strategy), so it can't replace the cookie, only backstop it.
+
+**The fix: `overwriteGetLocale()`, paraglide's own sanctioned extension point**
+(https://paraglidejs.com/strategy) for exactly this — custom/reactive locale
+resolution. `getLocale` is exported as a mutable `let` binding, not a `const`, and
+every compiled message function imports and calls it live (ESM live bindings resolve
+through the current value of the binding, not a snapshot taken at import time). Calling
+`overwriteGetLocale(() => someValue)` once therefore makes *every* `m.*()` call site in
+the app correct immediately, with zero per-call-site changes — no need to thread
+`{ locale }` through every message call by hand (that was the first, wrong instinct
+this pattern was built to avoid).
+
+Two things matter for doing this safely in an SSR app on Cloudflare Workers:
+
+1. **Guard it to the client**: `if (typeof window !== "undefined") overwriteGetLocale(...)`.
+   On the server, `getLocale()` must keep using paraglide's own per-request
+   `serverAsyncLocalStorage` (wired up by `paraglideMiddleware` in `server.ts`) —
+   overwriting it unconditionally would replace that per-request resolution with
+   whatever a shared module-level variable last got set to, which is a real
+   cross-request locale leak risk on a Worker isolate that can be reused across
+   multiple users' requests.
+2. **Back the override with a plain module-level variable that a `switchLocale()`
+   function updates synchronously**, not the cookie/`getLocale()` round-trip — that's
+   the whole point, this value must be correct regardless of whether the cookie write
+   succeeded.
+
+**Never read that module-level variable directly for a React state initializer —
+always call `getLocale()` fresh instead, even inside the same file that just defined
+the override.** This one is nasty because it's invisible on the client and only shows
+up server-side, and only after the Worker isolate has served more than one request. A
+`LocaleProvider`'s natural first draft is
+`useState(() => liveLocale)`, reading the module-level variable straight from the
+closure. On the client this is fine — the module (and `let liveLocale = getLocale()`
+alongside it) genuinely re-evaluates fresh on every real page load, so it always
+reflects that load's actual locale. On the server it's wrong: a Cloudflare Worker
+isolate evaluates a module's top-level code *once* and can keep reusing that same
+isolate — and the same already-executed module — across many unrelated requests.
+`liveLocale`'s value froze at whatever the *first* request that warmed the isolate
+happened to resolve, and every SSR render after that silently ignored each new
+request's own cookie, no matter how correctly it was set or read. The fix is the same
+one-line swap either way: `useState(() => getLocale())`, never
+`useState(() => liveLocale)` — on the client `getLocale()` already *is* the override
+returning `liveLocale`, so nothing changes there; on the server it stays paraglide's
+real per-request resolution, since the override installs client-only. Symptom to
+recognize this by: a locale switch works instantly in the tab that made it, persists
+correctly in `document.cookie`/`context.cookies()`, and yet a hard reload — or a
+second, unrelated visitor — renders the *previous* locale server-side regardless of
+what the request's own cookie says.
+
+**A re-render still isn't automatic — that's what the React Context is for.** Bumping
+a module-level variable makes `getLocale()` return the right value, but React won't
+re-invoke any component function just because some value it happens to read changed
+out from under it. Wrap the reactive value in a Context whose consumers are the
+components that need to update (each route's top-level component is usually enough —
+everything it constructs directly in its own JSX re-renders as a normal consequence of
+*it* re-rendering). This specifically has to be a Context, not just a re-render
+triggered higher up the tree: when a component receives `children` as a prop (as every
+route's content effectively is, threaded down from the router), React bails out of
+re-rendering that subtree if the `children` element reference didn't change — a
+context Provider's consumers are the one thing that reaches through that bailout,
+since React re-renders any `useContext` subscriber whose Provider value changed
+regardless of what the props chain above it did.
+
+**`useMemo`/`useCallback` around a `m.*()` call needs `locale` in its dependency
+array.** Easy to miss: even with `getLocale()` and the Context both fixed, a memoized
+value that calls `m.*()` inside its factory function will keep returning its
+first-render (now-stale) translated string forever unless the reactive `locale` value
+is explicitly listed as a dependency — nothing about `useMemo`'s own bookkeeping knows
+that the memoized computation secretly depends on global locale state.
 
 ## Adding i18n to an app that doesn't have it yet
 

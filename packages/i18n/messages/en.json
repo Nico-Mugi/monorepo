@@ -440,5 +440,6 @@
   "parlor_call_leave_cta": "Leave call",
   "parlor_call_in_call_count": "{count} in call",
   "parlor_call_media_error": "Microphone access is required to join the call.",
-  "parlor_call_camera_error": "Camera unavailable. Check permissions or that it isn't in use by another app."
+  "parlor_call_camera_error": "Camera unavailable. Check permissions or that it isn't in use by another app.",
+  "parlor_toast_error_title": "Message not sent"
 }

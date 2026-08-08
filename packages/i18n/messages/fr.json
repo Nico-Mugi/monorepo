@@ -440,5 +440,6 @@
   "parlor_call_leave_cta": "Quitter l'appel",
   "parlor_call_in_call_count": "{count} en appel",
   "parlor_call_media_error": "L'accès au micro est nécessaire pour rejoindre l'appel.",
-  "parlor_call_camera_error": "Caméra indisponible. Vérifiez les autorisations ou qu'elle n'est pas utilisée par une autre application."
+  "parlor_call_camera_error": "Caméra indisponible. Vérifiez les autorisations ou qu'elle n'est pas utilisée par une autre application.",
+  "parlor_toast_error_title": "Message non envoyé"
 }
