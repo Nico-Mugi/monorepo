@@ -343,7 +343,13 @@ pnpm install   # run at repo root to link @repo/ui workspace dependency
 pnpm dev --filter <name>   # verify it starts
 ```
 
-## Step 16 — Paraglide i18n (only if the app needs translations)
+## Step 16 — PWA / installable app (optional)
+
+Only if the app should be installable (Add to Home Screen / browser install prompt).
+See `.claude/skills/pwa.md` — do not reach for `vite-plugin-pwa`, it's confirmed broken
+with TanStack Start's production build in this stack.
+
+## Step 17 — Paraglide i18n (only if the app needs translations)
 
 Full instructions, rationale, and gotchas: `.claude/skills/paraglide-i18n.md`. Don't
 skip it for "just the Vite plugin" — three more integration points are required beyond
@@ -378,4 +384,5 @@ connection to i18n. Condensed checklist:
 - [ ] wrangler `name` matches the desired Cloudflare Worker name
 - [ ] `pnpm install` run at repo root
 - [ ] App starts with `pnpm dev --filter <name>`
-- [ ] If i18n needed: complete Step 16 (`.claude/skills/paraglide-i18n.md`)
+- [ ] If i18n needed: complete Step 17 (`.claude/skills/paraglide-i18n.md`)
+- [ ] If installable app needed: complete Step 16 (`.claude/skills/pwa.md`)
