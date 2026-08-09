@@ -25,4 +25,9 @@ jobs:
       # once from any single app's context covers the whole workspace.
       - run: pnpm --filter portfolio exec playwright install --with-deps
 
+      # Private apps (apps/parlor, apps/facturation) are gitignored here and
+      # live in their own repos — this checkout never has them, so `pnpm test`
+      # only covers what's actually tracked in this repo. Each private app's
+      # own repo has its own test.yml that reconstructs this workspace around
+      # itself instead.
       - run: pnpm test
