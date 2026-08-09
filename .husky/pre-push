@@ -1,7 +1,19 @@
 while read -r local_ref local_sha remote_ref remote_sha; do
   if [ "$remote_ref" = "refs/heads/main" ]; then
     echo "Pushing to main, running test && build && deploy first..."
-    pnpm test && pnpm build && pnpm deploy || exit 1
+    # PLAYWRIGHT_HTML_OPEN=never keeps Playwright's HTML reporter from
+    # auto-opening a report server on failure — that server never exits on
+    # its own, which hangs this hook (and the push) indefinitely instead of
+    # just failing. Deliberately not CI=1: parlor's playwright.config.ts
+    # scales workers/retries/reuseExistingServer off that var, and running
+    # this suite serially with retries crashes its dev server under the
+    # video-call tests' load — 2 workers, no retries is what's verified
+    # stable (see playwright.config.ts).
+    # PARLOR_SKIP_WEBKIT=1 drops webkit from parlor's e2e run here — its
+    # WebSocket handshake against the local dev server hangs as of the
+    # workerd bump (dev-tooling only, confirmed fine in production), see
+    # playwright.config.ts.
+    PLAYWRIGHT_HTML_OPEN=never PARLOR_SKIP_WEBKIT=1 pnpm test && pnpm build && pnpm deploy || exit 1
 
     echo "Checking private app repos for unpushed commits..."
     for dir in apps/*/; do
