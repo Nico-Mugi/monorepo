@@ -444,6 +444,8 @@
   "parlor_typing_many": "Several people are typing…",
   "parlor_copy_invite": "Copy invite link",
   "parlor_copy_invite_done": "Copied!",
+  "parlor_notifications_enable": "Enable notifications",
+  "parlor_notifications_disable": "Disable notifications",
   "parlor_composer_placeholder": "Write a message…",
   "parlor_home_recent_title": "Recent rooms",
   "parlor_home_recent_forget": "Remove from list",
