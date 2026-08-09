@@ -334,6 +334,9 @@ importers:
       drizzle-orm:
         specifier: 'catalog:'
         version: 0.44.7(kysely@0.28.17)
+      drizzle-zod:
+        specifier: ^0.8.3
+        version: 0.8.3(drizzle-orm@0.44.7(kysely@0.28.17))(zod@4.4.3)
       lucide-react:
         specifier: 'catalog:'
         version: 1.28.0(react@19.2.8)
@@ -349,6 +352,9 @@ importers:
       tw-animate-css:
         specifier: 'catalog:'
         version: 1.4.0
+      zod:
+        specifier: 'catalog:'
+        version: 4.4.3
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
@@ -3030,6 +3036,12 @@ packages:
         optional: true
       sqlite3:
         optional: true
+
+  drizzle-zod@0.8.3:
+    resolution: {integrity: sha512-66yVOuvGhKJnTdiqj1/Xaaz9/qzOdRJADpDa68enqS6g3t0kpNkwNYjUuaeXgZfO/UWuIM9HIhSlJ6C5ZraMww==}
+    peerDependencies:
+      drizzle-orm: '>=0.36.0'
+      zod: ^3.25.0 || ^4.0.0
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -6531,6 +6543,11 @@ snapshots:
   drizzle-orm@0.44.7(kysely@0.28.17):
     optionalDependencies:
       kysely: 0.28.17
+
+  drizzle-zod@0.8.3(drizzle-orm@0.44.7(kysely@0.28.17))(zod@4.4.3):
+    dependencies:
+      drizzle-orm: 0.44.7(kysely@0.28.17)
+      zod: 4.4.3
 
   dunder-proto@1.0.1:
     dependencies:
