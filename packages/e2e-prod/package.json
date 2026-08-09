@@ -8,8 +8,8 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "catalog:",
     "@repo/e2e-utils": "workspace:*",
-    "typescript": "^6.0.3"
+    "typescript": "catalog:"
   }
 }
