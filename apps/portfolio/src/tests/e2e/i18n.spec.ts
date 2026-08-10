@@ -1,5 +1,10 @@
 import { test, expect } from "@playwright/test";
-import { switchLocale, expectActiveLocale } from "@repo/e2e-utils";
+import {
+  switchLocale,
+  expectActiveLocale,
+  scrollToBottom,
+  expectScrollRestored,
+} from "@repo/e2e-utils";
 
 test.describe("Paraglide i18n language switching", () => {
   test("switches from French to English on homepage", async ({ page }) => {
@@ -60,5 +65,29 @@ test.describe("Paraglide i18n language switching", () => {
       expectUrl: /\/fr\/cv/,
       expectText: "Expérience Professionnelle",
     });
+  });
+});
+
+test.describe("scroll restoration on locale switch", () => {
+  test.use({ viewport: { width: 1280, height: 400 } });
+
+  test("preserves scroll position across a locale switch", async ({ page }) => {
+    await page.goto("/fr");
+    await expectActiveLocale(page, "fr");
+    await expect(
+      page.getByText("Ingénieur en Informatique & Consultant IT"),
+    ).toBeVisible();
+    await page.waitForLoadState("networkidle");
+
+    const scrollBefore = await scrollToBottom(page);
+    expect(scrollBefore).toBeGreaterThan(0);
+
+    await switchLocale(page, {
+      to: "en",
+      expectUrl: /\/en/,
+      expectText: "Software Engineer & IT Consultant",
+    });
+
+    await expectScrollRestored(page, scrollBefore);
   });
 });

@@ -1,6 +1,7 @@
 export { cn } from "./utils/cn";
 export { seo, localizedSeoUrls } from "./utils/seo";
 export type { SeoAlternate, SeoImage, SeoRobots } from "./utils/seo";
+export { saveScrollPosition, useRestoreScrollPosition } from "./utils/scroll-restoration";
 export { Button, buttonVariants } from "./components/button";
 export { Nav } from "./components/nav";
 export type { NavProps, NavLink } from "./components/nav";

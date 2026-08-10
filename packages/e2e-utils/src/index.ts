@@ -40,3 +40,42 @@ export async function expectHtmlLang(page: Page, locale: string) {
 export async function expectActiveLocale(page: Page, code: string) {
   await expect(localeOption(page, code)).toHaveAttribute("aria-pressed", "true");
 }
+
+/** Scrolls to the bottom of the page and returns the resulting `scrollY`. */
+export async function scrollToBottom(page: Page): Promise<number> {
+  return page.evaluate(() => {
+    // Explicit "instant" behavior bypasses any `scroll-smooth` CSS on the
+    // page, which would otherwise still be animating when `scrollY` is read.
+    window.scrollTo({ top: document.documentElement.scrollHeight, left: 0, behavior: "instant" });
+    return window.scrollY;
+  });
+}
+
+/**
+ * Waits for `window.scrollY` to settle at the position saved before a hard
+ * reload (e.g. a locale switch), as applied by `restoreScrollPosition()` from
+ * `@repo/ui` in a mount effect. Translated pages can differ in content
+ * length, so the destination page's max scroll offset may be lower than
+ * `expectedY` — the target is clamped to whatever that page can actually
+ * reach, same as `window.scrollTo` itself would clamp it.
+ */
+export async function expectScrollRestored(
+  page: Page,
+  expectedY: number,
+  options?: { tolerance?: number; timeout?: number },
+) {
+  const tolerance = options?.tolerance ?? 5;
+  await expect
+    .poll(
+      async () => {
+        const { scrollY, maxScrollY } = await page.evaluate(() => ({
+          scrollY: window.scrollY,
+          maxScrollY: document.documentElement.scrollHeight - window.innerHeight,
+        }));
+        const target = Math.min(expectedY, Math.max(maxScrollY, 0));
+        return Math.abs(scrollY - target) <= tolerance;
+      },
+      { timeout: options?.timeout ?? 5000 },
+    )
+    .toBe(true);
+}

@@ -2,7 +2,7 @@ import { useEffect, type ReactNode } from "react";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import appCss from "../styles.css?url";
-import { seo, localizedSeoUrls } from "@repo/ui";
+import { seo, localizedSeoUrls, useRestoreScrollPosition } from "@repo/ui";
 import { initLog } from "@repo/logger/client";
 import { getLocale, locales, localizeUrl } from "~/lib/paraglide/runtime.js";
 import { m } from "~/lib/paraglide/messages.js";
@@ -53,6 +53,7 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  useRestoreScrollPosition();
   useEffect(() => {
     initLog({
       service: "registry-showcase__client",

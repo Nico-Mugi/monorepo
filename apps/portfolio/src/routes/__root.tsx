@@ -3,6 +3,7 @@ import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { getLocale } from "~/lib/paraglide/runtime.js";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { initLog } from "@repo/logger/client";
+import { useRestoreScrollPosition } from "@repo/ui";
 
 import appCss from "../styles.css?url";
 import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
@@ -42,6 +43,7 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  useRestoreScrollPosition();
   useEffect(() => {
     initLog({
       service: "portfolio__client",

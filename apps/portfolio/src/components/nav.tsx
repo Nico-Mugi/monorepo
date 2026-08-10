@@ -1,4 +1,4 @@
-import { Nav as NavBase, GitHubLink, LocaleSwitcher } from "@repo/ui";
+import { Nav as NavBase, GitHubLink, LocaleSwitcher, saveScrollPosition } from "@repo/ui";
 import type { NavLink, NavProps as NavBaseProps } from "@repo/ui";
 import { Logo } from "./logo";
 import { getLocale, setLocale, locales } from "~/lib/paraglide/runtime";
@@ -22,7 +22,10 @@ export function Nav({ links, ctaLink }: NavProps) {
           <LocaleSwitcher
             locales={locales.map((code) => ({ code, label: code.toUpperCase() }))}
             activeLocale={getLocale()}
-            onSelect={(code) => setLocale(code as (typeof locales)[number])}
+            onSelect={(code) => {
+              saveScrollPosition();
+              setLocale(code as (typeof locales)[number]);
+            }}
             ariaLabel={m.shared_locale_switch_aria()}
           />
         </>

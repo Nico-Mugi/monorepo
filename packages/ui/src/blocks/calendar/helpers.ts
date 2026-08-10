@@ -186,11 +186,18 @@ export function calculateMonthEventPositions(
 ): Record<string, number> {
   const monthStart = startOfMonth(selectedDate);
   const monthEnd = endOfMonth(selectedDate);
+  // The month grid also renders leading/trailing days from the adjacent
+  // months (see getCalendarCells) to fill out complete weeks, so positions
+  // must be tracked for that full grid range too — otherwise an event
+  // landing on one of those overflow days never gets a position assigned
+  // (every occupiedPositions lookup misses) and silently fails to render.
+  const gridStart = startOfWeek(monthStart);
+  const gridEnd = endOfWeek(monthEnd);
 
   const eventPositions: Record<string, number> = {};
   const occupiedPositions: Record<string, boolean[]> = {};
 
-  eachDayOfInterval({ start: monthStart, end: monthEnd }).forEach((day) => {
+  eachDayOfInterval({ start: gridStart, end: gridEnd }).forEach((day) => {
     occupiedPositions[day.toISOString()] = [false, false, false];
   });
 
@@ -219,8 +226,8 @@ export function calculateMonthEventPositions(
     const eventStart = parseISO(event.startDate);
     const eventEnd = parseISO(event.endDate);
     const eventDays = eachDayOfInterval({
-      start: eventStart < monthStart ? monthStart : eventStart,
-      end: eventEnd > monthEnd ? monthEnd : eventEnd,
+      start: eventStart < gridStart ? gridStart : eventStart,
+      end: eventEnd > gridEnd ? gridEnd : eventEnd,
     });
 
     let position = -1;
