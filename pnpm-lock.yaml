@@ -213,6 +213,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
         version: 1.51.1(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))(wrangler@4.120.0(@cloudflare/workers-types@5.20260810.1))
+      '@cloudflare/workers-types':
+        specifier: 'catalog:'
+        version: 5.20260810.1
       '@inlang/paraglide-js':
         specifier: 'catalog:'
         version: 2.23.1(typescript@6.0.3)(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))
@@ -298,6 +301,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
         version: 1.51.1(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))(wrangler@4.120.0(@cloudflare/workers-types@5.20260810.1))
+      '@cloudflare/workers-types':
+        specifier: 'catalog:'
+        version: 5.20260810.1
       '@playwright/test':
         specifier: 'catalog:'
         version: 1.62.1
@@ -392,6 +398,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
         version: 1.51.1(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))(wrangler@4.120.0(@cloudflare/workers-types@5.20260810.1))
+      '@cloudflare/workers-types':
+        specifier: 'catalog:'
+        version: 5.20260810.1
       '@inlang/paraglide-js':
         specifier: 'catalog:'
         version: 2.23.1(typescript@6.0.3)(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))
@@ -480,6 +489,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
         version: 1.51.1(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))(wrangler@4.120.0(@cloudflare/workers-types@5.20260810.1))
+      '@cloudflare/workers-types':
+        specifier: 'catalog:'
+        version: 5.20260810.1
       '@inlang/paraglide-js':
         specifier: 'catalog:'
         version: 2.23.1(typescript@6.0.3)(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))
@@ -577,6 +589,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
         version: 1.51.1(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))(wrangler@4.120.0(@cloudflare/workers-types@5.20260810.1))
+      '@cloudflare/workers-types':
+        specifier: 'catalog:'
+        version: 5.20260810.1
       '@inlang/paraglide-js':
         specifier: 'catalog:'
         version: 2.23.1(typescript@6.0.3)(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))
@@ -665,6 +680,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
         version: 1.51.1(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))(wrangler@4.120.0(@cloudflare/workers-types@5.20260810.1))
+      '@cloudflare/workers-types':
+        specifier: 'catalog:'
+        version: 5.20260810.1
       '@inlang/paraglide-js':
         specifier: 'catalog:'
         version: 2.23.1(typescript@6.0.3)(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))
@@ -747,6 +765,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: 'catalog:'
         version: 1.51.1(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))(wrangler@4.120.0(@cloudflare/workers-types@5.20260810.1))
+      '@cloudflare/workers-types':
+        specifier: 'catalog:'
+        version: 5.20260810.1
       '@inlang/paraglide-js':
         specifier: 'catalog:'
         version: 2.23.1(typescript@6.0.3)(vite@8.2.0(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(tsx@4.23.11))
