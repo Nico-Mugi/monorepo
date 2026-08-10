@@ -11,6 +11,11 @@ function getLogsDb() {
   return drizzle((env as LogsEnv).LOGS_DB);
 }
 
+function readEventString(event: DrainContext["event"], key: string): string | undefined {
+  const value = (event as Record<string, unknown>)[key];
+  return typeof value === "string" ? value : undefined;
+}
+
 async function insertLogRow(ctx: DrainContext): Promise<void> {
   try {
     await getLogsDb()
@@ -18,9 +23,15 @@ async function insertLogRow(ctx: DrainContext): Promise<void> {
       .values({
         service: ctx.event.service,
         level: ctx.event.level,
-        requestId: ctx.request?.requestId,
-        path: ctx.request?.path,
-        method: ctx.request?.method,
+        // DrainContext.request is only populated by evlog's built-in
+        // framework middleware (Hono/H3/etc.) — our hand-rolled TanStack
+        // Start middleware never goes through that path, so it's always
+        // empty here. requestId/path/method are set as top-level event
+        // fields instead (see tanstack-start/middleware.ts's `logger.set()`
+        // call), which is what actually carries them into the drain.
+        requestId: readEventString(ctx.event, "requestId") ?? ctx.request?.requestId,
+        path: readEventString(ctx.event, "path") ?? ctx.request?.path,
+        method: readEventString(ctx.event, "method") ?? ctx.request?.method,
         event: ctx.event,
       });
   } catch {
