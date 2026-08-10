@@ -15,8 +15,8 @@ export function saveScrollPosition(): void {
   window.sessionStorage.setItem(SCROLL_RESTORE_KEY, String(window.scrollY));
 }
 
-/** How long to keep re-asserting the restored position against other
- * post-render side effects (see below) before giving up control of scroll. */
+/** How long to keep correcting the restore against a page that's still
+ * growing (see below) before giving up. */
 const SETTLE_WINDOW_MS = 2000;
 
 function applySavedScrollPosition(): void {
@@ -27,31 +27,24 @@ function applySavedScrollPosition(): void {
   const y = Number(raw);
   if (Number.isNaN(y)) return;
 
-  // Other post-render mount effects on the page can move window scroll
-  // shortly after this runs — e.g. a page whose content is still mounting
-  // (so it's shorter than its final height at first, clamping below `y`),
-  // or a component scrolling its own selected/focused element into view
-  // (which falls back to scrolling the window if it has no closer
-  // scrollable ancestor). Neither renotifies us, so re-assert the target for
-  // a bounded window instead of trying to detect each case individually.
-  // The target is clamped to the page's *current* max scroll on every
-  // frame (not just `y` itself), since that max is itself still settling —
-  // without this, a `y` beyond the page's real (permanently shorter) height
-  // would never match and this would keep calling `scrollTo` uselessly for
-  // the whole window.
-  const deadline = Date.now() + SETTLE_WINDOW_MS;
-  const reassert = () => {
-    const maxY = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
-    const target = Math.min(y, maxY);
-    if (Math.round(window.scrollY) !== target) {
-      // Explicit `behavior: "smooth"` so the restore reads as the page
-      // settling back into place rather than a jarring snap, regardless of
-      // whether the page itself sets `scroll-smooth` CSS.
-      window.scrollTo({ top: target, left: 0, behavior: "smooth" });
-    }
-    if (Date.now() < deadline) requestAnimationFrame(reassert);
-  };
-  reassert();
+  // Explicit `behavior: "smooth"` so the restore reads as the page settling
+  // back into place rather than a jarring snap, regardless of whether the
+  // page itself sets `scroll-smooth` CSS.
+  const apply = () => window.scrollTo({ top: y, left: 0, behavior: "smooth" });
+  apply();
+
+  if (typeof ResizeObserver === "undefined") return;
+  // A page whose content is still mounting when `apply()` first runs (e.g.
+  // client-only widgets not yet hydrated) may be shorter than its final
+  // height, clamping the scroll below `y` with nothing to correct it
+  // afterward. Re-apply while the document keeps resizing, for a bounded
+  // window. This only reacts to layout resize, never to scrolling itself,
+  // so it can't fight a real user scrolling the page.
+  const observer = new ResizeObserver(() => {
+    if (window.scrollY < y) apply();
+  });
+  observer.observe(document.documentElement);
+  window.setTimeout(() => observer.disconnect(), SETTLE_WINDOW_MS);
 }
 
 /**

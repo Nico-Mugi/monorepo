@@ -24,7 +24,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
   ColorField,
-  Command,
+  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -285,6 +285,28 @@ function CalendarDemo() {
       onSelect={setDate}
       className="rounded-2xl border border-border"
     />
+  );
+}
+
+function CommandDemo() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button variant="outline" onClick={() => setOpen(true)}>
+        {m.registry_demo_command_open()}
+      </Button>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder={m.registry_demo_command_placeholder()} />
+        <CommandList>
+          <CommandEmpty>{m.registry_demo_command_empty()}</CommandEmpty>
+          <CommandGroup heading={m.registry_demo_command_suggestions()}>
+            <CommandItem>{m.registry_demo_command_calendar()}</CommandItem>
+            <CommandItem>{m.registry_demo_command_search()}</CommandItem>
+            <CommandItem>{m.registry_demo_command_settings()}</CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
+    </>
   );
 }
 
@@ -591,19 +613,7 @@ const demos: Record<string, () => ReactNode> = {
       </InputGroup>
     </div>
   ),
-  command: () => (
-    <Command className="max-w-sm rounded-2xl border border-border">
-      <CommandInput placeholder={m.registry_demo_command_placeholder()} />
-      <CommandList>
-        <CommandEmpty>{m.registry_demo_command_empty()}</CommandEmpty>
-        <CommandGroup heading={m.registry_demo_command_suggestions()}>
-          <CommandItem>{m.registry_demo_command_calendar()}</CommandItem>
-          <CommandItem>{m.registry_demo_command_search()}</CommandItem>
-          <CommandItem>{m.registry_demo_command_settings()}</CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </Command>
-  ),
+  command: () => <CommandDemo />,
   "date-time-picker": () => <DateTimePickerDemo />,
   "select-field": () => <SelectFieldDemo />,
   "textarea-field": () => <TextareaFieldDemo />,
