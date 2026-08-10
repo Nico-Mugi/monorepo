@@ -1,16 +1,23 @@
 import { DownloadIcon, LayoutGridIcon, PrinterIcon, UserRoundIcon } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
-import { getLocale } from "~/lib/paraglide/runtime";
+import { getLocale, locales, localizeUrl } from "~/lib/paraglide/runtime";
 import { m } from "~/lib/paraglide/messages";
 import { Nav } from "~/components/nav";
 import { PLAYGROUND_URL } from "~/config/externalLinks";
-import { localizedSeoUrls } from "~/utils/seo-urls";
-import { seo } from "@repo/ui";
+import { seo, localizedSeoUrls } from "@repo/ui";
 import { CvDocument, CV_GOOGLE_FONTS_HREF } from "~/components/cv/cv-document";
+
+const SITE_ORIGIN = "https://nicolas-thouvenin.dev";
 
 export const Route = createFileRoute("/cv")({
   head: () => {
-    const { current, alternates, xDefaultUrl } = localizedSeoUrls("/cv");
+    const { current, alternates, xDefaultUrl } = localizedSeoUrls({
+      path: "/cv",
+      origin: SITE_ORIGIN,
+      locales,
+      localizeUrl,
+      activeLocale: getLocale(),
+    });
     const pageSeo = seo({
       title: m.portfolio_seo_cv_title(),
       description: m.portfolio_seo_cv_description(),

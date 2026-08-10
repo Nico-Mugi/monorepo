@@ -1,5 +1,6 @@
 export { cn } from "./utils/cn";
-export { seo } from "./utils/seo";
+export { seo, localizedSeoUrls } from "./utils/seo";
+export type { SeoAlternate, SeoImage, SeoRobots } from "./utils/seo";
 export { Button, buttonVariants } from "./components/button";
 export { Nav } from "./components/nav";
 export type { NavProps, NavLink } from "./components/nav";

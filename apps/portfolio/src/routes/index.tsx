@@ -15,13 +15,20 @@ import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
 import { PLAYGROUND_URL } from "~/config/externalLinks";
 import { m } from "~/lib/paraglide/messages";
-import { getLocale } from "~/lib/paraglide/runtime";
-import { localizedSeoUrls } from "~/utils/seo-urls";
-import { seo } from "@repo/ui";
+import { getLocale, locales, localizeUrl } from "~/lib/paraglide/runtime";
+import { seo, localizedSeoUrls } from "@repo/ui";
+
+const SITE_ORIGIN = "https://nicolas-thouvenin.dev";
 
 export const Route = createFileRoute("/")({
   head: () => {
-    const { current, alternates, xDefaultUrl } = localizedSeoUrls("/");
+    const { current, alternates, xDefaultUrl } = localizedSeoUrls({
+      path: "/",
+      origin: SITE_ORIGIN,
+      locales,
+      localizeUrl,
+      activeLocale: getLocale(),
+    });
     const pageSeo = seo({
       title: "Nicolas Thouvenin - Portfolio",
       description: m.portfolio_seo_home_description(),

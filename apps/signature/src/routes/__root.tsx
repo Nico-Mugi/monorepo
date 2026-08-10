@@ -1,17 +1,25 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import appCss from "../styles.css?url";
-import { seo } from "@repo/ui";
-import { getLocale } from "~/lib/paraglide/runtime.js";
+import { seo, localizedSeoUrls } from "@repo/ui";
+import { initLog } from "@repo/logger/client";
+import { getLocale, locales, localizeUrl } from "~/lib/paraglide/runtime.js";
 import { m } from "~/lib/paraglide/messages.js";
-import { localizedSeoUrls } from "~/utils/seo-urls.js";
 import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
 import { NotFound } from "~/components/not-found.js";
 
+const SITE_ORIGIN = "https://signature.playground.nicolas-thouvenin.dev";
+
 export const Route = createRootRoute({
   head: () => {
-    const { current, alternates, xDefaultUrl } = localizedSeoUrls("/");
+    const { current, alternates, xDefaultUrl } = localizedSeoUrls({
+      path: "/",
+      origin: SITE_ORIGIN,
+      locales,
+      localizeUrl,
+      activeLocale: getLocale(),
+    });
     const pageSeo = seo({
       title: "Signature - Nicolas Thouvenin",
       description: m.signature_seo_description(),
@@ -45,6 +53,12 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  useEffect(() => {
+    initLog({
+      service: "signature__client",
+      batchedTransport: { drain: { credentials: "include", endpoint: "/api/_logs/ingest" } },
+    });
+  }, []);
   return (
     <html lang={getLocale()} className="dark bg-background">
       <head>

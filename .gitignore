@@ -21,6 +21,10 @@ Thumbs.db
 # Clone instructions are in the install skill (packages/private/.claude/skills/install.md).
 packages/private/
 
+# Private package — holds the better-auth D1 schema, own private GitHub repo.
+# Clone: git clone git@github.com:Nico-Mugi/db.git packages/db
+packages/db/
+
 # Private apps — each lives in apps/<name> but has its own GitHub repo.
 # Clone them manually: git clone git@github.com:Nico-Mugi/<name>.git apps/<name>
 apps/parlor/

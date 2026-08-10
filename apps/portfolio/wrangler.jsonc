@@ -7,5 +7,16 @@
   "routes": [
     { "pattern": "nicolas-thouvenin.dev", "custom_domain": true },
     { "pattern": "www.nicolas-thouvenin.dev", "custom_domain": true }
-  ]
+  ],
+  "d1_databases": [
+    {
+      "binding": "LOGS_DB",
+      "database_name": "platform-logs",
+      "database_id": "907936d9-7f8b-4647-a87f-4ce708ea7a52",
+      "migrations_dir": "../../packages/logger/migrations"
+    }
+  ],
+  "triggers": {
+    "crons": ["0 3 * * *"]
+  }
 }

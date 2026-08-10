@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@inlang/paraglide-js-react": "catalog:",
+    "@repo/logger": "workspace:*",
     "@repo/ui": "workspace:*",
     "@tanstack/markdown": "catalog:",
     "@tanstack/react-router": "catalog:",

@@ -1,0 +1,37 @@
+{
+  "name": "@repo/logger",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#@/*": "./src/*.ts"
+  },
+  "exports": {
+    "./client": "./src/client/index.ts",
+    "./server": "./src/server/index.ts",
+    "./server/ingest": "./src/server/ingest.ts",
+    "./server/d1-drain": "./src/server/d1-drain.ts",
+    "./server/schema": "./src/server/schema.ts",
+    "./server/tanstack-start/middleware": "./src/server/tanstack-start/middleware.ts",
+    "./constants": "./src/constants/services.ts"
+  },
+  "scripts": {
+    "db": "drizzle-kit",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "defu": "catalog:",
+    "drizzle-orm": "catalog:",
+    "evlog": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "catalog:",
+    "@types/node": "catalog:",
+    "drizzle-kit": "catalog:",
+    "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "@tanstack/react-start": "catalog:"
+  }
+}
