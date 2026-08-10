@@ -35,7 +35,12 @@ const DEFAULT_SERVER_LOGGER_CONFIG = {
     service: LOG_SERVICES.DEFAULT
   },
   redact: {
-    paths: DEFAULT_REDACT_PATHS
+    paths: DEFAULT_REDACT_PATHS,
+    // Every evlog built-in masker except ipv4: full IPs are useful for
+    // debugging in apps/logs, and this is a small internal system, not a
+    // consumer product handling third-party IPs at scale. Email/card/phone/
+    // token maskers stay on.
+    builtins: ["creditCard", "email", "phone", "jwt", "bearer", "iban"]
   }
 } satisfies ServerLoggerConfig;
 

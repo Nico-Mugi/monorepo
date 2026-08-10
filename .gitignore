@@ -29,6 +29,7 @@ packages/db/
 # Clone them manually: git clone git@github.com:Nico-Mugi/<name>.git apps/<name>
 apps/parlor/
 apps/facturation/
+apps/logs/
 
 **/playwright-report/index.html
 **/test-results/
