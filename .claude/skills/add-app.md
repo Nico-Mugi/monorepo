@@ -175,7 +175,8 @@ separate mechanism from class-name scanning and doesn't substitute for `@source`
 The new app's `__root.tsx` and every component must consume this theme through semantic
 tokens (`bg-background`, `text-foreground`, `bg-primary`, etc.), never hardcoded
 `neutral-*`/hex colors. See `.claude/skills/design-system.md` for the full token
-vocabulary and the mandatory `dark bg-background` setup on `<html>`.
+vocabulary and the mandatory `dark bg-background scroll-smooth` setup on `<html>`
+(`<body>` needs `scroll-smooth` too).
 
 ## Step 8 — SEO
 

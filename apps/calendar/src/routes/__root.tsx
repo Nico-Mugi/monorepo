@@ -61,11 +61,11 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
     });
   }, []);
   return (
-    <html lang={getLocale()} className="dark bg-background">
+    <html lang={getLocale()} className="dark bg-background scroll-smooth">
       <head>
         <HeadContent />
       </head>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground scroll-smooth">
         {children}
         <Toaster />
         <div className="hidden">

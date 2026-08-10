@@ -40,11 +40,17 @@ There's no light/dark toggle yet — dark is the shipped default everywhere. Eve
 that class is present on an ancestor:
 
 ```tsx
-<html lang="..." className="dark bg-background">
+<html lang="..." className="dark bg-background scroll-smooth">
   <head>...</head>
-  <body className="bg-background text-foreground">{children}</body>
+  <body className="bg-background text-foreground scroll-smooth">{children}</body>
 </html>
 ```
+
+`scroll-smooth` (`scroll-behavior: smooth`) is required on both `<html>` and `<body>` too —
+every app's shared scroll-restoration helper (`useRestoreScrollPosition` in
+`packages/ui/src/utils/scroll-restoration.ts`) explicitly overrides this per-call with
+`behavior: "smooth"`/`"instant"` as needed, but other in-app scrolling (anchor links,
+`scrollIntoView`) should still read as smooth by default, consistent with every other app.
 
 Do not hardcode `bg-[#0a0a0a]`, `bg-black`, or similar — always `bg-background`, and
 always pair it with the `dark` class or the color resolves to the light-mode value.
@@ -132,15 +138,16 @@ After touching styling in any app:
 2. `tsc --noEmit` in the app.
 3. Boot `pnpm dev --filter <app>`, fetch the rendered HTML (curl into the scratchpad
    dir, then Read/Grep it — raw terminal grep on curl output can misdetect it as binary),
-   and confirm `<html>` carries `class="dark bg-background"` and elements resolve to
-   token classes, not literals.
+   and confirm `<html>` carries `class="dark bg-background scroll-smooth"` and elements
+   resolve to token classes, not literals.
 4. `pnpm kill-dev` when done — backgrounded Vite/Wrangler processes leak past the
    session otherwise (see root `CLAUDE.md`).
 
 ## Checklist for new UI
 
 - [ ] No raw `neutral-*`/`gray-*`/hex colors — every color is a semantic token
-- [ ] `<html>` has `dark bg-background`, `<body>` has `bg-background text-foreground`
+- [ ] `<html>` has `dark bg-background scroll-smooth`, `<body>` has
+      `bg-background text-foreground scroll-smooth`
 - [ ] Brand color used via `bg-primary`/`text-primary`/`border-primary`, not a literal hex
 - [ ] Hover-lighten effects use `hover:brightness-110`, not a second hardcoded shade
 - [ ] Radius via standard `rounded-*` classes, not arbitrary pixel values
