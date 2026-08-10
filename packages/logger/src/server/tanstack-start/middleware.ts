@@ -14,6 +14,12 @@ type RequestContext = {
   request: {
     hostname: string;
     ip?: string;
+    country?: string;
+    region?: string;
+    city?: string;
+    timezone?: string;
+    latitude?: string;
+    longitude?: string;
     method: string;
     path: string;
     query?: Record<string, string>;
@@ -57,12 +63,22 @@ const injectRequestMiddleware = createMiddleware().server(({ next, request }) =>
   const url = new URL(request.url);
   const realIp = getRealIpFromHeaders(request.headers);
   const query = Object.fromEntries(url.searchParams.entries());
+  // Cloudflare's edge geolocation, not a lookup we make ourselves — only
+  // present on requests that actually hit the Workers runtime (absent in
+  // local `vite dev`).
+  const cf = (request as Request & { cf?: IncomingRequestCfProperties }).cf;
 
   return next({
     context: {
       request: {
         hostname: url.hostname,
         ip: normalizeIp(realIp),
+        country: cf?.country,
+        region: cf?.region,
+        city: cf?.city,
+        timezone: cf?.timezone,
+        latitude: cf?.latitude,
+        longitude: cf?.longitude,
         method: request.method,
         path: url.pathname,
         query: Object.keys(query).length > 0 ? query : undefined
