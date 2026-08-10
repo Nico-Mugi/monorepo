@@ -27,10 +27,10 @@ function applySavedScrollPosition(): void {
   const y = Number(raw);
   if (Number.isNaN(y)) return;
 
-  // Explicit `behavior: "instant"` bypasses a page's `scroll-smooth` CSS
-  // (scroll-behavior), which would otherwise animate this into an
-  // unexpectedly slow scroll on every locale switch.
-  const apply = () => window.scrollTo({ top: y, left: 0, behavior: "instant" });
+  // Explicit `behavior: "smooth"` so the restore reads as the page settling
+  // back into place rather than a jarring snap, regardless of whether the
+  // page itself sets `scroll-smooth` CSS.
+  const apply = () => window.scrollTo({ top: y, left: 0, behavior: "smooth" });
   apply();
 
   if (typeof ResizeObserver === "undefined") return;
