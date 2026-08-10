@@ -1,27 +1,50 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://v2-10-9.turborepo.dev/schema.json",
   "ui": "tui",
+  "concurrency": "20",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".output/**", "dist/**", ".wrangler/**", "public/r/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
+      "outputs": [
+        ".output/**",
+        "dist/**",
+        ".wrangler/**",
+        "public/r/**"
+      ]
     },
     "dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "type-check": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "test": {
-      "dependsOn": ["build"],
-      "inputs": ["$TURBO_DEFAULT$"],
-      "outputs": ["playwright-report/**"]
+      "dependsOn": [
+        "build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$"
+      ],
+      "outputs": [
+        "playwright-report/**"
+      ]
     },
     "deploy": {
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "cache": false
     },
     "clean": {
