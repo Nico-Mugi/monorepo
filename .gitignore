@@ -30,6 +30,7 @@ packages/db/
 apps/parlor/
 apps/facturation/
 apps/logs/
+apps/sign/
 
 **/playwright-report/index.html
 **/test-results/
