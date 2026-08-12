@@ -31,6 +31,7 @@ apps/parlor/
 apps/facturation/
 apps/logs/
 apps/sign/
+apps/ocr/
 
 **/playwright-report/index.html
 **/test-results/
