@@ -59,3 +59,4 @@ catalog:
 minimumReleaseAgeExclude:
   - evlog@2.25.0
   - '@cloudflare/workers-types@5.20260810.1'
+  - scanic@1.6.0
