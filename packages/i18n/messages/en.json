@@ -482,6 +482,8 @@
   "books_reading_exit_aria": "Exit reading mode",
   "books_reading_enter_fullscreen_cta": "Enter fullscreen",
   "books_reading_enter_fullscreen_aria": "Enter fullscreen reading mode",
+  "books_reading_exit_fullscreen_cta": "Exit fullscreen",
+  "books_reading_exit_fullscreen_aria": "Exit fullscreen reading mode",
   "books_reading_typography_trigger_aria": "Typography settings",
   "books_reading_typography_panel_title": "Typography",
   "books_reading_typography_reset_cta": "Reset to defaults",

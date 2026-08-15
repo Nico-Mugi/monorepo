@@ -482,6 +482,8 @@
   "books_reading_exit_aria": "Quitter le mode lecture",
   "books_reading_enter_fullscreen_cta": "Plein écran",
   "books_reading_enter_fullscreen_aria": "Passer en mode lecture plein écran",
+  "books_reading_exit_fullscreen_cta": "Quitter le plein écran",
+  "books_reading_exit_fullscreen_aria": "Quitter le mode lecture plein écran",
   "books_reading_typography_trigger_aria": "Réglages de typographie",
   "books_reading_typography_panel_title": "Typographie",
   "books_reading_typography_reset_cta": "Réinitialiser",
