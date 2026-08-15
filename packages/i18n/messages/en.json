@@ -509,6 +509,8 @@
   "books_reading_typography_bionic_label": "Bionic reading",
   "books_reading_typography_bionic_on": "On",
   "books_reading_typography_bionic_off": "Off",
+  "books_reading_typography_tts_voice_label": "Read-aloud voice",
+  "books_reading_typography_tts_voice_auto": "Automatic",
   "books_reading_theme_trigger_aria": "Theme settings",
   "books_reading_theme_panel_title": "Theme",
   "books_reading_theme_light": "Light",

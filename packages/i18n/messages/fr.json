@@ -509,6 +509,8 @@
   "books_reading_typography_bionic_label": "Lecture bionique",
   "books_reading_typography_bionic_on": "Activée",
   "books_reading_typography_bionic_off": "Désactivée",
+  "books_reading_typography_tts_voice_label": "Voix de lecture",
+  "books_reading_typography_tts_voice_auto": "Automatique",
   "books_reading_theme_trigger_aria": "Réglages de thème",
   "books_reading_theme_panel_title": "Thème",
   "books_reading_theme_light": "Clair",
