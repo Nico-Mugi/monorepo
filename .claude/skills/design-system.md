@@ -39,6 +39,15 @@ There's no light/dark toggle yet — dark is the shipped default everywhere. Eve
 `__root.tsx` must apply it explicitly, since Tailwind only activates `.dark` values when
 that class is present on an ancestor:
 
+**Named exception:** `apps/books` has a real, user-facing Light/Dark/Sepia/Paper +
+contrast toggle, app-wide (not just its reading route) — see
+`apps/books/src/lib/reading/themes.ts` and
+`packages/private/docs/plans/12-books-reading-mode.md`'s Pass 3. It works by shadowing
+the exact same `--background`/`--foreground`/etc var names on `<body>` (in
+`apps/books/__root.tsx`) rather than toggling the `.dark` class itself, so it coexists
+with the rule below instead of breaking it. Don't treat this as precedent for adding a
+toggle to any other app without the same explicit ask; every other app stays dark-only.
+
 ```tsx
 <html lang="..." className="dark bg-background scroll-smooth">
   <head>...</head>
