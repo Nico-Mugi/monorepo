@@ -506,6 +506,9 @@
   "books_reading_typography_page_animation_label": "Animation de page",
   "books_reading_typography_page_animation_on": "Activée",
   "books_reading_typography_page_animation_off": "Désactivée",
+  "books_reading_typography_bionic_label": "Lecture bionique",
+  "books_reading_typography_bionic_on": "Activée",
+  "books_reading_typography_bionic_off": "Désactivée",
   "books_reading_theme_trigger_aria": "Réglages de thème",
   "books_reading_theme_panel_title": "Thème",
   "books_reading_theme_light": "Clair",
@@ -516,6 +519,9 @@
   "books_reading_contrast_standard": "Standard",
   "books_reading_contrast_high": "Élevé",
   "books_reading_contrast_maximum": "Maximum",
+  "books_reading_theme_focus_mode_label": "Mode focus",
+  "books_reading_theme_focus_mode_on": "Activé",
+  "books_reading_theme_focus_mode_off": "Désactivé",
   "books_reading_progress_aria": "Progression de lecture",
   "books_reading_page_counter": "{current} / {total}",
   "books_reading_time_minutes": "{minutes} min de lecture",
@@ -534,5 +540,8 @@
   "books_reading_shortcut_font_decrease_name": "Réduire la taille du texte",
   "books_reading_shortcut_toggle_toc_name": "Table des matières",
   "books_reading_shortcut_toggle_cheatsheet_name": "Raccourcis clavier",
+  "books_reading_tts_play_aria": "Lire à voix haute",
+  "books_reading_tts_pause_aria": "Mettre en pause la lecture à voix haute",
+  "books_reading_tts_unsupported_aria": "La lecture à voix haute n'est pas prise en charge par ce navigateur",
   "books_not_found_description": "Ce livre n'existe pas, ou a été retiré de la bibliothèque."
 }

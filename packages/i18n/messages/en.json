@@ -506,6 +506,9 @@
   "books_reading_typography_page_animation_label": "Page animation",
   "books_reading_typography_page_animation_on": "On",
   "books_reading_typography_page_animation_off": "Off",
+  "books_reading_typography_bionic_label": "Bionic reading",
+  "books_reading_typography_bionic_on": "On",
+  "books_reading_typography_bionic_off": "Off",
   "books_reading_theme_trigger_aria": "Theme settings",
   "books_reading_theme_panel_title": "Theme",
   "books_reading_theme_light": "Light",
@@ -516,6 +519,9 @@
   "books_reading_contrast_standard": "Standard",
   "books_reading_contrast_high": "High",
   "books_reading_contrast_maximum": "Maximum",
+  "books_reading_theme_focus_mode_label": "Focus mode",
+  "books_reading_theme_focus_mode_on": "On",
+  "books_reading_theme_focus_mode_off": "Off",
   "books_reading_progress_aria": "Reading progress",
   "books_reading_page_counter": "{current} / {total}",
   "books_reading_time_minutes": "{minutes} min read",
@@ -534,5 +540,8 @@
   "books_reading_shortcut_font_decrease_name": "Decrease font size",
   "books_reading_shortcut_toggle_toc_name": "Table of contents",
   "books_reading_shortcut_toggle_cheatsheet_name": "Keyboard shortcuts",
+  "books_reading_tts_play_aria": "Read aloud",
+  "books_reading_tts_pause_aria": "Pause reading aloud",
+  "books_reading_tts_unsupported_aria": "Read aloud is not supported in this browser",
   "books_not_found_description": "This book doesn't exist, or has been removed from the library."
 }
