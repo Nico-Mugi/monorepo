@@ -19,6 +19,13 @@ catalog:
   "@tanstack/markdown": ^0.0.13
   "@tanstack/react-devtools": ^0.10.2
   "@tanstack/react-form": ^1.33.3
+  # Both pinned exact (not caret ranges): @tanstack/react-hotkeys is explicitly alpha per
+  # its own README as of 0.10.0 - see packages/private/docs/plans/12-books-reading-mode.md
+  # Pass 6 for the API surface this pin was verified against. @tanstack/hotkeys (core) is
+  # imported directly for detectPlatform/formatForDisplay - pnpm's strict node_modules
+  # isolation means it must be a real dependency, not relied on as a phantom transitive one.
+  "@tanstack/hotkeys": 0.8.0
+  "@tanstack/react-hotkeys": 0.10.0
   "@tanstack/react-query": ^5.101.4
   "@tanstack/react-router": ^1.168.25
   "@tanstack/react-router-devtools": ^1.166.13

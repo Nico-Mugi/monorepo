@@ -79,6 +79,19 @@ export {
   DialogTrigger,
 } from "./components/dialog";
 export {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerSwipeHandle,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from "./components/drawer";
+export {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,

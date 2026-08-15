@@ -55,11 +55,25 @@ const modalVariants = cva(
 );
 
 type ModalContentProps = DialogPrimitive.Popup.Props &
-  VariantProps<typeof modalVariants>;
+  VariantProps<typeof modalVariants> &
+  Pick<DialogPrimitive.Portal.Props, "container">;
 
-function ModalContent({ side = "bottom", className, children, ...props }: ModalContentProps) {
+/**
+ * `container` mirrors popover.tsx's own fix (Pass 2): without it, this always portals to
+ * document.body, which native fullscreen only ever paints the fullscreen element's own
+ * subtree over - anything portalled outside it is invisible even though it's still in
+ * the DOM. Optional and harmless outside fullscreen (falls back to Base UI's own
+ * document.body default when omitted).
+ */
+function ModalContent({
+  side = "bottom",
+  className,
+  children,
+  container,
+  ...props
+}: ModalContentProps) {
   return (
-    <ModalPortal>
+    <ModalPortal container={container}>
       <ModalOverlay />
       <DialogPrimitive.Popup
         aria-describedby="responsive-modal-description"
