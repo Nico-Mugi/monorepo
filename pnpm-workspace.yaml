@@ -10,6 +10,7 @@ catalog:
   "@cloudflare/vite-plugin": ^1.51.1
   "@cloudflare/workers-types": ^5.20260810.1
   "@fontsource-variable/inter": ^5.2.8
+  "@fontsource/opendyslexic": ^5.3.0
   "@inlang/paraglide-js": ^2.18.2
   "@inlang/paraglide-js-react": ^1.0.2
   "@playwright/test": ^1.60.0

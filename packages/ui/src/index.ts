@@ -129,9 +129,11 @@ export {
   SelectTrigger,
   SelectValue,
 } from "./components/select";
+export { Slider } from "./components/slider";
 export { Switch } from "./components/switch";
 export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants } from "./components/tabs";
 export { Toggle, toggleVariants } from "./components/toggle";
+export { ToggleGroup, ToggleGroupItem } from "./components/toggle-group";
 export {
   Tooltip,
   TooltipTrigger,

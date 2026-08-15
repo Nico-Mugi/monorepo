@@ -482,5 +482,18 @@
   "books_reading_exit_aria": "Exit reading mode",
   "books_reading_enter_fullscreen_cta": "Enter fullscreen",
   "books_reading_enter_fullscreen_aria": "Enter fullscreen reading mode",
+  "books_reading_typography_trigger_aria": "Typography settings",
+  "books_reading_typography_panel_title": "Typography",
+  "books_reading_typography_font_size_label": "Font size",
+  "books_reading_typography_font_family_label": "Font",
+  "books_reading_typography_font_family_serif": "Serif",
+  "books_reading_typography_font_family_sans": "Sans-serif",
+  "books_reading_typography_font_family_dyslexic": "Dyslexia-friendly",
+  "books_reading_typography_line_height_label": "Line height",
+  "books_reading_typography_letter_spacing_label": "Letter spacing",
+  "books_reading_typography_content_width_label": "Content width",
+  "books_reading_typography_text_align_label": "Text alignment",
+  "books_reading_typography_text_align_left": "Left",
+  "books_reading_typography_text_align_justify": "Justified",
   "books_not_found_description": "This book doesn't exist, or has been removed from the library."
 }

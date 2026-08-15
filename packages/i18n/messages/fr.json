@@ -482,5 +482,18 @@
   "books_reading_exit_aria": "Quitter le mode lecture",
   "books_reading_enter_fullscreen_cta": "Plein écran",
   "books_reading_enter_fullscreen_aria": "Passer en mode lecture plein écran",
+  "books_reading_typography_trigger_aria": "Réglages de typographie",
+  "books_reading_typography_panel_title": "Typographie",
+  "books_reading_typography_font_size_label": "Taille de police",
+  "books_reading_typography_font_family_label": "Police",
+  "books_reading_typography_font_family_serif": "Avec empattements",
+  "books_reading_typography_font_family_sans": "Sans empattement",
+  "books_reading_typography_font_family_dyslexic": "Adapté à la dyslexie",
+  "books_reading_typography_line_height_label": "Interligne",
+  "books_reading_typography_letter_spacing_label": "Espacement des lettres",
+  "books_reading_typography_content_width_label": "Largeur du texte",
+  "books_reading_typography_text_align_label": "Alignement du texte",
+  "books_reading_typography_text_align_left": "Gauche",
+  "books_reading_typography_text_align_justify": "Justifié",
   "books_not_found_description": "Ce livre n'existe pas, ou a été retiré de la bibliothèque."
 }
