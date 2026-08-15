@@ -129,6 +129,13 @@ export {
   SelectTrigger,
   SelectValue,
 } from "./components/select";
+export {
+  Progress,
+  ProgressTrack,
+  ProgressIndicator,
+  ProgressLabel,
+  ProgressValue,
+} from "./components/progress";
 export { Slider } from "./components/slider";
 export { Switch } from "./components/switch";
 export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants } from "./components/tabs";
