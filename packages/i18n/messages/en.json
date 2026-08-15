@@ -472,5 +472,15 @@
   "parlor_room_untitled_empty": "Empty room",
   "parlor_room_not_found": "This room doesn't exist, or the link is wrong.",
   "parlor_room_rename_placeholder": "Room name",
-  "parlor_room_rename_save": "Save"
+  "parlor_room_rename_save": "Save",
+  "books_seo_description": "A private library of books with a distraction-free, fullscreen reading mode.",
+  "books_home_title": "Your library",
+  "books_home_description": "Pick a book and settle in. Every book opens in a fullscreen, distraction-free reading mode.",
+  "books_card_read_cta": "Read",
+  "books_detail_author_label": "by",
+  "books_detail_start_reading_cta": "Start reading",
+  "books_reading_exit_aria": "Exit reading mode",
+  "books_reading_enter_fullscreen_cta": "Enter fullscreen",
+  "books_reading_enter_fullscreen_aria": "Enter fullscreen reading mode",
+  "books_not_found_description": "This book doesn't exist, or has been removed from the library."
 }

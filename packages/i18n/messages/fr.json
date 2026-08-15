@@ -472,5 +472,15 @@
   "parlor_room_untitled_empty": "Salon vide",
   "parlor_room_not_found": "Ce salon n'existe pas, ou le lien est incorrect.",
   "parlor_room_rename_placeholder": "Nom du salon",
-  "parlor_room_rename_save": "Enregistrer"
+  "parlor_room_rename_save": "Enregistrer",
+  "books_seo_description": "Une bibliothèque privée avec un mode de lecture plein écran, sans distraction.",
+  "books_home_title": "Votre bibliothèque",
+  "books_home_description": "Choisissez un livre et installez-vous. Chaque livre s'ouvre dans un mode de lecture plein écran, sans distraction.",
+  "books_card_read_cta": "Lire",
+  "books_detail_author_label": "par",
+  "books_detail_start_reading_cta": "Commencer la lecture",
+  "books_reading_exit_aria": "Quitter le mode lecture",
+  "books_reading_enter_fullscreen_cta": "Plein écran",
+  "books_reading_enter_fullscreen_aria": "Passer en mode lecture plein écran",
+  "books_not_found_description": "Ce livre n'existe pas, ou a été retiré de la bibliothèque."
 }

@@ -32,6 +32,7 @@ apps/facturation/
 apps/logs/
 apps/sign/
 apps/ocr/
+apps/books/
 
 **/playwright-report/index.html
 **/test-results/
