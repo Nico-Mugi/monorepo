@@ -484,6 +484,7 @@
   "books_reading_enter_fullscreen_aria": "Passer en mode lecture plein écran",
   "books_reading_typography_trigger_aria": "Réglages de typographie",
   "books_reading_typography_panel_title": "Typographie",
+  "books_reading_typography_reset_cta": "Réinitialiser",
   "books_reading_typography_font_size_label": "Taille de police",
   "books_reading_typography_font_family_label": "Police",
   "books_reading_typography_font_family_serif": "Avec empattements",

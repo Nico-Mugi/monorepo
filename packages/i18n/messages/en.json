@@ -484,6 +484,7 @@
   "books_reading_enter_fullscreen_aria": "Enter fullscreen reading mode",
   "books_reading_typography_trigger_aria": "Typography settings",
   "books_reading_typography_panel_title": "Typography",
+  "books_reading_typography_reset_cta": "Reset to defaults",
   "books_reading_typography_font_size_label": "Font size",
   "books_reading_typography_font_family_label": "Font",
   "books_reading_typography_font_family_serif": "Serif",
