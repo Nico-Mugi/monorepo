@@ -149,7 +149,7 @@ function SignatureBuilder({
               text={html}
               html={html}
               label={m.signature_output_copy_styled_cta()}
-              copiedLabel={m.signature_output_copied_confirmation()}
+              copiedLabel={m.shared_copy_copied_confirmation()}
               onResult={handleCopyResult}
               variant="default"
               size="lg"
@@ -183,7 +183,7 @@ function SignatureBuilder({
               <CopyButton
                 text={html}
                 label={m.signature_output_copy_cta()}
-                copiedLabel={m.signature_output_copied_confirmation()}
+                copiedLabel={m.shared_copy_copied_confirmation()}
                 onResult={handleCopyResult}
               />
             </div>
@@ -204,7 +204,7 @@ function SignatureBuilder({
               onChange={(event) => setHistoryLabel(event.target.value)}
             />
             <Button onClick={handleSaveToHistory}>
-              {m.signature_history_save_cta()}
+              {m.shared_action_save()}
             </Button>
           </div>
           {history.length === 0 ? (
@@ -226,7 +226,7 @@ function SignatureBuilder({
                     <Button
                       size="icon-xs"
                       variant="ghost"
-                      aria-label={m.signature_history_delete_cta()}
+                      aria-label={m.shared_action_delete()}
                       onClick={() => onDeleteFromHistory(entry.id)}
                     >
                       <Trash2Icon size={14} />

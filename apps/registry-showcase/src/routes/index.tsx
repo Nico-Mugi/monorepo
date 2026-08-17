@@ -184,9 +184,9 @@ function SelectFieldDemo() {
             label={m.registry_demo_select_field_label()}
             placeholder={m.registry_demo_select_field_placeholder()}
             options={[
-              { value: "blue", label: m.registry_demo_color_blue() },
-              { value: "green", label: m.registry_demo_color_green() },
-              { value: "red", label: m.registry_demo_color_red() },
+              { value: "blue", label: m.shared_color_blue() },
+              { value: "green", label: m.shared_color_green() },
+              { value: "red", label: m.shared_color_red() },
             ]}
           />
         )}
@@ -298,7 +298,7 @@ function CommandDemo() {
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder={m.registry_demo_command_placeholder()} />
         <CommandList>
-          <CommandEmpty>{m.registry_demo_command_empty()}</CommandEmpty>
+          <CommandEmpty>{m.shared_no_results_found()}</CommandEmpty>
           <CommandGroup heading={m.registry_demo_command_suggestions()}>
             <CommandItem>{m.registry_demo_command_calendar()}</CommandItem>
             <CommandItem>{m.registry_demo_command_search()}</CommandItem>
@@ -385,7 +385,7 @@ const demos: Record<string, () => ReactNode> = {
     <CopyButton
       text="pnpm dlx shadcn@latest add"
       label={m.registry_copy_cta()}
-      copiedLabel={m.registry_copied_confirmation()}
+      copiedLabel={m.shared_copy_copied_confirmation()}
     />
   ),
   collapsible: () => (
@@ -531,8 +531,8 @@ const demos: Record<string, () => ReactNode> = {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>{m.registry_demo_cancel()}</AlertDialogCancel>
-          <AlertDialogAction>{m.registry_demo_alert_dialog_continue()}</AlertDialogAction>
+          <AlertDialogCancel>{m.shared_action_cancel()}</AlertDialogCancel>
+          <AlertDialogAction>{m.shared_action_continue()}</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -548,7 +548,7 @@ const demos: Record<string, () => ReactNode> = {
           <DialogDescription>{m.registry_demo_dialog_description()}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="outline">{m.registry_demo_cancel()}</Button>
+          <Button variant="outline">{m.shared_action_cancel()}</Button>
           <Button>{m.registry_demo_dialog_save()}</Button>
         </DialogFooter>
       </DialogContent>
@@ -592,9 +592,9 @@ const demos: Record<string, () => ReactNode> = {
         <SelectValue placeholder={m.registry_demo_select_placeholder()} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="blue">{m.registry_demo_color_blue()}</SelectItem>
-        <SelectItem value="green">{m.registry_demo_color_green()}</SelectItem>
-        <SelectItem value="red">{m.registry_demo_color_red()}</SelectItem>
+        <SelectItem value="blue">{m.shared_color_blue()}</SelectItem>
+        <SelectItem value="green">{m.shared_color_green()}</SelectItem>
+        <SelectItem value="red">{m.shared_color_red()}</SelectItem>
       </SelectContent>
     </Select>
   ),
@@ -719,7 +719,7 @@ function Home() {
                     <CopyButton
                       text={installCommand}
                       label={m.registry_copy_cta()}
-                      copiedLabel={m.registry_copied_confirmation()}
+                      copiedLabel={m.shared_copy_copied_confirmation()}
                       size="xs"
                     />
                   </div>
