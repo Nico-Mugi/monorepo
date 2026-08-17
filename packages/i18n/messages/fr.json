@@ -605,5 +605,16 @@
   "books_install_prompt_title": "Installer Books pour une lecture hors ligne complète",
   "books_install_prompt_description": "Téléchargez des livres une fois, puis lisez-les sans aucune connexion.",
   "books_install_prompt_cta": "Installer",
-  "books_install_prompt_dismiss_aria": "Ignorer"
+  "books_install_prompt_dismiss_aria": "Ignorer",
+  "books_search_trigger_aria": "Rechercher",
+  "books_search_shortcut_name": "Rechercher",
+  "books_search_dialog_title": "Rechercher",
+  "books_search_dialog_description": "Rechercher dans ce livre ou dans toute la bibliothèque",
+  "books_search_input_placeholder": "Rechercher...",
+  "books_search_scope_book": "Ce livre",
+  "books_search_scope_all": "Tous les livres",
+  "books_search_prompt": "Commencez à taper pour rechercher",
+  "books_search_empty": "Aucun résultat trouvé",
+  "books_search_loading": "Chargement de l'index de recherche...",
+  "books_search_downloads_only_hint": "Résultats limités aux livres téléchargés - connectez-vous à internet pour rechercher dans toute la bibliothèque"
 }

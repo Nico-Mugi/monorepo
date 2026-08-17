@@ -605,5 +605,16 @@
   "books_install_prompt_title": "Install Books for full offline reading",
   "books_install_prompt_description": "Download books once, then read them with no connection at all.",
   "books_install_prompt_cta": "Install",
-  "books_install_prompt_dismiss_aria": "Dismiss"
+  "books_install_prompt_dismiss_aria": "Dismiss",
+  "books_search_trigger_aria": "Search",
+  "books_search_shortcut_name": "Search",
+  "books_search_dialog_title": "Search",
+  "books_search_dialog_description": "Search this book or your whole library",
+  "books_search_input_placeholder": "Search...",
+  "books_search_scope_book": "This book",
+  "books_search_scope_all": "All books",
+  "books_search_prompt": "Start typing to search",
+  "books_search_empty": "No results found",
+  "books_search_loading": "Loading search index...",
+  "books_search_downloads_only_hint": "Showing results from downloaded books only - connect to the internet to search your whole library"
 }

@@ -37,6 +37,8 @@ function CommandDialog({
   children,
   className,
   showCloseButton = false,
+  container,
+  shouldFilter,
   ...props
 }: Omit<React.ComponentProps<typeof Dialog>, "children"> & {
   title?: string
@@ -44,7 +46,8 @@ function CommandDialog({
   className?: string
   showCloseButton?: boolean
   children: React.ReactNode
-}) {
+} & Pick<React.ComponentProps<typeof DialogContent>, "container"> &
+  Pick<React.ComponentProps<typeof Command>, "shouldFilter">) {
   return (
     <Dialog {...props}>
       <DialogHeader className="sr-only">
@@ -57,8 +60,14 @@ function CommandDialog({
           className
         )}
         showCloseButton={showCloseButton}
+        container={container}
       >
-        {children}
+        <Command
+          shouldFilter={shouldFilter}
+          className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground"
+        >
+          {children}
+        </Command>
       </DialogContent>
     </Dialog>
   )
