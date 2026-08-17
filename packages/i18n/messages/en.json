@@ -165,6 +165,8 @@
   "playground_card_parlor_alt": "Screenshot of the Parlor homepage",
   "playground_card_facturation_description": "French e-invoicing demo compliant with the 2026 reform, validated live against the B2Brouter API. Generates downloadable PDF invoices and stores no data.",
   "playground_card_facturation_alt": "Screenshot of the Facturation invoice creation page",
+  "playground_card_books_description": "Kindle-style, distraction-free reading app for religious texts (Torah, Bible, Quran), with paginated and scroll reading modes, typography and theme controls, highlights, full-text search, and full offline support once a book is downloaded.",
+  "playground_card_books_alt": "Screenshot of the Books library page",
   "registry_seo_description": "A live showcase of the ntdev-registry components, browsable and interactive.",
   "registry_hero_description": "A live showcase of every component published in this registry.",
   "registry_empty_state": "No components have been published to the registry yet.",

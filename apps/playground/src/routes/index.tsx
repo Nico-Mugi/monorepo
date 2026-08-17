@@ -103,6 +103,18 @@ function useApps(locale: string): ProjectCardProps[] {
         alt: m.playground_card_facturation_alt(),
       },
     },
+    {
+      name: "Books",
+      description: m.playground_card_books_description(),
+      href: "https://books.playground.nicolas-thouvenin.dev",
+      githubHref: "",
+      openSource: false,
+      chromeLabel: "books.playground.nicolas-thouvenin.dev",
+      screenshot: {
+        src: "/screenshots/books.png",
+        alt: m.playground_card_books_alt(),
+      },
+    },
   ];
 }
 
