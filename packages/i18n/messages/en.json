@@ -616,5 +616,16 @@
   "books_search_prompt": "Start typing to search",
   "books_search_empty": "No results found",
   "books_search_loading": "Loading search index...",
-  "books_search_downloads_only_hint": "Showing results from downloaded books only - connect to the internet to search your whole library"
+  "books_search_downloads_only_hint": "Showing results from downloaded books only - connect to the internet to search your whole library",
+  "books_search_result_count": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+      "selectors": ["countPlural"],
+      "match": {
+        "countPlural=one": "{count} result",
+        "countPlural=other": "{count} results"
+      }
+    }
+  ],
+  "books_search_result_count_truncated_hint": "Showing top {shown}"
 }

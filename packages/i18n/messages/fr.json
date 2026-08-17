@@ -616,5 +616,16 @@
   "books_search_prompt": "Commencez à taper pour rechercher",
   "books_search_empty": "Aucun résultat trouvé",
   "books_search_loading": "Chargement de l'index de recherche...",
-  "books_search_downloads_only_hint": "Résultats limités aux livres téléchargés - connectez-vous à internet pour rechercher dans toute la bibliothèque"
+  "books_search_downloads_only_hint": "Résultats limités aux livres téléchargés - connectez-vous à internet pour rechercher dans toute la bibliothèque",
+  "books_search_result_count": [
+    {
+      "declarations": ["input count", "local countPlural = count: plural"],
+      "selectors": ["countPlural"],
+      "match": {
+        "countPlural=one": "{count} résultat",
+        "countPlural=other": "{count} résultats"
+      }
+    }
+  ],
+  "books_search_result_count_truncated_hint": "Affichage des {shown} premiers"
 }

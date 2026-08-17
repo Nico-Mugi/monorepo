@@ -157,8 +157,16 @@ function CommandSeparator({
 function CommandItem({
   className,
   children,
+  showCheck = true,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Item>) {
+}: React.ComponentProps<typeof CommandPrimitive.Item> & {
+  /** The trailing checkmark (shown via group-data-[checked=true], invisible otherwise) is
+   * a combobox/select affordance - set to `false` for a plain list-navigation item (e.g.
+   * a search result row) that never marks itself "checked", so it isn't left rendering a
+   * dead, invisible SVG node into every item. Defaults to `true` to preserve existing
+   * combobox-style consumers. */
+  showCheck?: boolean
+}) {
   return (
     <CommandPrimitive.Item
       data-slot="command-item"
@@ -169,7 +177,9 @@ function CommandItem({
       {...props}
     >
       {children}
-      <CheckIcon className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
+      {showCheck && (
+        <CheckIcon className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
+      )}
     </CommandPrimitive.Item>
   )
 }
