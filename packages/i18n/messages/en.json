@@ -585,5 +585,16 @@
   "books_reading_highlight_remove_aria": "Remove highlight",
   "books_reading_highlight_jump_aria": "Jump to this highlight",
   "books_reading_highlight_edit_note_aria": "Edit note",
-  "books_not_found_description": "This book doesn't exist, or has been removed from the library."
+  "books_not_found_description": "This book doesn't exist, or has been removed from the library.",
+  "books_download_add_aria": "Download for offline reading",
+  "books_download_remove_aria": "Remove offline download",
+  "books_download_update_aria": "Update offline download",
+  "books_download_in_progress_aria": "Downloading",
+  "books_offline_unavailable_title": "Not available offline",
+  "books_offline_unavailable_description": "This book hasn't been downloaded for offline reading. Connect to the internet to read it, or download it in advance next time you're online.",
+  "books_offline_unavailable_cta": "Back to library",
+  "books_install_prompt_title": "Install Books for full offline reading",
+  "books_install_prompt_description": "Download books once, then read them with no connection at all.",
+  "books_install_prompt_cta": "Install",
+  "books_install_prompt_dismiss_aria": "Dismiss"
 }

@@ -585,5 +585,16 @@
   "books_reading_highlight_remove_aria": "Supprimer le surlignage",
   "books_reading_highlight_jump_aria": "Aller à ce surlignage",
   "books_reading_highlight_edit_note_aria": "Modifier la note",
-  "books_not_found_description": "Ce livre n'existe pas, ou a été retiré de la bibliothèque."
+  "books_not_found_description": "Ce livre n'existe pas, ou a été retiré de la bibliothèque.",
+  "books_download_add_aria": "Télécharger pour une lecture hors ligne",
+  "books_download_remove_aria": "Supprimer le téléchargement",
+  "books_download_update_aria": "Mettre à jour le téléchargement",
+  "books_download_in_progress_aria": "Téléchargement en cours",
+  "books_offline_unavailable_title": "Indisponible hors ligne",
+  "books_offline_unavailable_description": "Ce livre n'a pas été téléchargé pour une lecture hors ligne. Connectez-vous à internet pour le lire, ou téléchargez-le à l'avance la prochaine fois que vous êtes en ligne.",
+  "books_offline_unavailable_cta": "Retour à la bibliothèque",
+  "books_install_prompt_title": "Installer Books pour une lecture hors ligne complète",
+  "books_install_prompt_description": "Téléchargez des livres une fois, puis lisez-les sans aucune connexion.",
+  "books_install_prompt_cta": "Installer",
+  "books_install_prompt_dismiss_aria": "Ignorer"
 }
