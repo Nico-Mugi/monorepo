@@ -481,8 +481,13 @@
   "books_tradition_islam": "Islam",
   "books_tradition_book_count": [
     {
-      "declarations": ["input count", "local countPlural = count: plural"],
-      "selectors": ["countPlural"],
+      "declarations": [
+        "input count",
+        "local countPlural = count: plural"
+      ],
+      "selectors": [
+        "countPlural"
+      ],
       "match": {
         "countPlural=one": "{count} book",
         "countPlural=other": "{count} books"
@@ -567,7 +572,7 @@
   "books_reading_toc_panel_title": "Contents",
   "books_reading_shortcuts_trigger_aria": "Keyboard shortcuts",
   "books_reading_shortcuts_dialog_title": "Keyboard shortcuts",
-  "books_reading_shortcut_hint_text": "Press ? for keyboard shortcuts",
+  "books_reading_shortcut_hint_text": "Press Shift+? for keyboard shortcuts",
   "books_reading_shortcut_hint_dismiss_aria": "Dismiss",
   "books_reading_shortcut_next_page_name": "Next page",
   "books_reading_shortcut_prev_page_name": "Previous page",
@@ -619,8 +624,13 @@
   "books_search_downloads_only_hint": "Showing results from downloaded books only - connect to the internet to search your whole library",
   "books_search_result_count": [
     {
-      "declarations": ["input count", "local countPlural = count: plural"],
-      "selectors": ["countPlural"],
+      "declarations": [
+        "input count",
+        "local countPlural = count: plural"
+      ],
+      "selectors": [
+        "countPlural"
+      ],
       "match": {
         "countPlural=one": "{count} result",
         "countPlural=other": "{count} results"
