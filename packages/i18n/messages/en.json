@@ -626,6 +626,5 @@
         "countPlural=other": "{count} results"
       }
     }
-  ],
-  "books_search_result_count_truncated_hint": "Showing top {shown}"
+  ]
 }
