@@ -115,6 +115,19 @@ function useApps(locale: string): ProjectCardProps[] {
         alt: m.playground_card_books_alt(),
       },
     },
+    {
+      name: "HTML in Canvas",
+      description: m.playground_card_html_in_canvas_description(),
+      href: "https://html-in-canvas.playground.nicolas-thouvenin.dev",
+      githubHref: `${GITHUB_ROOT}/apps/html-in-canvas`,
+      openSource: true,
+      chromeLabel: "html-in-canvas.playground.nicolas-thouvenin.dev",
+      screenshot: {
+        src: "/screenshots/html-in-canvas.png",
+        alt: m.playground_card_html_in_canvas_alt(),
+      },
+      readme: getAppReadme("html-in-canvas", locale),
+    },
   ];
 }
 

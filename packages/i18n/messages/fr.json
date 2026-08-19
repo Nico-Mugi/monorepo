@@ -175,6 +175,8 @@
   "playground_card_facturation_alt": "Capture d'écran de la page de création de facture de Facturation",
   "playground_card_books_description": "Application de lecture sans distraction façon Kindle pour des textes religieux (Torah, Bible, Coran), avec modes de lecture paginé et défilant, réglages de typographie et de thème, surlignage, recherche plein texte et support hors ligne complet une fois un livre téléchargé.",
   "playground_card_books_alt": "Capture d'écran de la page bibliothèque de Books",
+  "playground_card_html_in_canvas_description": "Explore l'API navigateur expérimentale HTML-in-canvas, avec un repli en foreignObject SVG pour les navigateurs qui ne l'ont pas, ainsi qu'une démo pixel-pet et une démo de texture Three.js.",
+  "playground_card_html_in_canvas_alt": "Capture d'écran de la page d'accueil de HTML in Canvas",
   "registry_seo_description": "Une vitrine en direct des composants ntdev-registry, consultable et interactive.",
   "registry_hero_description": "Une vitrine en direct de chaque composant publié dans ce registre.",
   "registry_empty_state": "Aucun composant n'a encore été publié dans le registre.",
