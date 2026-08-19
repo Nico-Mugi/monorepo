@@ -4,6 +4,7 @@ import {
   dayCell,
   dayFor,
   gotoCalendar,
+  navigateToMonth,
   switchView,
 } from "./helpers";
 
@@ -16,6 +17,10 @@ test.describe("event create / edit / delete", () => {
     page,
   }) => {
     const targetDay = dayFor(22);
+    // month view boots on the real current month — +22 days can land in the
+    // next month depending on where in the month the suite runs, so the
+    // target cell may not be rendered yet without navigating there first
+    await navigateToMonth(page, targetDay);
     const cell = dayCell(page, targetDay);
 
     await cell.hover();

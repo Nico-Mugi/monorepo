@@ -13,11 +13,12 @@
 ## Critical constraints
 
 ### Playwright tests MUST use the production build
-Run `pnpm build && pnpm preview` (port 3001) before `playwright test`.
-Do NOT test against `pnpm dev` (port 3000): Paraglide's `setLocale()` calls
-`window.location.href`, which TanStack Router intercepts client-side in dev mode,
-routing back to the same locale instead of switching. The bug disappears in the
-production build where each locale URL is a prerendered static file.
+Run `pnpm build && pnpm preview` before `playwright test`. Do NOT test against
+`pnpm dev`: Paraglide's `setLocale()` calls `window.location.href`, which TanStack
+Router intercepts client-side in dev mode, routing back to the same locale instead
+of switching. The bug disappears in the production build where each locale URL is
+a prerendered static file. Dev and preview both run on port 3001 (not
+simultaneously — same as every other app in the monorepo).
 
 ### Paraglide messages require compile after editing
 The message source (`project.inlang/`, `messages/fr.json`, `messages/en.json`)
@@ -49,7 +50,7 @@ Base locale is `fr` — the key must exist there or inlang will warn.
 
 | Script | What it does |
 |---|---|
-| `pnpm dev` | Dev server on port 3000, Paraglide hot-reload, PDF watch |
+| `pnpm dev` | Dev server on port 3001, Paraglide hot-reload, PDF watch |
 | `pnpm build` | paraglide compile → vite build → tsc --noEmit |
 | `pnpm preview` | Serve production build on port 3001 |
 | `pnpm deploy` | build + wrangler deploy |

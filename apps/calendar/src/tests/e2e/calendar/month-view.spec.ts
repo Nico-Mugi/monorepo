@@ -1,6 +1,12 @@
 import { expect, test } from "@playwright/test";
 import { format } from "date-fns";
-import { dayCell, E2E_FIXTURES, dayFor, gotoCalendar } from "./helpers";
+import {
+  dayCell,
+  E2E_FIXTURES,
+  dayFor,
+  gotoCalendar,
+  navigateToMonth,
+} from "./helpers";
 
 test.describe("month view", () => {
   test.beforeEach(async ({ page }) => {
@@ -111,8 +117,11 @@ test.describe("month view", () => {
   test("hovering an empty day cell reveals an Add Event button that prefills that date", async ({
     page,
   }) => {
-    // offset 20 has no fixture events and stays within the same rendered month grid
+    // offset 20 has no fixture events, but can land in the next month
+    // depending on where in the month the suite runs — navigate there first
+    // since month view boots on the real current month
     const emptyDay = dayFor(20);
+    await navigateToMonth(page, emptyDay);
     const cell = dayCell(page, emptyDay);
 
     await cell.hover();

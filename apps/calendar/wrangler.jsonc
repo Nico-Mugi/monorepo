@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "calendar",
-  "compatibility_date": "2025-09-02",
+  "compatibility_date": "2025-09-15",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./src/server.ts",
   "routes": [

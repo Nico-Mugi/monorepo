@@ -19,7 +19,6 @@
     "clean": "rimraf dist .output .wrangler"
   },
   "dependencies": {
-    "@inlang/paraglide-js-react": "catalog:",
     "@repo/logger": "workspace:*",
     "@repo/registry": "workspace:*",
     "@repo/ui": "workspace:*",

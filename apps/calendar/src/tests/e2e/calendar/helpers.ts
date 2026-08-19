@@ -2,6 +2,7 @@ import {
   addDays,
   addMonths,
   addYears,
+  differenceInCalendarMonths,
   endOfMonth,
   endOfWeek,
   endOfYear,
@@ -215,6 +216,42 @@ export function dayFor(
   if (offset === "last-month") return subMonths(base, 1);
   if (offset === "next-year") return addYears(base, 1);
   return addDays(base, offset);
+}
+
+/**
+ * Steps the main calendar's date navigator (data-testid `date-nav-next` /
+ * `date-nav-previous`) until `date`'s month is the one on screen. The app
+ * always boots showing the real current month and never auto-navigates to
+ * wherever a `dayFor(offset)` date happens to land — any offset from ~20
+ * days on can cross a month boundary depending on what day of the month the
+ * suite happens to run on. Only valid while a view whose "next"/"previous"
+ * step by month is active (month view, the default after gotoCalendar).
+ */
+export async function navigateToMonth(page: Page, date: Date) {
+  const diff = differenceInCalendarMonths(date, today());
+  const testId = diff >= 0 ? "date-nav-next" : "date-nav-previous";
+  for (let i = 0; i < Math.abs(diff); i++) {
+    await page.getByTestId(testId).click();
+  }
+}
+
+/**
+ * Same problem as navigateToMonth, but for the standalone react-day-picker
+ * mini calendar (day view's sidebar): it manages its own displayed month
+ * entirely independently of the app's date navigator — it initializes from
+ * react-day-picker's own `month || defaultMonth || today` fallback chain,
+ * which ignores the `selected` prop entirely, so it always mounts on the
+ * real current month regardless of which date is selected. Steps it via its
+ * own "Go to the Next/Previous Month" nav buttons (react-day-picker's
+ * default aria-labels) until `date`'s month is visible.
+ */
+export async function navigateDatePickerToMonth(page: Page, date: Date) {
+  const diff = differenceInCalendarMonths(date, today());
+  const label =
+    diff >= 0 ? "Go to the Next Month" : "Go to the Previous Month";
+  for (let i = 0; i < Math.abs(diff); i++) {
+    await page.getByRole("button", { name: label }).click();
+  }
 }
 
 /** Official Playwright pattern for native HTML5 drag-and-drop: dispatch the

@@ -10,7 +10,7 @@ import printToPdf from "vite-plugin-print-to-pdf";
 
 const config = defineConfig({
   server: {
-    port: 3000,
+    port: 3001,
     host: true,
   },
   resolve: {

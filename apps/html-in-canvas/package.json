@@ -19,7 +19,6 @@
     "clean": "rimraf dist .output .wrangler"
   },
   "dependencies": {
-    "@inlang/paraglide-js-react": "catalog:",
     "@repo/logger": "workspace:*",
     "@repo/ui": "workspace:*",
     "@tanstack/react-router": "catalog:",
@@ -28,7 +27,7 @@
     "lucide-react": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "three": "^0.185.1",
+    "three": "catalog:",
     "tw-animate-css": "catalog:"
   },
   "devDependencies": {
@@ -41,7 +40,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@types/three": "^0.185.4",
+    "@types/three": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "playwright": "catalog:",
     "tailwindcss": "catalog:",

@@ -7,6 +7,7 @@ import {
   dayFor,
   gotoCalendar,
   hourSlot,
+  navigateDatePickerToMonth,
   safeEmptyHour,
   switchView,
 } from "./helpers";
@@ -71,6 +72,9 @@ test.describe("day view", () => {
     // "Live Incident Response" fixture still shown. That's the sidebar's
     // real, intentional behavior, not something this test should contradict.
     const emptyDay = dayFor(20);
+    // the mini day-picker mounts on the real current month regardless of
+    // `emptyDay`'s month — step it forward/back before locating the cell
+    await navigateDatePickerToMonth(page, emptyDay);
     await datePickerCell(page, emptyDay).click();
 
     await expect(

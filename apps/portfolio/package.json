@@ -19,15 +19,12 @@
     "clean": "rimraf dist .output .wrangler"
   },
   "dependencies": {
-    "@base-ui/react": "catalog:",
     "@inlang/paraglide-js-react": "catalog:",
     "@repo/logger": "workspace:*",
     "@repo/ui": "workspace:*",
-    "@tanstack/react-devtools": "catalog:",
     "@tanstack/react-router": "catalog:",
     "@tanstack/react-router-devtools": "catalog:",
     "@tanstack/react-start": "catalog:",
-    "class-variance-authority": "catalog:",
     "clsx": "catalog:",
     "lucide-react": "catalog:",
     "react": "catalog:",
