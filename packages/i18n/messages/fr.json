@@ -605,5 +605,35 @@
         "countPlural=other": "{count} résultats"
       }
     }
-  ]
+  ],
+  "html_in_canvas_app_title": "HTML dans un Canvas - Nicolas Thouvenin",
+  "html_in_canvas_seo_description": "Un terrain de jeu qui teste le rendu de HTML arbitraire une fois peint sur un élément canvas HTML5.",
+  "html_in_canvas_hero_title": "HTML dans un Canvas",
+  "html_in_canvas_hero_description": "Sérialise du HTML arbitraire dans un foreignObject SVG, le charge comme une image, puis le dessine sur un élément canvas.",
+  "html_in_canvas_source_heading": "Source HTML",
+  "html_in_canvas_canvas_heading": "Résultat sur le canvas",
+  "html_in_canvas_canvas_aria": "Rendu canvas de la source HTML",
+  "html_in_canvas_redraw_cta": "Redessiner",
+  "html_in_canvas_download_cta": "Télécharger en PNG",
+  "html_in_canvas_demo_badge": "Bitmap canvas, pas du vrai DOM",
+  "html_in_canvas_demo_heading": "Rendu à l'intérieur d'un canvas",
+  "html_in_canvas_demo_body": "Ce texte provient du catalogue de messages de Paraglide. Les accents comme é, à et ç s'affichent correctement une fois peints sur le canvas.",
+  "html_in_canvas_note": "Une fois dessiné, le canvas est une image plate : le texte ci-dessus n'est ni sélectionnable ni accessible aux lecteurs d'écran. Modifiez la source HTML puis cliquez sur Redessiner pour la mettre à jour.",
+  "html_in_canvas_three_badge": "Scène Three.js, texture HTML en direct",
+  "html_in_canvas_three_description": "Votre navigateur prend en charge l'API expérimentale HTML-in-Canvas de Chrome. La face du cube qui tourne est un élément DOM traduit en direct, envoyé comme texture WebGL via THREE.HTMLTexture, et non une image statique.",
+  "html_in_canvas_fallback_badge": "Repli SVG, API native indisponible",
+  "html_in_canvas_fallback_description": "Votre navigateur ne prend pas encore en charge l'API native : repli sur la technique classique, qui sérialise du HTML en image SVG puis le dessine sur un canvas 2D. Modifiez la source ci-dessous et redessinez.",
+  "html_in_canvas_learn_more_cta": "En savoir plus sur l'essai d'origine",
+  "html_in_canvas_demo_button_cta": "Cliquez-moi",
+  "html_in_canvas_demo_button_count": "Cliqué {count}× jusqu'ici",
+  "html_in_canvas_pet_section_heading": "Compagnon en pixels",
+  "html_in_canvas_pet_section_description": "Une feuille de sprites dessinée à la main, animée image par image sur un canvas 2D. Cliquez dessus : une bulle de dialogue apparaît, peinte avec la même technique HTML-in-Canvas native ou de repli que ci-dessus.",
+  "html_in_canvas_pet_native_badge": "Bulle en DOM natif, peinte directement sur le canvas 2D",
+  "html_in_canvas_pet_fallback_badge": "Bulle de repli SVG",
+  "html_in_canvas_pet_canvas_aria": "Chien en pixel art animé. Activez pour afficher une bulle de dialogue.",
+  "html_in_canvas_pet_hint": "Cliquez sur le chien",
+  "html_in_canvas_pet_message_1": "Ouaf !",
+  "html_in_canvas_pet_message_2": "Beau clic !",
+  "html_in_canvas_pet_message_3": "Je trotte sur place, promis.",
+  "html_in_canvas_pet_message_4": "Cliquez encore."
 }

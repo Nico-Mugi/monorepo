@@ -605,5 +605,35 @@
         "countPlural=other": "{count} results"
       }
     }
-  ]
+  ],
+  "html_in_canvas_app_title": "HTML in Canvas - Nicolas Thouvenin",
+  "html_in_canvas_seo_description": "A playground testing how arbitrary HTML renders once it's painted onto an HTML5 canvas element.",
+  "html_in_canvas_hero_title": "HTML in Canvas",
+  "html_in_canvas_hero_description": "Serialize arbitrary HTML into an SVG foreignObject, load it as an image, and draw it onto a canvas element.",
+  "html_in_canvas_source_heading": "HTML source",
+  "html_in_canvas_canvas_heading": "Canvas output",
+  "html_in_canvas_canvas_aria": "Canvas rendering of the HTML source",
+  "html_in_canvas_redraw_cta": "Redraw",
+  "html_in_canvas_download_cta": "Download PNG",
+  "html_in_canvas_demo_badge": "Canvas bitmap, not real DOM",
+  "html_in_canvas_demo_heading": "Rendered inside a canvas",
+  "html_in_canvas_demo_body": "This text comes from Paraglide's message catalog. Accented characters like é, à, and ç render fine once painted onto the canvas.",
+  "html_in_canvas_note": "Once drawn, the canvas is a flat bitmap: the text above isn't selectable or exposed to screen readers. Edit the HTML source and press Redraw to update it.",
+  "html_in_canvas_three_badge": "Three.js scene, live HTML texture",
+  "html_in_canvas_three_description": "Your browser supports Chrome's experimental HTML-in-Canvas API. The rotating cube's face is a live, translated DOM element uploaded as a WebGL texture through THREE.HTMLTexture, not a static picture.",
+  "html_in_canvas_fallback_badge": "SVG fallback, native API unavailable",
+  "html_in_canvas_fallback_description": "Your browser doesn't support the native API yet, so this falls back to the classic technique: serializing HTML into an SVG image and drawing that onto a 2D canvas. Edit the source below and redraw.",
+  "html_in_canvas_learn_more_cta": "Learn about the origin trial",
+  "html_in_canvas_demo_button_cta": "Click me",
+  "html_in_canvas_demo_button_count": "Clicked {count}× so far",
+  "html_in_canvas_pet_section_heading": "Pixel companion",
+  "html_in_canvas_pet_section_description": "A hand-drawn sprite sheet, animated frame by frame on a 2D canvas. Click it and a speech bubble appears, painted with the same native-or-fallback HTML-in-Canvas technique as above.",
+  "html_in_canvas_pet_native_badge": "Live DOM bubble, painted straight onto the 2D canvas",
+  "html_in_canvas_pet_fallback_badge": "SVG fallback bubble",
+  "html_in_canvas_pet_canvas_aria": "Animated pixel art dog. Activate to show a speech bubble.",
+  "html_in_canvas_pet_hint": "Click the dog",
+  "html_in_canvas_pet_message_1": "Woof!",
+  "html_in_canvas_pet_message_2": "Nice click!",
+  "html_in_canvas_pet_message_3": "I only trot in place, I promise.",
+  "html_in_canvas_pet_message_4": "Click me again."
 }

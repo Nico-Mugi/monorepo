@@ -1,0 +1,52 @@
+{
+  "name": "html-in-canvas",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "npx paraglide-js compile --project ../../packages/i18n/project.inlang --outdir ./src/lib/paraglide && vite build && tsc --noEmit",
+    "preview": "vite preview --port 3012",
+    "deploy": "pnpm run build && wrangler deploy",
+    "cf-typegen": "wrangler types",
+    "test": "playwright test",
+    "test:watch": "playwright test --watch",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf dist .output .wrangler"
+  },
+  "dependencies": {
+    "@inlang/paraglide-js-react": "catalog:",
+    "@repo/logger": "workspace:*",
+    "@repo/ui": "workspace:*",
+    "@tanstack/react-router": "catalog:",
+    "@tanstack/react-router-devtools": "catalog:",
+    "@tanstack/react-start": "catalog:",
+    "lucide-react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "three": "^0.185.1",
+    "tw-animate-css": "catalog:"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "catalog:",
+    "@cloudflare/workers-types": "catalog:",
+    "@inlang/paraglide-js": "catalog:",
+    "@playwright/test": "catalog:",
+    "@repo/e2e-utils": "workspace:*",
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@types/three": "^0.185.4",
+    "@vitejs/plugin-react": "catalog:",
+    "playwright": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "wrangler": "catalog:"
+  }
+}

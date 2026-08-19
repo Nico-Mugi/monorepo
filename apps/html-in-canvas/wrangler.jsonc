@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "html-in-canvas",
+  "compatibility_date": "2025-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./src/server.ts",
+  "routes": [
+    { "pattern": "html-in-canvas.playground.nicolas-thouvenin.dev", "custom_domain": true }
+  ],
+  "d1_databases": [
+    {
+      "binding": "LOGS_DB",
+      "database_name": "platform-logs",
+      "database_id": "907936d9-7f8b-4647-a87f-4ce708ea7a52"
+    }
+  ]
+}

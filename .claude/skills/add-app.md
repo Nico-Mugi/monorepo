@@ -27,7 +27,8 @@ Two ports needed per app — both must be unique across all apps:
 | sign              | 3009          | 9245              |
 | ocr               | 3010          | 9247              |
 | books             | 3011          | 9249              |
-| next app          | 3012          | 9251              |
+| html-in-canvas    | 3012          | 9251              |
+| next app          | 3013          | 9253              |
 
 The CF inspector port conflict causes an `ECONNRESET` crash when running multiple apps
 simultaneously with `pnpm dev`. Always set it explicitly in `vite.config.ts`.
